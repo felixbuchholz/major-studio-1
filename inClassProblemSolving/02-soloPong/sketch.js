@@ -10,7 +10,9 @@ var xPos = 0;
 var yPos = 0;
 var xSpeed = 0;
 var ySpeed = 0;
-var heightGainOnContact = 15;
+var heightGainOnContact = 0;
+var moveTester = 0;
+var rotateTest = -1;
 console.log(r, marginBottom, xPos, yPos, xSpeed, ySpeed, rectWidth);
 
 function setVariables() {
@@ -26,7 +28,11 @@ function setVariables() {
     ySpeed = Math.floor(Math.random() * 10) - 9;
   }
   rectWidth = Math.floor(Math.random() * 50) + 20;
-  console.log(r, marginBottom, xPos, yPos, xSpeed, ySpeed, rectWidth);
+  heightGainOnContact = Math.floor(Math.random() * 50) +10;
+  moveTester = heightGainOnContact;
+  rotateTest = -1;
+
+    console.log(r, marginBottom, xPos, yPos, xSpeed, ySpeed, rectWidth, heightGainOnContact);
 }
 
 setVariables();
@@ -42,13 +48,20 @@ function setup() {
 
 function draw() {
   background(200);
-  marginBottom = contactCounter * heightGainOnContact + 20;
-  rectMode(CENTER);
-  rect(mouseX, h-marginBottom, rectWidth, r);
 
   xPos += xSpeed;
   yPos += ySpeed;
+
+  push();
+  if (rotateTest > 0) {
+    translate(width, height);
+    rotate(PI);
+  }
+
   ellipse(xPos, yPos, r, r);
+  rectMode(CENTER);
+  rect(mouseX, h-marginBottom, rectWidth, r);
+  pop();
 
   var leftWallContact = xPos <= 0 + Math.floor(r/2);
   var rightWallContact = xPos >= w - Math.floor(r/2)
@@ -63,10 +76,23 @@ function draw() {
   if (oppositeWallContact || rectContact) {
     ySpeed *= -1;
     if (rectContact) {
-    console.log((1000/fr*-1/ySpeed*heightGainOnContact)+100);
-    setTimeout(function(){ contactCounter++; },
-     (1000/fr*-1/ySpeed*heightGainOnContact)+10);
+      contactCounter++;
+      moveTester = 0;
+      rotateTest *= -1;
     }
   }
+
+  setTimeout(function() {
+      if (moveTester < heightGainOnContact) {
+        marginBottom = (contactCounter * heightGainOnContact) + moveTester;
+        moveTester++;
+      } else if (moveTester == heightGainOnContact) {
+        marginBottom = contactCounter * heightGainOnContact + moveTester;
+      };
+    },
+    (1000/fr*-1/ySpeed)+20/heightGainOnContact
+  )
+
 }
 // Todo: implement a switch to flip the canvas
+// if rectContact: es startet ein Ding, checkt ob wir heightGainOnContact haben, und wenn nicht, dann ++
