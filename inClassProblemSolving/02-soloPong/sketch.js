@@ -65,6 +65,7 @@ setVariables();
 
 function mouseClicked(){
   setVariables();
+  balls = [];
   for (var i = 0; i < 1; i++) {
     balls[i] = new Ball();
   }
