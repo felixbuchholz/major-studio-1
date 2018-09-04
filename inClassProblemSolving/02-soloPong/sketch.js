@@ -31,7 +31,7 @@ class Ball {
           rotateTest *= -1;
           this.ySpeed *= 1.1;
           //TODO Spin here
-          this.spin = map(xSpeed, -1.1, 1.1, rectLeft, rectRight);
+          // this.spin = map(this.xSpeed, -1.1, 1.1, rectLeft, rectRight);
           this.xSpeed *= 1.1;
         };
       };
