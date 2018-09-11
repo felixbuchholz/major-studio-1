@@ -6,7 +6,7 @@ class Ball {
   constructor() {
     this.r = Math.floor(Math.random() * 5) + 10;
     this.xPos = Math.floor(Math.random() * w);
-    this.yPos = Math.floor(Math.random() * (h - marginBottom*3 - rectHeight));
+    this.yPos = Math.floor(Math.random() * (h - marginBottom - rectHeight));
     this.xSpeed = Math.floor(Math.random() * 10) - 9;
     this.ySpeed = Math.floor(Math.random() * 10) - 9;
     while (this.ySpeed == 0) {
@@ -29,12 +29,19 @@ class Ball {
           contactCounter++;
           moveTester = 0;
           rotateTest *= -1;
-          this.ySpeed *= 1.1;
+          this.ySpeed *= 1.02;
+          this.xSpeed *= 1.00;
           //TODO Spin here
-          // this.spin = map(this.xSpeed, -1.1, 1.1, rectLeft, rectRight);
-          this.xSpeed *= 1.1;
+          this.spin = map(this.xPos, rectLeft, rectRight, -3, 3);
+          if (this.xSpeed < 0) {
+            this.xSpeed -= this.spin;
+          } else {
+            this.xSpeed += this.spin;
+          };
         };
       };
+      this.outOfWindow = this.yPos > h;
+
       this.xPos += this.xSpeed;
       this.yPos += this.ySpeed;
     }
@@ -43,7 +50,7 @@ class Ball {
 
 var balls = [];
 
-var rectHeight = 15;
+var rectHeight = 12;
 var marginBottom = 0;
 var rectWidth = 0;
 var rectLeft, rectRight;
@@ -55,7 +62,7 @@ var rotateTest = -1;
 function setVariables() {
   contactCounter = 0;
   marginBottom = contactCounter * heightGainOnContact + 20;
-  rectWidth = Math.floor(Math.random() * 50) + 20;
+  rectWidth = Math.floor(Math.random() * 50) + 80;
   heightGainOnContact = Math.floor(Math.random() * 50) +10;
   moveTester = heightGainOnContact;
   rotateTest = -1;
@@ -82,27 +89,32 @@ function keyPressed() {
 function setup() {
   createCanvas(w, h);
   frameRate(fr);
+  textAlign(CENTER);
   balls[0] = new Ball();
+  noStroke();
 }
 
 function draw() {
   background(200);
 
   push();
-  if (rotateTest > 0) {
-    translate(width, height);
-    rotate(PI);
-  }
+  // Rotating
+  // if (rotateTest > 0) {
+  //   translate(width, height);
+  //   rotate(PI);
+  // }
   for (var i = 0; i < balls.length; i++) {
     balls[i].display();
     balls[i].move();
   }
+
   rectMode(CENTER);
-  rect(mouseX, h-marginBottom, rectWidth, rectHeight);
+  rect(mouseX, h-marginBottom, rectWidth, rectHeight, rectHeight/2);
   rectLeft = mouseX - rectWidth/2;
   rectRight = mouseX + rectWidth/2;
-  textAlign(CENTER);
-  text(contactCounter, mouseX, h-marginBottom+rectHeight/2-1)
+
+  fill(200);
+  text(contactCounter, mouseX, h-marginBottom+(rectHeight/2-2))
   pop();
 
   setTimeout(function() {
@@ -116,4 +128,10 @@ function draw() {
     // Previoulsy the value 5 in the next line was the ySpeed variable of the Ball, to make it dependent on the
     (1000/fr*-1/5)+20/heightGainOnContact
   )
+
+  for (var i in balls) {
+    if (balls[i].outOfWindow) {
+      balls.splice(i,1);
+    }
+  }
 }
