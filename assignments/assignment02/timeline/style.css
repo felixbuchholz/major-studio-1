@@ -1,0 +1,102 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  font-family: Helvetica;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 23px;
+  margin: 0;
+  margin-top: 80px;
+  margin-left: 50px;
+}
+
+input {
+  transition: outline-offset 0.2s;
+  transition: all 0.3s;
+  font-size: 23px;
+  font-weight: bold;
+  margin-right: 0.5em;
+  width: 12em;
+  caret-color: green;
+  border: 0;
+  border-left: 16px dotted;
+  /* background-color: #eee; */
+  /* border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-top: 1px solid; */
+
+
+  border-style: dotted;
+}
+
+input:focus {
+  font-size: 23px;
+  font-weight: bold;
+  margin-right: 0.5em;
+  width: 12em;
+  caret-color: green;
+  caret-width: 2px;
+
+  border: 0;
+  outline: 1px dashed gray;
+  outline-offset: 5px;
+  /* border-color: black;
+  border-bottom: 3px solid; */
+  /* background-color: #eee; */
+}
+
+input::placeholder {
+  color:#888;
+  text-decoration: underline dotted;
+}
+
+.label {
+  font-size: 13px;
+}
+
+.plotLabel {
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.countryCont {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.axis text {
+  font-size: 10px;
+  fill: grey;
+}
+
+svg {
+  display: block;
+}
+
+.axis path, .axis line {
+  stroke: grey;
+  shape-rendering: crispEdges;
+}
+
+
+
+.dataLine {
+  fill: none;
+  /* stroke: orange; */
+  stroke-width: 1;
+  stroke-dasharray: 3;
+}
+
+/* .scatterplotCont circle {
+  fill: orange;
+} */
