@@ -2,7 +2,7 @@
 /* --------------------------------------------------- */
 
 // const marginAll = 100;
-const margin = {top: 50, right: 170, bottom: 100, left: 50};
+const margin = {top: 20, right: 170, bottom: 100, left: 50};
 let w = 800 - margin.left - margin.right;
 let h = 600 - margin.top - margin.bottom;
 let mySelection = 'ZAF';

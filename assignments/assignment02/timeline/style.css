@@ -20,6 +20,43 @@ h2 {
   margin-left: 50px;
 }
 
+.desc {
+  width: 600px;
+  margin-left: 50px;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 1.5em;
+}
+
+.em {
+  font-weight: bold
+}
+
+sup {
+  line-height: 1.2em;
+}
+
+#graph {
+  width: 800px;
+  height: 600px;
+}
+
+#sources {
+  font-size: 13px;
+  line-height: 1.2em;
+  border-top: 1px solid;
+  padding-top: 6px;
+}
+
+hr {
+
+}
+
+a {
+  font-size: 13px;
+  color: rgb(168, 94, 159)
+}
+
 input {
   transition: outline-offset 0.2s;
   transition: all 0.3s;
