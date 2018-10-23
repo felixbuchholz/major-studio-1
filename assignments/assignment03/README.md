@@ -72,12 +72,17 @@ A good amount of research I’m interested in is already done here:
 
 ### My research question
 
-**I’m visualizing** the relationship between access to clean fuels and cooking technologies and indicators linked to poverty in African countries with the highest rate of increase in access to clean fuels, **because** I want to show how important the access to clean fuel is to reduce the vulnerability of the poor **in order to** raise awareness to this issue and maybe even suggest a new perspective on the relation between the achievement of the SDGs and GDP growth.
+**I’m visualizing** the relationship between access to clean fuels and cooking  technologies and indicators linked to poverty in African countries, **because** I want to show how important the access to clean fuel is to reduce the vulnerability of the poor **in order to** raise awareness to this issue and maybe even suggest a new perspective on the relation between the achievement of **SDG 1** and GDP growth.
 
 **Details:**
 
 It is commonly argued that GDP growth helps elevate the poorest and most vulnerable parts of the population out of the most precarious conditions, what if for a change we could propose the suggestion that improving these most severe conditions is actually an opportunity to encourage GDP growth. Another aspect of this research can be to also show how women and children are more heavily affected by indoor air pollution.
 
+**Feedback 2018-10-23:**
+
+- Energy ladder can be a good wording
+- SDG – stay with poverty
+- Maybe it doesn’t have to be as specific in regards to choosing a subset of winners and losers.
 
 ### My sketches
 
