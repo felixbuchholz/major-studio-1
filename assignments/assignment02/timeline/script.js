@@ -43,8 +43,8 @@ dataset.then((se4dataset) => {
 
   /*TODO:
 
-    1. Tooltip / position
-
+    1. Tooltip / position (predefine it to be close to the element)
+    2. Dist to closest neighbor for the mouseover
     # viewBox
     # crispEdges
     # For the comparison to access to electricity
