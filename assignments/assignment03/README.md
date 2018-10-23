@@ -81,8 +81,8 @@ It is commonly argued that GDP growth helps elevate the poorest and most vulnera
 
 ### My sketches
 
-![](/assets/20181023%20sketch%20juxtaposition%201.jpg)
-![](/assets/20181023%20sketch%20juxtaposition%202.jpg)
+![](assets/20181023%20sketch%20juxtaposition%201.jpg)
+![](assets/20181023%20sketch%20juxtaposition%202.jpg)
 
 ### My approach to narration and interactivity
 
