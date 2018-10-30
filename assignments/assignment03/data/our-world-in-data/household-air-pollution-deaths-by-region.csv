@@ -1,0 +1,1562 @@
+Entity,Code,Year,Household air pollution
+Afghanistan,AFG,1990,20372
+Afghanistan,AFG,1995,27948
+Afghanistan,AFG,2000,31581
+Afghanistan,AFG,2005,36956
+Afghanistan,AFG,2006,36622
+Afghanistan,AFG,2010,31631
+Afghanistan,AFG,2016,34356
+Albania,ALB,1990,2159
+Albania,ALB,1995,1994
+Albania,ALB,2000,1794
+Albania,ALB,2005,1680
+Albania,ALB,2006,1565
+Albania,ALB,2010,1190
+Albania,ALB,2016,1003
+Algeria,DZA,1990,2502
+Algeria,DZA,1995,1630
+Algeria,DZA,2000,1018
+Algeria,DZA,2005,456
+Algeria,DZA,2006,393
+Algeria,DZA,2010,220
+Algeria,DZA,2016,111
+American Samoa,ASM,1990,11
+American Samoa,ASM,1995,10
+American Samoa,ASM,2000,9
+American Samoa,ASM,2005,8
+American Samoa,ASM,2006,8
+American Samoa,ASM,2010,7
+American Samoa,ASM,2016,6
+Andorra,AND,1990,2
+Andorra,AND,1995,1
+Andorra,AND,2000,1
+Andorra,AND,2005,1
+Andorra,AND,2006,1
+Andorra,AND,2010,1
+Andorra,AND,2016,1
+Angola,AGO,1990,12604
+Angola,AGO,1995,13317
+Angola,AGO,2000,13815
+Angola,AGO,2005,13316
+Angola,AGO,2006,12874
+Angola,AGO,2010,11864
+Angola,AGO,2016,7902
+Antigua and Barbuda,ATG,1990,4
+Antigua and Barbuda,ATG,1995,3
+Antigua and Barbuda,ATG,2000,2
+Antigua and Barbuda,ATG,2005,2
+Antigua and Barbuda,ATG,2006,2
+Antigua and Barbuda,ATG,2010,1
+Antigua and Barbuda,ATG,2016,1
+Argentina,ARG,1990,4424
+Argentina,ARG,1995,3139
+Argentina,ARG,2000,2588
+Argentina,ARG,2005,2208
+Argentina,ARG,2006,2109
+Argentina,ARG,2010,1707
+Argentina,ARG,2016,1202
+Armenia,ARM,1990,2355
+Armenia,ARM,1995,2226
+Armenia,ARM,2000,1366
+Armenia,ARM,2005,1269
+Armenia,ARM,2006,1239
+Armenia,ARM,2010,867
+Armenia,ARM,2016,650
+Australia,AUS,1990,241
+Australia,AUS,1995,98
+Australia,AUS,2000,86
+Australia,AUS,2005,87
+Australia,AUS,2006,85
+Australia,AUS,2010,69
+Australia,AUS,2016,59
+Austria,AUT,1990,377
+Austria,AUT,1995,257
+Austria,AUT,2000,196
+Austria,AUT,2005,148
+Austria,AUT,2006,140
+Austria,AUT,2010,112
+Austria,AUT,2016,87
+Azerbaijan,AZE,1990,5458
+Azerbaijan,AZE,1995,5220
+Azerbaijan,AZE,2000,3481
+Azerbaijan,AZE,2005,2442
+Azerbaijan,AZE,2006,2257
+Azerbaijan,AZE,2010,2098
+Azerbaijan,AZE,2016,1849
+Bahamas,BHS,1990,15
+Bahamas,BHS,1995,13
+Bahamas,BHS,2000,11
+Bahamas,BHS,2005,10
+Bahamas,BHS,2006,10
+Bahamas,BHS,2010,10
+Bahamas,BHS,2016,10
+Bahrain,BHR,1990,44
+Bahrain,BHR,1995,28
+Bahrain,BHR,2000,21
+Bahrain,BHR,2005,11
+Bahrain,BHR,2006,10
+Bahrain,BHR,2010,8
+Bahrain,BHR,2016,6
+Bangladesh,BGD,1990,117467
+Bangladesh,BGD,1995,110913
+Bangladesh,BGD,2000,108085
+Bangladesh,BGD,2005,110898
+Bangladesh,BGD,2006,111627
+Bangladesh,BGD,2010,110340
+Bangladesh,BGD,2016,106871
+Barbados,BRB,1990,1
+Barbados,BRB,1995,1
+Barbados,BRB,2000,1
+Barbados,BRB,2005,0
+Barbados,BRB,2006,0
+Barbados,BRB,2010,0
+Barbados,BRB,2016,0
+Belarus,BLR,1990,1590
+Belarus,BLR,1995,1513
+Belarus,BLR,2000,1091
+Belarus,BLR,2005,784
+Belarus,BLR,2006,677
+Belarus,BLR,2010,417
+Belarus,BLR,2016,244
+Belgium,BEL,1990,204
+Belgium,BEL,1995,130
+Belgium,BEL,2000,105
+Belgium,BEL,2005,85
+Belgium,BEL,2006,81
+Belgium,BEL,2010,68
+Belgium,BEL,2016,56
+Belize,BLZ,1990,55
+Belize,BLZ,1995,45
+Belize,BLZ,2000,39
+Belize,BLZ,2005,31
+Belize,BLZ,2006,30
+Belize,BLZ,2010,33
+Belize,BLZ,2016,31
+Benin,BEN,1990,6640
+Benin,BEN,1995,7078
+Benin,BEN,2000,6949
+Benin,BEN,2005,6625
+Benin,BEN,2006,6592
+Benin,BEN,2010,6884
+Benin,BEN,2016,7056
+Bermuda,BMU,1990,8
+Bermuda,BMU,1995,6
+Bermuda,BMU,2000,5
+Bermuda,BMU,2005,3
+Bermuda,BMU,2006,3
+Bermuda,BMU,2010,3
+Bermuda,BMU,2016,2
+Bhutan,BTN,1990,593
+Bhutan,BTN,1995,462
+Bhutan,BTN,2000,395
+Bhutan,BTN,2005,306
+Bhutan,BTN,2006,289
+Bhutan,BTN,2010,237
+Bhutan,BTN,2016,180
+Bolivia,BOL,1990,6364
+Bolivia,BOL,1995,4890
+Bolivia,BOL,2000,3863
+Bolivia,BOL,2005,3398
+Bolivia,BOL,2006,3284
+Bolivia,BOL,2010,2916
+Bolivia,BOL,2016,2149
+Bosnia and Herzegovina,BIH,1990,4137
+Bosnia and Herzegovina,BIH,1995,3797
+Bosnia and Herzegovina,BIH,2000,2917
+Bosnia and Herzegovina,BIH,2005,2631
+Bosnia and Herzegovina,BIH,2006,2568
+Bosnia and Herzegovina,BIH,2010,2290
+Bosnia and Herzegovina,BIH,2016,2062
+Botswana,BWA,1990,641
+Botswana,BWA,1995,712
+Botswana,BWA,2000,889
+Botswana,BWA,2005,796
+Botswana,BWA,2006,753
+Botswana,BWA,2010,600
+Botswana,BWA,2016,450
+Brazil,BRA,1990,40333
+Brazil,BRA,1995,31890
+Brazil,BRA,2000,21676
+Brazil,BRA,2005,17131
+Brazil,BRA,2006,16027
+Brazil,BRA,2010,12193
+Brazil,BRA,2016,8007
+Brunei,BRN,1990,12
+Brunei,BRN,1995,2
+Brunei,BRN,2000,0
+Brunei,BRN,2005,0
+Brunei,BRN,2006,0
+Brunei,BRN,2010,0
+Brunei,BRN,2016,0
+Bulgaria,BGR,1990,4690
+Bulgaria,BGR,1995,3894
+Bulgaria,BGR,2000,3015
+Bulgaria,BGR,2005,2692
+Bulgaria,BGR,2006,2590
+Bulgaria,BGR,2010,2118
+Bulgaria,BGR,2016,1713
+Burkina Faso,BFA,1990,13124
+Burkina Faso,BFA,1995,13005
+Burkina Faso,BFA,2000,13160
+Burkina Faso,BFA,2005,12679
+Burkina Faso,BFA,2006,12535
+Burkina Faso,BFA,2010,12544
+Burkina Faso,BFA,2016,12653
+Burundi,BDI,1990,8426
+Burundi,BDI,1995,8414
+Burundi,BDI,2000,7679
+Burundi,BDI,2005,7474
+Burundi,BDI,2006,7372
+Burundi,BDI,2010,7510
+Burundi,BDI,2016,8485
+Cambodia,KHM,1990,12218
+Cambodia,KHM,1995,13784
+Cambodia,KHM,2000,13922
+Cambodia,KHM,2005,13201
+Cambodia,KHM,2006,12820
+Cambodia,KHM,2010,11795
+Cambodia,KHM,2016,10792
+Cameroon,CMR,1990,10721
+Cameroon,CMR,1995,12281
+Cameroon,CMR,2000,14002
+Cameroon,CMR,2005,14183
+Cameroon,CMR,2006,14322
+Cameroon,CMR,2010,15339
+Cameroon,CMR,2016,14661
+Canada,CAN,1990,112
+Canada,CAN,1995,80
+Canada,CAN,2000,64
+Canada,CAN,2005,56
+Canada,CAN,2006,54
+Canada,CAN,2010,47
+Canada,CAN,2016,44
+Cape Verde,CPV,1990,207
+Cape Verde,CPV,1995,204
+Cape Verde,CPV,2000,180
+Cape Verde,CPV,2005,180
+Cape Verde,CPV,2006,180
+Cape Verde,CPV,2010,160
+Cape Verde,CPV,2016,118
+Caribbean,,1990,14775
+Caribbean,,1995,13992
+Caribbean,,2000,12571
+Caribbean,,2005,12071
+Caribbean,,2006,12072
+Caribbean,,2010,11968
+Caribbean,,2016,11474
+Central African Republic,CAF,1990,4707
+Central African Republic,CAF,1995,5229
+Central African Republic,CAF,2000,5630
+Central African Republic,CAF,2005,5728
+Central African Republic,CAF,2006,5954
+Central African Republic,CAF,2010,6162
+Central African Republic,CAF,2016,6212
+Central Asia,,1990,44198
+Central Asia,,1995,43151
+Central Asia,,2000,34713
+Central Asia,,2005,31563
+Central Asia,,2006,30258
+Central Asia,,2010,24484
+Central Asia,,2016,19735
+Central Europe,,1990,60701
+Central Europe,,1995,52958
+Central Europe,,2000,41954
+Central Europe,,2005,35026
+Central Europe,,2006,33089
+Central Europe,,2010,26902
+Central Europe,,2016,21428
+Central Sub-Saharan Africa,,1990,57087
+Central Sub-Saharan Africa,,1995,64065
+Central Sub-Saharan Africa,,2000,68213
+Central Sub-Saharan Africa,,2005,68379
+Central Sub-Saharan Africa,,2006,68942
+Central Sub-Saharan Africa,,2010,71675
+Central Sub-Saharan Africa,,2016,69459
+Chad,TCD,1990,7619
+Chad,TCD,1995,8600
+Chad,TCD,2000,10085
+Chad,TCD,2005,10805
+Chad,TCD,2006,11060
+Chad,TCD,2010,12169
+Chad,TCD,2016,12324
+Chile,CHL,1990,2664
+Chile,CHL,1995,2031
+Chile,CHL,2000,1432
+Chile,CHL,2005,1037
+Chile,CHL,2006,955
+Chile,CHL,2010,751
+Chile,CHL,2016,550
+China,CHN,1990,1285110
+China,CHN,1995,1269530
+China,CHN,2000,1136164
+China,CHN,2005,997600
+China,CHN,2006,940272
+China,CHN,2010,817744
+China,CHN,2016,605098
+Colombia,COL,1990,6525
+Colombia,COL,1995,5866
+Colombia,COL,2000,5115
+Colombia,COL,2005,5392
+Colombia,COL,2006,5637
+Colombia,COL,2010,5702
+Colombia,COL,2016,3891
+Comoros,COM,1990,449
+Comoros,COM,1995,447
+Comoros,COM,2000,422
+Comoros,COM,2005,367
+Comoros,COM,2006,369
+Comoros,COM,2010,366
+Comoros,COM,2016,338
+Congo,COG,1990,2735
+Congo,COG,1995,3037
+Congo,COG,2000,3103
+Congo,COG,2005,2729
+Congo,COG,2006,2688
+Congo,COG,2010,2532
+Congo,COG,2016,2121
+Costa Rica,CRI,1990,453
+Costa Rica,CRI,1995,356
+Costa Rica,CRI,2000,263
+Costa Rica,CRI,2005,197
+Costa Rica,CRI,2006,186
+Costa Rica,CRI,2010,151
+Costa Rica,CRI,2016,136
+Cote d'Ivoire,CIV,1990,12441
+Cote d'Ivoire,CIV,1995,14371
+Cote d'Ivoire,CIV,2000,14992
+Cote d'Ivoire,CIV,2005,15083
+Cote d'Ivoire,CIV,2006,15388
+Cote d'Ivoire,CIV,2010,15385
+Cote d'Ivoire,CIV,2016,15816
+Croatia,HRV,1990,1814
+Croatia,HRV,1995,1609
+Croatia,HRV,2000,1310
+Croatia,HRV,2005,1062
+Croatia,HRV,2006,1020
+Croatia,HRV,2010,851
+Croatia,HRV,2016,679
+Cuba,CUB,1990,828
+Cuba,CUB,1995,1039
+Cuba,CUB,2000,849
+Cuba,CUB,2005,627
+Cuba,CUB,2006,587
+Cuba,CUB,2010,469
+Cuba,CUB,2016,370
+Cyprus,CYP,1990,32
+Cyprus,CYP,1995,19
+Cyprus,CYP,2000,13
+Cyprus,CYP,2005,9
+Cyprus,CYP,2006,9
+Cyprus,CYP,2010,7
+Cyprus,CYP,2016,5
+Czech Republic,CZE,1990,897
+Czech Republic,CZE,1995,663
+Czech Republic,CZE,2000,501
+Czech Republic,CZE,2005,413
+Czech Republic,CZE,2006,392
+Czech Republic,CZE,2010,339
+Czech Republic,CZE,2016,262
+Democratic Republic of Congo,COD,1990,35510
+Democratic Republic of Congo,COD,1995,41036
+Democratic Republic of Congo,COD,2000,44629
+Democratic Republic of Congo,COD,2005,45865
+Democratic Republic of Congo,COD,2006,46703
+Democratic Republic of Congo,COD,2010,50536
+Democratic Republic of Congo,COD,2016,52788
+Denmark,DNK,1990,72
+Denmark,DNK,1995,54
+Denmark,DNK,2000,42
+Denmark,DNK,2005,36
+Denmark,DNK,2006,34
+Denmark,DNK,2010,29
+Denmark,DNK,2016,23
+Djibouti,DJI,1990,455
+Djibouti,DJI,1995,426
+Djibouti,DJI,2000,335
+Djibouti,DJI,2005,268
+Djibouti,DJI,2006,263
+Djibouti,DJI,2010,240
+Djibouti,DJI,2016,184
+Dominica,DMA,1990,25
+Dominica,DMA,1995,18
+Dominica,DMA,2000,10
+Dominica,DMA,2005,8
+Dominica,DMA,2006,7
+Dominica,DMA,2010,6
+Dominica,DMA,2016,4
+Dominican Republic,DOM,1990,1530
+Dominican Republic,DOM,1995,1182
+Dominican Republic,DOM,2000,902
+Dominican Republic,DOM,2005,890
+Dominican Republic,DOM,2006,893
+Dominican Republic,DOM,2010,868
+Dominican Republic,DOM,2016,747
+East Asia,,1990,1307178
+East Asia,,1995,1294634
+East Asia,,2000,1166211
+East Asia,,2005,1032411
+East Asia,,2006,975670
+East Asia,,2010,855967
+East Asia,,2016,645318
+Eastern Europe,,1990,20459
+Eastern Europe,,1995,23237
+Eastern Europe,,2000,20328
+Eastern Europe,,2005,24122
+Eastern Europe,,2006,20883
+Eastern Europe,,2010,12610
+Eastern Europe,,2016,7961
+Eastern Sub-Saharan Africa,,1990,238736
+Eastern Sub-Saharan Africa,,1995,249633
+Eastern Sub-Saharan Africa,,2000,250342
+Eastern Sub-Saharan Africa,,2005,244472
+Eastern Sub-Saharan Africa,,2006,244536
+Eastern Sub-Saharan Africa,,2010,240063
+Eastern Sub-Saharan Africa,,2016,231546
+Ecuador,ECU,1990,2393
+Ecuador,ECU,1995,1813
+Ecuador,ECU,2000,1276
+Ecuador,ECU,2005,877
+Ecuador,ECU,2006,836
+Ecuador,ECU,2010,634
+Ecuador,ECU,2016,433
+Egypt,EGY,1990,6455
+Egypt,EGY,1995,3413
+Egypt,EGY,2000,1840
+Egypt,EGY,2005,880
+Egypt,EGY,2006,799
+Egypt,EGY,2010,557
+Egypt,EGY,2016,280
+El Salvador,SLV,1990,2207
+El Salvador,SLV,1995,1983
+El Salvador,SLV,2000,1554
+El Salvador,SLV,2005,1207
+El Salvador,SLV,2006,1138
+El Salvador,SLV,2010,904
+El Salvador,SLV,2016,697
+England,,1990,4965
+England,,1995,2434
+England,,2000,1369
+England,,2005,867
+England,,2006,791
+England,,2010,588
+England,,2016,482
+Equatorial Guinea,GNQ,1990,679
+Equatorial Guinea,GNQ,1995,690
+Equatorial Guinea,GNQ,2000,461
+Equatorial Guinea,GNQ,2005,306
+Equatorial Guinea,GNQ,2006,310
+Equatorial Guinea,GNQ,2010,284
+Equatorial Guinea,GNQ,2016,231
+Eritrea,ERI,1990,3278
+Eritrea,ERI,1995,2607
+Eritrea,ERI,2000,2241
+Eritrea,ERI,2005,2293
+Eritrea,ERI,2006,2288
+Eritrea,ERI,2010,2165
+Eritrea,ERI,2016,1853
+Estonia,EST,1990,638
+Estonia,EST,1995,666
+Estonia,EST,2000,517
+Estonia,EST,2005,431
+Estonia,EST,2006,411
+Estonia,EST,2010,289
+Estonia,EST,2016,227
+Ethiopia,ETH,1990,68899
+Ethiopia,ETH,1995,75896
+Ethiopia,ETH,2000,77355
+Ethiopia,ETH,2005,74704
+Ethiopia,ETH,2006,74091
+Ethiopia,ETH,2010,69203
+Ethiopia,ETH,2016,62153
+Fiji,FJI,1990,363
+Fiji,FJI,1995,355
+Fiji,FJI,2000,326
+Fiji,FJI,2005,277
+Fiji,FJI,2006,271
+Fiji,FJI,2010,236
+Fiji,FJI,2016,196
+Finland,FIN,1990,141
+Finland,FIN,1995,89
+Finland,FIN,2000,65
+Finland,FIN,2005,46
+Finland,FIN,2006,44
+Finland,FIN,2010,35
+Finland,FIN,2016,26
+France,FRA,1990,1533
+France,FRA,1995,839
+France,FRA,2000,571
+France,FRA,2005,420
+France,FRA,2006,395
+France,FRA,2010,328
+France,FRA,2016,268
+Gabon,GAB,1990,851
+Gabon,GAB,1995,756
+Gabon,GAB,2000,577
+Gabon,GAB,2005,435
+Gabon,GAB,2006,412
+Gabon,GAB,2010,295
+Gabon,GAB,2016,204
+Gambia,GMB,1990,856
+Gambia,GMB,1995,863
+Gambia,GMB,2000,881
+Gambia,GMB,2005,971
+Gambia,GMB,2006,983
+Gambia,GMB,2010,972
+Gambia,GMB,2016,1013
+Georgia,GEO,1990,5156
+Georgia,GEO,1995,4432
+Georgia,GEO,2000,4348
+Georgia,GEO,2005,4864
+Georgia,GEO,2006,4653
+Georgia,GEO,2010,4153
+Georgia,GEO,2016,3091
+Germany,DEU,1990,3899
+Germany,DEU,1995,2519
+Germany,DEU,2000,1929
+Germany,DEU,2005,1593
+Germany,DEU,2006,1539
+Germany,DEU,2010,1316
+Germany,DEU,2016,1056
+Ghana,GHA,1990,11093
+Ghana,GHA,1995,11875
+Ghana,GHA,2000,13434
+Ghana,GHA,2005,15341
+Ghana,GHA,2006,15615
+Ghana,GHA,2010,16410
+Ghana,GHA,2016,14458
+Greece,GRC,1990,704
+Greece,GRC,1995,381
+Greece,GRC,2000,250
+Greece,GRC,2005,176
+Greece,GRC,2006,163
+Greece,GRC,2010,132
+Greece,GRC,2016,108
+Greenland,GRL,1990,3
+Greenland,GRL,1995,2
+Greenland,GRL,2000,2
+Greenland,GRL,2005,2
+Greenland,GRL,2006,1
+Greenland,GRL,2010,1
+Greenland,GRL,2016,1
+Grenada,GRD,1990,41
+Grenada,GRD,1995,21
+Grenada,GRD,2000,12
+Grenada,GRD,2005,7
+Grenada,GRD,2006,7
+Grenada,GRD,2010,5
+Grenada,GRD,2016,3
+Guam,GUM,1990,8
+Guam,GUM,1995,8
+Guam,GUM,2000,9
+Guam,GUM,2005,11
+Guam,GUM,2006,12
+Guam,GUM,2010,14
+Guam,GUM,2016,15
+Guatemala,GTM,1990,6804
+Guatemala,GTM,1995,6796
+Guatemala,GTM,2000,6836
+Guatemala,GTM,2005,6422
+Guatemala,GTM,2006,6193
+Guatemala,GTM,2010,5350
+Guatemala,GTM,2016,4460
+Guinea,GIN,1990,9840
+Guinea,GIN,1995,11619
+Guinea,GIN,2000,11366
+Guinea,GIN,2005,10983
+Guinea,GIN,2006,11035
+Guinea,GIN,2010,11412
+Guinea,GIN,2016,11570
+Guinea-Bissau,GNB,1990,1657
+Guinea-Bissau,GNB,1995,1668
+Guinea-Bissau,GNB,2000,1738
+Guinea-Bissau,GNB,2005,1751
+Guinea-Bissau,GNB,2006,1756
+Guinea-Bissau,GNB,2010,1825
+Guinea-Bissau,GNB,2016,1789
+Guyana,GUY,1990,171
+Guyana,GUY,1995,152
+Guyana,GUY,2000,106
+Guyana,GUY,2005,116
+Guyana,GUY,2006,115
+Guyana,GUY,2010,102
+Guyana,GUY,2016,72
+Haiti,HTI,1990,11230
+Haiti,HTI,1995,10829
+Haiti,HTI,2000,10083
+Haiti,HTI,2005,9928
+Haiti,HTI,2006,9980
+Haiti,HTI,2010,10069
+Haiti,HTI,2016,9899
+High SDI,,1990,42220
+High SDI,,1995,27753
+High SDI,,2000,18971
+High SDI,,2005,15398
+High SDI,,2006,14804
+High SDI,,2010,12363
+High SDI,,2016,9876
+High-income,,1990,33304
+High-income,,1995,19938
+High-income,,2000,14257
+High-income,,2005,11053
+High-income,,2006,10446
+High-income,,2010,8487
+High-income,,2016,6759
+High-middle SDI,,1990,331072
+High-middle SDI,,1995,309209
+High-middle SDI,,2000,245178
+High-middle SDI,,2005,198771
+High-middle SDI,,2006,182141
+High-middle SDI,,2010,136791
+High-middle SDI,,2016,92819
+Honduras,HND,1990,2519
+Honduras,HND,1995,2515
+Honduras,HND,2000,2478
+Honduras,HND,2005,2475
+Honduras,HND,2006,2478
+Honduras,HND,2010,2537
+Honduras,HND,2016,2435
+Hungary,HUN,1990,5894
+Hungary,HUN,1995,4558
+Hungary,HUN,2000,3276
+Hungary,HUN,2005,2896
+Hungary,HUN,2006,2771
+Hungary,HUN,2010,2423
+Hungary,HUN,2016,2002
+Iceland,ISL,1990,5
+Iceland,ISL,1995,3
+Iceland,ISL,2000,2
+Iceland,ISL,2005,2
+Iceland,ISL,2006,2
+Iceland,ISL,2010,2
+Iceland,ISL,2016,1
+India,IND,1990,989826
+India,IND,1995,975521
+India,IND,2000,972091
+India,IND,2005,939971
+India,IND,2006,942642
+India,IND,2010,916055
+India,IND,2016,782906
+Indonesia,IDN,1990,109847
+Indonesia,IDN,1995,97801
+Indonesia,IDN,2000,89923
+Indonesia,IDN,2005,99966
+Indonesia,IDN,2006,101767
+Indonesia,IDN,2010,97784
+Indonesia,IDN,2016,60835
+Iran,IRN,1990,2446
+Iran,IRN,1995,1327
+Iran,IRN,2000,900
+Iran,IRN,2005,610
+Iran,IRN,2006,558
+Iran,IRN,2010,411
+Iran,IRN,2016,262
+Iraq,IRQ,1990,2010
+Iraq,IRQ,1995,1712
+Iraq,IRQ,2000,1446
+Iraq,IRQ,2005,1372
+Iraq,IRQ,2006,1353
+Iraq,IRQ,2010,1024
+Iraq,IRQ,2016,657
+Ireland,IRL,1990,187
+Ireland,IRL,1995,115
+Ireland,IRL,2000,79
+Ireland,IRL,2005,50
+Ireland,IRL,2006,47
+Ireland,IRL,2010,36
+Ireland,IRL,2016,29
+Israel,ISR,1990,101
+Israel,ISR,1995,71
+Israel,ISR,2000,53
+Israel,ISR,2005,47
+Israel,ISR,2006,46
+Israel,ISR,2010,39
+Israel,ISR,2016,34
+Italy,ITA,1990,2379
+Italy,ITA,1995,1392
+Italy,ITA,2000,990
+Italy,ITA,2005,762
+Italy,ITA,2006,729
+Italy,ITA,2010,604
+Italy,ITA,2016,502
+Jamaica,JAM,1990,618
+Jamaica,JAM,1995,473
+Jamaica,JAM,2000,390
+Jamaica,JAM,2005,319
+Jamaica,JAM,2006,314
+Jamaica,JAM,2010,292
+Jamaica,JAM,2016,244
+Japan,JPN,1990,989
+Japan,JPN,1995,220
+Japan,JPN,2000,78
+Japan,JPN,2005,69
+Japan,JPN,2006,66
+Japan,JPN,2010,58
+Japan,JPN,2016,46
+Jordan,JOR,1990,15
+Jordan,JOR,1995,8
+Jordan,JOR,2000,4
+Jordan,JOR,2005,3
+Jordan,JOR,2006,2
+Jordan,JOR,2010,2
+Jordan,JOR,2016,1
+Kazakhstan,KAZ,1990,7101
+Kazakhstan,KAZ,1995,7961
+Kazakhstan,KAZ,2000,6392
+Kazakhstan,KAZ,2005,6352
+Kazakhstan,KAZ,2006,6261
+Kazakhstan,KAZ,2010,4262
+Kazakhstan,KAZ,2016,3155
+Kenya,KEN,1990,16884
+Kenya,KEN,1995,17425
+Kenya,KEN,2000,17426
+Kenya,KEN,2005,17637
+Kenya,KEN,2006,17506
+Kenya,KEN,2010,17711
+Kenya,KEN,2016,16566
+Kiribati,KIR,1990,78
+Kiribati,KIR,1995,79
+Kiribati,KIR,2000,84
+Kiribati,KIR,2005,86
+Kiribati,KIR,2006,88
+Kiribati,KIR,2010,92
+Kiribati,KIR,2016,96
+Kuwait,KWT,1990,64
+Kuwait,KWT,1995,35
+Kuwait,KWT,2000,23
+Kuwait,KWT,2005,10
+Kuwait,KWT,2006,9
+Kuwait,KWT,2010,6
+Kuwait,KWT,2016,3
+Kyrgyzstan,KGZ,1990,3859
+Kyrgyzstan,KGZ,1995,3890
+Kyrgyzstan,KGZ,2000,3279
+Kyrgyzstan,KGZ,2005,3236
+Kyrgyzstan,KGZ,2006,3199
+Kyrgyzstan,KGZ,2010,2405
+Kyrgyzstan,KGZ,2016,1720
+Laos,LAO,1990,7911
+Laos,LAO,1995,8305
+Laos,LAO,2000,7833
+Laos,LAO,2005,7258
+Laos,LAO,2006,7081
+Laos,LAO,2010,6701
+Laos,LAO,2016,5985
+Latin America and Caribbean,,1990,110649
+Latin America and Caribbean,,1995,93768
+Latin America and Caribbean,,2000,74782
+Latin America and Caribbean,,2005,67491
+Latin America and Caribbean,,2006,66012
+Latin America and Caribbean,,2010,60905
+Latin America and Caribbean,,2016,48434
+Latvia,LVA,1990,818
+Latvia,LVA,1995,851
+Latvia,LVA,2000,606
+Latvia,LVA,2005,603
+Latvia,LVA,2006,605
+Latvia,LVA,2010,445
+Latvia,LVA,2016,351
+Lebanon,LBN,1990,2
+Lebanon,LBN,1995,1
+Lebanon,LBN,2000,0
+Lebanon,LBN,2005,0
+Lebanon,LBN,2006,0
+Lebanon,LBN,2010,0
+Lebanon,LBN,2016,0
+Lesotho,LSO,1990,1275
+Lesotho,LSO,1995,1391
+Lesotho,LSO,2000,1764
+Lesotho,LSO,2005,1928
+Lesotho,LSO,2006,1909
+Lesotho,LSO,2010,1822
+Lesotho,LSO,2016,1486
+Liberia,LBR,1990,2710
+Liberia,LBR,1995,2490
+Liberia,LBR,2000,2762
+Liberia,LBR,2005,2396
+Liberia,LBR,2006,2406
+Liberia,LBR,2010,2641
+Liberia,LBR,2016,2695
+Libya,LBY,1990,123
+Libya,LBY,1995,99
+Libya,LBY,2000,75
+Libya,LBY,2005,42
+Libya,LBY,2006,37
+Libya,LBY,2010,20
+Libya,LBY,2016,10
+Lithuania,LTU,1990,129
+Lithuania,LTU,1995,123
+Lithuania,LTU,2000,94
+Lithuania,LTU,2005,170
+Lithuania,LTU,2006,170
+Lithuania,LTU,2010,141
+Lithuania,LTU,2016,113
+Low SDI,,1990,480702
+Low SDI,,1995,514107
+Low SDI,,2000,532217
+Low SDI,,2005,534755
+Low SDI,,2006,537180
+Low SDI,,2010,535291
+Low SDI,,2016,525497
+Low-middle SDI,,1990,1417142
+Low-middle SDI,,1995,1424952
+Low-middle SDI,,2000,1413014
+Low-middle SDI,,2005,1380475
+Low-middle SDI,,2006,1377963
+Low-middle SDI,,2010,1345607
+Low-middle SDI,,2016,1179686
+Luxembourg,LUX,1990,10
+Luxembourg,LUX,1995,6
+Luxembourg,LUX,2000,5
+Luxembourg,LUX,2005,4
+Luxembourg,LUX,2006,4
+Luxembourg,LUX,2010,3
+Luxembourg,LUX,2016,2
+Macedonia,MKD,1990,1310
+Macedonia,MKD,1995,1208
+Macedonia,MKD,2000,1162
+Macedonia,MKD,2005,1093
+Macedonia,MKD,2006,1065
+Macedonia,MKD,2010,956
+Macedonia,MKD,2016,751
+Madagascar,MDG,1990,15433
+Madagascar,MDG,1995,17252
+Madagascar,MDG,2000,17512
+Madagascar,MDG,2005,17836
+Madagascar,MDG,2006,17886
+Madagascar,MDG,2010,19630
+Madagascar,MDG,2016,21146
+Malawi,MWI,1990,12247
+Malawi,MWI,1995,13097
+Malawi,MWI,2000,14338
+Malawi,MWI,2005,12176
+Malawi,MWI,2006,11903
+Malawi,MWI,2010,12031
+Malawi,MWI,2016,11311
+Malaysia,MYS,1990,1546
+Malaysia,MYS,1995,1152
+Malaysia,MYS,2000,751
+Malaysia,MYS,2005,523
+Malaysia,MYS,2006,484
+Malaysia,MYS,2010,349
+Malaysia,MYS,2016,195
+Maldives,MDV,1990,146
+Maldives,MDV,1995,119
+Maldives,MDV,2000,81
+Maldives,MDV,2005,36
+Maldives,MDV,2006,30
+Maldives,MDV,2010,17
+Maldives,MDV,2016,10
+Mali,MLI,1990,10238
+Mali,MLI,1995,10119
+Mali,MLI,2000,9798
+Mali,MLI,2005,9052
+Mali,MLI,2006,8986
+Mali,MLI,2010,9053
+Mali,MLI,2016,8820
+Malta,MLT,1990,17
+Malta,MLT,1995,11
+Malta,MLT,2000,10
+Malta,MLT,2005,8
+Malta,MLT,2006,7
+Malta,MLT,2010,6
+Malta,MLT,2016,4
+Marshall Islands,MHL,1990,13
+Marshall Islands,MHL,1995,15
+Marshall Islands,MHL,2000,18
+Marshall Islands,MHL,2005,19
+Marshall Islands,MHL,2006,19
+Marshall Islands,MHL,2010,18
+Marshall Islands,MHL,2016,14
+Mauritania,MRT,1990,1463
+Mauritania,MRT,1995,1550
+Mauritania,MRT,2000,1638
+Mauritania,MRT,2005,1562
+Mauritania,MRT,2006,1506
+Mauritania,MRT,2010,1436
+Mauritania,MRT,2016,1328
+Mauritius,MUS,1990,217
+Mauritius,MUS,1995,146
+Mauritius,MUS,2000,96
+Mauritius,MUS,2005,59
+Mauritius,MUS,2006,54
+Mauritius,MUS,2010,39
+Mauritius,MUS,2016,27
+Mexico,MEX,1990,12236
+Mexico,MEX,1995,10691
+Mexico,MEX,2000,8919
+Mexico,MEX,2005,7829
+Mexico,MEX,2006,7741
+Mexico,MEX,2010,8419
+Mexico,MEX,2016,6460
+Micronesia (country),FSM,1990,74
+Micronesia (country),FSM,1995,67
+Micronesia (country),FSM,2000,57
+Micronesia (country),FSM,2005,51
+Micronesia (country),FSM,2006,50
+Micronesia (country),FSM,2010,45
+Micronesia (country),FSM,2016,36
+Middle SDI,,1990,1467785
+Middle SDI,,1995,1415489
+Middle SDI,,2000,1301100
+Middle SDI,,2005,1193703
+Middle SDI,,2006,1148640
+Middle SDI,,2010,1032613
+Middle SDI,,2016,768483
+Moldova,MDA,1990,3731
+Moldova,MDA,1995,4824
+Moldova,MDA,2000,3400
+Moldova,MDA,2005,1444
+Moldova,MDA,2006,1175
+Moldova,MDA,2010,629
+Moldova,MDA,2016,422
+Mongolia,MNG,1990,2588
+Mongolia,MNG,1995,2258
+Mongolia,MNG,2000,2003
+Mongolia,MNG,2005,1984
+Mongolia,MNG,2006,1923
+Mongolia,MNG,2010,1743
+Mongolia,MNG,2016,1583
+Montenegro,MNE,1990,307
+Montenegro,MNE,1995,326
+Montenegro,MNE,2000,314
+Montenegro,MNE,2005,300
+Montenegro,MNE,2006,300
+Montenegro,MNE,2010,309
+Montenegro,MNE,2016,315
+Morocco,MAR,1990,8494
+Morocco,MAR,1995,5958
+Morocco,MAR,2000,3764
+Morocco,MAR,2005,2302
+Morocco,MAR,2006,2096
+Morocco,MAR,2010,1462
+Morocco,MAR,2016,877
+Mozambique,MOZ,1990,17413
+Mozambique,MOZ,1995,18764
+Mozambique,MOZ,2000,18362
+Mozambique,MOZ,2005,17362
+Mozambique,MOZ,2006,17608
+Mozambique,MOZ,2010,17925
+Mozambique,MOZ,2016,17154
+Myanmar,MMR,1990,45754
+Myanmar,MMR,1995,47531
+Myanmar,MMR,2000,48327
+Myanmar,MMR,2005,44733
+Myanmar,MMR,2006,43075
+Myanmar,MMR,2010,37413
+Myanmar,MMR,2016,30868
+Namibia,NAM,1990,1152
+Namibia,NAM,1995,1163
+Namibia,NAM,2000,1300
+Namibia,NAM,2005,1167
+Namibia,NAM,2006,1120
+Namibia,NAM,2010,967
+Namibia,NAM,2016,802
+Nepal,NPL,1990,23620
+Nepal,NPL,1995,22170
+Nepal,NPL,2000,22683
+Nepal,NPL,2005,23566
+Nepal,NPL,2006,23572
+Nepal,NPL,2010,23421
+Nepal,NPL,2016,21154
+Netherlands,NLD,1990,283
+Netherlands,NLD,1995,194
+Netherlands,NLD,2000,153
+Netherlands,NLD,2005,113
+Netherlands,NLD,2006,104
+Netherlands,NLD,2010,81
+Netherlands,NLD,2016,65
+New Zealand,NZL,1990,55
+New Zealand,NZL,1995,24
+New Zealand,NZL,2000,22
+New Zealand,NZL,2005,24
+New Zealand,NZL,2006,24
+New Zealand,NZL,2010,20
+New Zealand,NZL,2016,17
+Nicaragua,NIC,1990,1347
+Nicaragua,NIC,1995,1344
+Nicaragua,NIC,2000,1233
+Nicaragua,NIC,2005,1261
+Nicaragua,NIC,2006,1253
+Nicaragua,NIC,2010,1214
+Nicaragua,NIC,2016,1064
+Niger,NER,1990,15903
+Niger,NER,1995,16357
+Niger,NER,2000,16053
+Niger,NER,2005,15672
+Niger,NER,2006,15922
+Niger,NER,2010,14735
+Niger,NER,2016,16202
+Nigeria,NGA,1990,79745
+Nigeria,NGA,1995,83077
+Nigeria,NGA,2000,85716
+Nigeria,NGA,2005,76939
+Nigeria,NGA,2006,76693
+Nigeria,NGA,2010,74246
+Nigeria,NGA,2016,64586
+North Africa and Middle East,,1990,95720
+North Africa and Middle East,,1995,93218
+North Africa and Middle East,,2000,82540
+North Africa and Middle East,,2005,76094
+North Africa and Middle East,,2006,74227
+North Africa and Middle East,,2010,63966
+North Africa and Middle East,,2016,61932
+North America,,1990,1073
+North America,,1995,981
+North America,,2000,945
+North America,,2005,891
+North America,,2006,875
+North America,,2010,826
+North America,,2016,850
+North Korea,PRK,1990,17924
+North Korea,PRK,1995,22156
+North Korea,PRK,2000,28419
+North Korea,PRK,2005,33526
+North Korea,PRK,2006,34156
+North Korea,PRK,2010,37132
+North Korea,PRK,2016,39427
+Northern Ireland,,1990,76
+Northern Ireland,,1995,46
+Northern Ireland,,2000,31
+Northern Ireland,,2005,21
+Northern Ireland,,2006,20
+Northern Ireland,,2010,16
+Northern Ireland,,2016,13
+Northern Mariana Islands,MNP,1990,5
+Northern Mariana Islands,MNP,1995,5
+Northern Mariana Islands,MNP,2000,4
+Northern Mariana Islands,MNP,2005,4
+Northern Mariana Islands,MNP,2006,4
+Northern Mariana Islands,MNP,2010,4
+Northern Mariana Islands,MNP,2016,5
+Norway,NOR,1990,164
+Norway,NOR,1995,108
+Norway,NOR,2000,79
+Norway,NOR,2005,58
+Norway,NOR,2006,55
+Norway,NOR,2010,45
+Norway,NOR,2016,33
+Oceania,,1990,7900
+Oceania,,1995,8306
+Oceania,,2000,8343
+Oceania,,2005,9427
+Oceania,,2006,9718
+Oceania,,2010,10483
+Oceania,,2016,10501
+Oman,OMN,1990,669
+Oman,OMN,1995,464
+Oman,OMN,2000,283
+Oman,OMN,2005,111
+Oman,OMN,2006,93
+Oman,OMN,2010,49
+Oman,OMN,2016,25
+Pakistan,PAK,1990,99122
+Pakistan,PAK,1995,111947
+Pakistan,PAK,2000,115887
+Pakistan,PAK,2005,116763
+Pakistan,PAK,2006,116352
+Pakistan,PAK,2010,120657
+Pakistan,PAK,2016,106422
+Palestine,PSE,1990,96
+Palestine,PSE,1995,75
+Palestine,PSE,2000,67
+Palestine,PSE,2005,53
+Palestine,PSE,2006,50
+Palestine,PSE,2010,41
+Palestine,PSE,2016,31
+Panama,PAN,1990,427
+Panama,PAN,1995,410
+Panama,PAN,2000,322
+Panama,PAN,2005,348
+Panama,PAN,2006,351
+Panama,PAN,2010,340
+Panama,PAN,2016,253
+Papua New Guinea,PNG,1990,6696
+Papua New Guinea,PNG,1995,7064
+Papua New Guinea,PNG,2000,7077
+Papua New Guinea,PNG,2005,8123
+Papua New Guinea,PNG,2006,8400
+Papua New Guinea,PNG,2010,9121
+Papua New Guinea,PNG,2016,9173
+Paraguay,PRY,1990,1486
+Paraguay,PRY,1995,1523
+Paraguay,PRY,2000,1620
+Paraguay,PRY,2005,1775
+Paraguay,PRY,2006,1787
+Paraguay,PRY,2010,1728
+Paraguay,PRY,2016,1356
+Peru,PER,1990,12062
+Peru,PER,1995,9076
+Peru,PER,2000,6615
+Peru,PER,2005,6774
+Peru,PER,2006,6705
+Peru,PER,2010,6586
+Peru,PER,2016,5421
+Philippines,PHL,1990,39837
+Philippines,PHL,1995,34284
+Philippines,PHL,2000,33618
+Philippines,PHL,2005,44491
+Philippines,PHL,2006,47237
+Philippines,PHL,2010,57141
+Philippines,PHL,2016,55926
+Poland,POL,1990,12738
+Poland,POL,1995,8963
+Poland,POL,2000,5867
+Poland,POL,2005,4838
+Poland,POL,2006,4678
+Poland,POL,2010,3948
+Poland,POL,2016,3004
+Portugal,PRT,1990,2606
+Portugal,PRT,1995,1479
+Portugal,PRT,2000,941
+Portugal,PRT,2005,619
+Portugal,PRT,2006,558
+Portugal,PRT,2010,390
+Portugal,PRT,2016,254
+Puerto Rico,PRI,1990,14
+Puerto Rico,PRI,1995,11
+Puerto Rico,PRI,2000,8
+Puerto Rico,PRI,2005,6
+Puerto Rico,PRI,2006,6
+Puerto Rico,PRI,2010,5
+Puerto Rico,PRI,2016,5
+Qatar,QAT,1990,0
+Qatar,QAT,1995,0
+Qatar,QAT,2000,0
+Qatar,QAT,2005,0
+Qatar,QAT,2006,0
+Qatar,QAT,2010,0
+Qatar,QAT,2016,0
+Romania,ROU,1990,19022
+Romania,ROU,1995,17268
+Romania,ROU,2000,13253
+Romania,ROU,2005,10369
+Romania,ROU,2006,9611
+Romania,ROU,2010,7509
+Romania,ROU,2016,5274
+Russia,RUS,1990,1300
+Russia,RUS,1995,2074
+Russia,RUS,2000,3074
+Russia,RUS,2005,8544
+Russia,RUS,2006,7436
+Russia,RUS,2010,4365
+Russia,RUS,2016,1819
+Rwanda,RWA,1990,9968
+Rwanda,RWA,1995,8682
+Rwanda,RWA,2000,9872
+Rwanda,RWA,2005,8146
+Rwanda,RWA,2006,7833
+Rwanda,RWA,2010,6526
+Rwanda,RWA,2016,6118
+Saint Lucia,LCA,1990,45
+Saint Lucia,LCA,1995,27
+Saint Lucia,LCA,2000,16
+Saint Lucia,LCA,2005,12
+Saint Lucia,LCA,2006,11
+Saint Lucia,LCA,2010,8
+Saint Lucia,LCA,2016,5
+Saint Vincent and the Grenadines,VCT,1990,61
+Saint Vincent and the Grenadines,VCT,1995,55
+Saint Vincent and the Grenadines,VCT,2000,29
+Saint Vincent and the Grenadines,VCT,2005,13
+Saint Vincent and the Grenadines,VCT,2006,12
+Saint Vincent and the Grenadines,VCT,2010,8
+Saint Vincent and the Grenadines,VCT,2016,6
+Samoa,WSM,1990,92
+Samoa,WSM,1995,90
+Samoa,WSM,2000,87
+Samoa,WSM,2005,84
+Samoa,WSM,2006,83
+Samoa,WSM,2010,85
+Samoa,WSM,2016,77
+Sao Tome and Principe,STP,1990,136
+Sao Tome and Principe,STP,1995,137
+Sao Tome and Principe,STP,2000,140
+Sao Tome and Principe,STP,2005,126
+Sao Tome and Principe,STP,2006,123
+Sao Tome and Principe,STP,2010,106
+Sao Tome and Principe,STP,2016,85
+Saudi Arabia,SAU,1990,3709
+Saudi Arabia,SAU,1995,3089
+Saudi Arabia,SAU,2000,2440
+Saudi Arabia,SAU,2005,924
+Saudi Arabia,SAU,2006,758
+Saudi Arabia,SAU,2010,319
+Saudi Arabia,SAU,2016,95
+Scotland,,1990,915
+Scotland,,1995,481
+Scotland,,2000,290
+Scotland,,2005,196
+Scotland,,2006,181
+Scotland,,2010,133
+Scotland,,2016,101
+Senegal,SEN,1990,6424
+Senegal,SEN,1995,6614
+Senegal,SEN,2000,6723
+Senegal,SEN,2005,7271
+Senegal,SEN,2006,7357
+Senegal,SEN,2010,7598
+Senegal,SEN,2016,7498
+Serbia,SRB,1990,6696
+Serbia,SRB,1995,7847
+Serbia,SRB,2000,7900
+Serbia,SRB,2005,6525
+Serbia,SRB,2006,6025
+Serbia,SRB,2010,4553
+Serbia,SRB,2016,4028
+Seychelles,SYC,1990,9
+Seychelles,SYC,1995,6
+Seychelles,SYC,2000,4
+Seychelles,SYC,2005,3
+Seychelles,SYC,2006,2
+Seychelles,SYC,2010,2
+Seychelles,SYC,2016,1
+Sierra Leone,SLE,1990,6285
+Sierra Leone,SLE,1995,5333
+Sierra Leone,SLE,2000,5045
+Sierra Leone,SLE,2005,5469
+Sierra Leone,SLE,2006,5537
+Sierra Leone,SLE,2010,5637
+Sierra Leone,SLE,2016,5526
+Singapore,SGP,1990,136
+Singapore,SGP,1995,22
+Singapore,SGP,2000,5
+Singapore,SGP,2005,3
+Singapore,SGP,2006,3
+Singapore,SGP,2010,2
+Singapore,SGP,2016,1
+Slovakia,SVK,1990,575
+Slovakia,SVK,1995,441
+Slovakia,SVK,2000,359
+Slovakia,SVK,2005,316
+Slovakia,SVK,2006,309
+Slovakia,SVK,2010,265
+Slovakia,SVK,2016,215
+Slovenia,SVN,1990,464
+Slovenia,SVN,1995,389
+Slovenia,SVN,2000,288
+Slovenia,SVN,2005,210
+Slovenia,SVN,2006,195
+Slovenia,SVN,2010,153
+Slovenia,SVN,2016,119
+Solomon Islands,SLB,1990,331
+Solomon Islands,SLB,1995,353
+Solomon Islands,SLB,2000,403
+Solomon Islands,SLB,2005,483
+Solomon Islands,SLB,2006,502
+Solomon Islands,SLB,2010,562
+Solomon Islands,SLB,2016,571
+Somalia,SOM,1990,10034
+Somalia,SOM,1995,9447
+Somalia,SOM,2000,9448
+Somalia,SOM,2005,9528
+Somalia,SOM,2006,9535
+Somalia,SOM,2010,9786
+Somalia,SOM,2016,9917
+South Africa,ZAF,1990,14406
+South Africa,ZAF,1995,13682
+South Africa,ZAF,2000,17707
+South Africa,ZAF,2005,14924
+South Africa,ZAF,2006,14624
+South Africa,ZAF,2010,11405
+South Africa,ZAF,2016,6934
+South Asia,,1990,1230630
+South Asia,,1995,1221013
+South Asia,,2000,1219140
+South Asia,,2005,1191503
+South Asia,,2006,1194483
+South Asia,,2010,1170711
+South Asia,,2016,1017532
+South Korea,KOR,1990,583
+South Korea,KOR,1995,54
+South Korea,KOR,2000,11
+South Korea,KOR,2005,7
+South Korea,KOR,2006,6
+South Korea,KOR,2010,4
+South Korea,KOR,2016,4
+South Sudan,SSD,1990,9638
+South Sudan,SSD,1995,8142
+South Sudan,SSD,2000,8390
+South Sudan,SSD,2005,9231
+South Sudan,SSD,2006,9685
+South Sudan,SSD,2010,10964
+South Sudan,SSD,2016,12596
+Southeast Asia,,1990,307535
+Southeast Asia,,1995,292949
+Southeast Asia,,2000,280478
+Southeast Asia,,2005,291639
+Southeast Asia,,2006,292113
+Southeast Asia,,2010,278805
+Southeast Asia,,2016,215165
+Southern Sub-Saharan Africa,,1990,23771
+Southern Sub-Saharan Africa,,1995,23189
+Southern Sub-Saharan Africa,,2000,30114
+Southern Sub-Saharan Africa,,2005,28325
+Southern Sub-Saharan Africa,,2006,27894
+Southern Sub-Saharan Africa,,2010,24474
+Southern Sub-Saharan Africa,,2016,17802
+Spain,ESP,1990,3270
+Spain,ESP,1995,1935
+Spain,ESP,2000,1293
+Spain,ESP,2005,914
+Spain,ESP,2006,840
+Spain,ESP,2010,642
+Spain,ESP,2016,524
+Sri Lanka,LKA,1990,9673
+Sri Lanka,LKA,1995,9722
+Sri Lanka,LKA,2000,10099
+Sri Lanka,LKA,2005,9991
+Sri Lanka,LKA,2006,10044
+Sri Lanka,LKA,2010,9541
+Sri Lanka,LKA,2016,7706
+Sub-Saharan Africa,,1990,520647
+Sub-Saharan Africa,,1995,548340
+Sub-Saharan Africa,,2000,567733
+Sub-Saharan Africa,,2005,552774
+Sub-Saharan Africa,,2006,553831
+Sub-Saharan Africa,,2010,549344
+Sub-Saharan Africa,,2016,521595
+Sudan,SDN,1990,19803
+Sudan,SDN,1995,22463
+Sudan,SDN,2000,21762
+Sudan,SDN,2005,20779
+Sudan,SDN,2006,20639
+Sudan,SDN,2010,18737
+Sudan,SDN,2016,17609
+Suriname,SUR,1990,109
+Suriname,SUR,1995,99
+Suriname,SUR,2000,94
+Suriname,SUR,2005,86
+Suriname,SUR,2006,84
+Suriname,SUR,2010,80
+Suriname,SUR,2016,65
+Swaziland,SWZ,1990,553
+Swaziland,SWZ,1995,548
+Swaziland,SWZ,2000,768
+Swaziland,SWZ,2005,898
+Swaziland,SWZ,2006,861
+Swaziland,SWZ,2010,683
+Swaziland,SWZ,2016,455
+Sweden,SWE,1990,406
+Sweden,SWE,1995,273
+Sweden,SWE,2000,225
+Sweden,SWE,2005,198
+Sweden,SWE,2006,191
+Sweden,SWE,2010,167
+Sweden,SWE,2016,155
+Switzerland,CHE,1990,192
+Switzerland,CHE,1995,166
+Switzerland,CHE,2000,149
+Switzerland,CHE,2005,130
+Switzerland,CHE,2006,126
+Switzerland,CHE,2010,105
+Switzerland,CHE,2016,79
+Syria,SYR,1990,404
+Syria,SYR,1995,240
+Syria,SYR,2000,141
+Syria,SYR,2005,71
+Syria,SYR,2006,62
+Syria,SYR,2010,37
+Syria,SYR,2016,15
+Taiwan,TWN,1990,4145
+Taiwan,TWN,1995,2948
+Taiwan,TWN,2000,1629
+Taiwan,TWN,2005,1285
+Taiwan,TWN,2006,1243
+Taiwan,TWN,2010,1092
+Taiwan,TWN,2016,794
+Tajikistan,TJK,1990,6655
+Tajikistan,TJK,1995,6308
+Tajikistan,TJK,2000,5162
+Tajikistan,TJK,2005,3573
+Tajikistan,TJK,2006,3281
+Tajikistan,TJK,2010,2860
+Tajikistan,TJK,2016,2802
+Tanzania,TZA,1990,35557
+Tanzania,TZA,1995,37534
+Tanzania,TZA,2000,34683
+Tanzania,TZA,2005,34127
+Tanzania,TZA,2006,34792
+Tanzania,TZA,2010,34323
+Tanzania,TZA,2016,33024
+Thailand,THA,1990,23952
+Thailand,THA,1995,23364
+Thailand,THA,2000,19496
+Thailand,THA,2005,17771
+Thailand,THA,2006,17368
+Thailand,THA,2010,13992
+Thailand,THA,2016,8648
+Timor,TLS,1990,807
+Timor,TLS,1995,721
+Timor,TLS,2000,561
+Timor,TLS,2005,565
+Timor,TLS,2006,567
+Timor,TLS,2010,621
+Timor,TLS,2016,596
+Togo,TGO,1990,3952
+Togo,TGO,1995,4211
+Togo,TGO,2000,4404
+Togo,TGO,2005,4509
+Togo,TGO,2006,4464
+Togo,TGO,2010,4580
+Togo,TGO,2016,4591
+Tonga,TON,1990,58
+Tonga,TON,1995,62
+Tonga,TON,2000,57
+Tonga,TON,2005,47
+Tonga,TON,2006,45
+Tonga,TON,2010,41
+Tonga,TON,2016,34
+Trinidad and Tobago,TTO,1990,20
+Trinidad and Tobago,TTO,1995,17
+Trinidad and Tobago,TTO,2000,13
+Trinidad and Tobago,TTO,2005,9
+Trinidad and Tobago,TTO,2006,9
+Trinidad and Tobago,TTO,2010,7
+Trinidad and Tobago,TTO,2016,6
+Tunisia,TUN,1990,1387
+Tunisia,TUN,1995,938
+Tunisia,TUN,2000,507
+Tunisia,TUN,2005,202
+Tunisia,TUN,2006,162
+Tunisia,TUN,2010,88
+Tunisia,TUN,2016,38
+Turkey,TUR,1990,15003
+Turkey,TUR,1995,10754
+Turkey,TUR,2000,6209
+Turkey,TUR,2005,3008
+Turkey,TUR,2006,2596
+Turkey,TUR,2010,1580
+Turkey,TUR,2016,773
+Turkmenistan,TKM,1990,253
+Turkmenistan,TKM,1995,186
+Turkmenistan,TKM,2000,116
+Turkmenistan,TKM,2005,71
+Turkmenistan,TKM,2006,63
+Turkmenistan,TKM,2010,40
+Turkmenistan,TKM,2016,23
+Uganda,UGA,1990,19690
+Uganda,UGA,1995,20561
+Uganda,UGA,2000,20022
+Uganda,UGA,2005,20371
+Uganda,UGA,2006,20667
+Uganda,UGA,2010,20331
+Uganda,UGA,2016,20025
+Ukraine,UKR,1990,12253
+Ukraine,UKR,1995,13186
+Ukraine,UKR,2000,11546
+Ukraine,UKR,2005,12145
+Ukraine,UKR,2006,10408
+Ukraine,UKR,2010,6323
+Ukraine,UKR,2016,4786
+United Arab Emirates,ARE,1990,79
+United Arab Emirates,ARE,1995,52
+United Arab Emirates,ARE,2000,38
+United Arab Emirates,ARE,2005,21
+United Arab Emirates,ARE,2006,20
+United Arab Emirates,ARE,2010,23
+United Arab Emirates,ARE,2016,22
+United Kingdom,GBR,1990,6293
+United Kingdom,GBR,1995,3130
+United Kingdom,GBR,2000,1784
+United Kingdom,GBR,2005,1144
+United Kingdom,GBR,2006,1047
+United Kingdom,GBR,2010,778
+United Kingdom,GBR,2016,628
+United States,USA,1990,958
+United States,USA,1995,899
+United States,USA,2000,879
+United States,USA,2005,833
+United States,USA,2006,819
+United States,USA,2010,777
+United States,USA,2016,806
+United States Virgin Islands,VIR,1990,2
+United States Virgin Islands,VIR,1995,2
+United States Virgin Islands,VIR,2000,2
+United States Virgin Islands,VIR,2005,2
+United States Virgin Islands,VIR,2006,2
+United States Virgin Islands,VIR,2010,2
+United States Virgin Islands,VIR,2016,2
+Uruguay,URY,1990,250
+Uruguay,URY,1995,193
+Uruguay,URY,2000,154
+Uruguay,URY,2005,166
+Uruguay,URY,2006,164
+Uruguay,URY,2010,125
+Uruguay,URY,2016,88
+Uzbekistan,UZB,1990,10773
+Uzbekistan,UZB,1995,10669
+Uzbekistan,UZB,2000,8565
+Uzbekistan,UZB,2005,7773
+Uzbekistan,UZB,2006,7382
+Uzbekistan,UZB,2010,6056
+Uzbekistan,UZB,2016,4863
+Vanuatu,VUT,1990,174
+Vanuatu,VUT,1995,198
+Vanuatu,VUT,2000,213
+Vanuatu,VUT,2005,233
+Vanuatu,VUT,2006,237
+Vanuatu,VUT,2010,257
+Vanuatu,VUT,2016,277
+Venezuela,VEN,1990,717
+Venezuela,VEN,1995,623
+Venezuela,VEN,2000,442
+Venezuela,VEN,2005,335
+Venezuela,VEN,2006,324
+Venezuela,VEN,2010,262
+Venezuela,VEN,2016,199
+Vietnam,VNM,1990,55618
+Vietnam,VNM,1995,56015
+Vietnam,VNM,2000,55768
+Vietnam,VNM,2005,53042
+Vietnam,VNM,2006,51584
+Vietnam,VNM,2010,43410
+Vietnam,VNM,2016,33577
+Wales,,1990,337
+Wales,,1995,168
+Wales,,2000,94
+Wales,,2005,59
+Wales,,2006,54
+Wales,,2010,41
+Wales,,2016,32
+Western Europe,,1990,22877
+Western Europe,,1995,13174
+Western Europe,,2000,8935
+Western Europe,,2005,6561
+Western Europe,,2006,6159
+Western Europe,,2010,4926
+Western Europe,,2016,3941
+Western Sub-Saharan Africa,,1990,201053
+Western Sub-Saharan Africa,,1995,211453
+Western Sub-Saharan Africa,,2000,219064
+Western Sub-Saharan Africa,,2005,211598
+Western Sub-Saharan Africa,,2006,212459
+Western Sub-Saharan Africa,,2010,213132
+Western Sub-Saharan Africa,,2016,202789
+World,OWID_WRL,1990,3738921
+World,OWID_WRL,1995,3691511
+World,OWID_WRL,2000,3510479
+World,OWID_WRL,2005,3323102
+World,OWID_WRL,2006,3260728
+World,OWID_WRL,2010,3062664
+World,OWID_WRL,2016,2576361
+Yemen,YEM,1990,12043
+Yemen,YEM,1995,12985
+Yemen,YEM,2000,10421
+Yemen,YEM,2005,8283
+Yemen,YEM,2006,7967
+Yemen,YEM,2010,7751
+Yemen,YEM,2016,6760
+Zambia,ZMB,1990,10364
+Zambia,ZMB,1995,10938
+Zambia,ZMB,2000,12255
+Zambia,ZMB,2005,12952
+Zambia,ZMB,2006,12736
+Zambia,ZMB,2010,11353
+Zambia,ZMB,2016,10675
+Zimbabwe,ZWE,1990,5744
+Zimbabwe,ZWE,1995,5693
+Zimbabwe,ZWE,2000,7687
+Zimbabwe,ZWE,2005,8612
+Zimbabwe,ZWE,2006,8627
+Zimbabwe,ZWE,2010,8997
+Zimbabwe,ZWE,2016,7676
