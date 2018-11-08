@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Climbing the Energy Ladder – A Way out of Poverty?</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link rel="stylesheet" type="text/css" href="css/reset.css">-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div id="select-menu">
+      <div class="row" id='selection-menu'>
+        <div class="col-md-11 vertical-outer">
+          <div class="info-content" id='input'><input id='awesomeplete'></input></div>
+        </div>
+        <div class="col-sm-1" id='selection-menu-button'>
+          <span class="oi oi-menu pointer" onclick='openCloseMenu()'><img src="lib/open-iconic/svg/menu.svg" alt="menu"></span>
+        </div>
+        <div class="row menu" id='filters-value2015'>
+          <div class='row label'><label>filter by value of 2015, or most recent</label></div>
+          <div class='col-lg-2 filter-range filter-selected'><label class='filter-range-label'>Access to clean fuels</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='100' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg>
+          </div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Life expectancy</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Relative poverty</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Schooling years</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Population</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>GDP</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+        </div> <!-- filters-value2015 -->
+        <div class="row menu" id='filters-rate'>
+          <div class='row label'><label>filter by rate between 2005–15, or closest decade</label></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Access to clean fuels</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg>
+          </div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Life expectancy</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range filter-selected'><label class='filter-range-label'>Relative poverty</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='155' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Schooling years</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>Population</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+          <div class='col-lg-2 filter-range'><label class='filter-range-label'>GDP</label><br/>
+            <svg width="200" height="10">
+                <rect height="1" width="200" x='0' y='5' />
+                <circle cx='5' cy='5' r='5'/>
+                <circle cx='195' cy='5' r='5'/>
+            </svg></div>
+        </div> <!-- filters-rate -->
+        <div class="row menu">
+          <ul id='select-list'>
+           
+          </ul>
+        </div> <!-- select-list -->
+      </div> <!-- selection-menu -->
+      
+      
+    </div> <!-- select-menu -->
+    
+    <div id="dashboard-container">
+      
+      <div class="row" id='selection'>
+        
+        <div class="col-sm-4 vertical-outer" id='name'>
+          <div><h2><span class='value'></span></h2></div>
+        </div>
+        
+        <div class="col-sm-4 vertical-outer region" id='region'>
+          <div class='one-line'>
+            <label for='region' class='info-label'>Region: </label><span class='value'></span> 
+          </div>
+        </div>
+        
+        <div class="col-sm-3 vertical-outer hdi" id='hdi'>
+          <div class='one-line'>
+            <label class="info-label">HDI-Rank<span class="sub"> (<span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+            <label class="info-label"> / 189</label>
+          </div>
+        </div>
+        
+        <div class="col-sm-1" id='selection-menu-button'>
+          <span class="oi oi-menu pointer" onclick='openCloseMenu()'><img src="lib/open-iconic/svg/menu.svg" alt="menu"></span>
+        </div>
+        
+      </div> <!-- selection -->
+      
+      <div class="row" id='info'>
+        
+        <div class="col-md-2 vertical-outer cleanfuels" id='cleanfuels'>
+          <div class='one-line'>
+            <label class="info-label">Access to clean fuels<span class="sub"> (<span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer lifeexp" id='lifeexp'>
+          <div class='one-line'>
+            <label class="info-label">Life expectancy<span class="sub"> (<span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer inequality" id='gini'>
+          <div class='one-line'>
+            <label class="info-label">Gini-index<span class="sub"> (<span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer education" id='schoolyears'>
+          <div class='one-line'>
+            <label class="info-label">Schooling years<span class="sub"> (<span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer population" id='population'>
+          <div class='one-line'>
+            <label class="info-label">Population<span class="sub"> (<span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer gdp" id='gdp'>
+          <div class='one-line'>
+            <label class="info-label">GDP per capita<span class="sub"> (PPP, current int. $, <span class="year"></span>)</span>:</label>
+            <span class="value"></span>
+            <label class="info-label"> billion</label>
+          </div>
+        </div>
+
+    </div> <!-- info -->
+    
+    <div class="row no-gutter" id='graph-buttons'>
+      
+      <div class="col-lg-2">
+        <div class="both-outer button cleanfuels" id='button-cleanfuels'>
+          <div class="graph-label"><label class="">Change in access to clean fuels<span class="sub"> (<span class="year"></span>)</span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+      </div>
+
+      <div class="col-lg-2">
+        <div class="button both-outer lifeexp" id='button-deathrate' onclick="selectIndicator('deathrate')">
+          <div class="graph-label"><label class="">Change in death rate from indoor air pollution:<span class="sub"> (<span class="year"></span>)</span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+     </div>
+      
+      <div class="col-lg-2" >
+        <div class="button both-outer inequality" id='button-poverty' onclick="selectIndicator('poverty')">
+          <div class="graph-label"><label class="">Change in poverty headcount ratio<span class="sub"> (nat. poverty line, <span class="year"></span>)</span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+      </div>
+      
+
+      
+      <div class="col-lg-2">
+        <div class="button both-outer education" id='button-schoolyears' onclick="selectIndicator('schoolyears')">
+          <div class="graph-label"><label class="">Change in average schooling years:<span class="sub"> (<span class="year"></span>)</span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+      </div>
+      
+      <div class="col-lg-2">
+        <div class="button both-outer population" id='button-population' onclick="selectIndicator('population')">
+          <div class="graph-label"><label class="">Population change:<span class="sub"> (<span class="year"></span>)</span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+      </div>
+      
+      <div class="col-lg-2">
+        <div class="button both-outer gdp" id='button-gdp' onclick="selectIndicator('gdp')">
+          <div class="graph-label"><label class="">GDP change<span class="sub"> (<span class="year"></span>)</span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+      </div>
+    </div>
+  </div> <!-- buttons -->
+
+  <div class="row" id='selection-indicator'>
+    <div class="col-sm-2 selected-cont">
+      <div class='cleanfuels'></div>
+    </div>
+    <div class="col-sm-2 selected-cont">
+      <div class='deathrate'></div>
+    </div>
+    <div class="col-sm-2 selected-cont">
+      <div class='poverty selected-item'></div>
+    </div>
+    <div class="col-sm-2 selected-cont">
+      <div class='schoolyears'></div>
+    </div>
+    <div class="col-sm-2 selected-cont">
+      <div class='population' class=''></div>
+    </div>
+    <div class="col-sm-2 selected-cont">
+      <div class='gdp' class=''></div>
+    </div>
+  </div> <!-- selection indicator -->
+  
+  <div class="row" id='comparison'>
+    <div class="col-xl-6">
+      <div class='both-outer'><div id='svg-graph-1'><h3>Access to clean fuels</h3></div></div>
+    </div>
+    <div class="col-xl-6">
+      <div class='both-outer'><div id='svg-comparison'><h3>Poverty headcount ratio</h3></div></div>
+    </div>
+  </div> <!-- comparison -->
+  
+</div> <!-- dashboard-container -->
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- development version, includes helpful console warnings -->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="script/script.js"></script>
+  </body>
+</html>
