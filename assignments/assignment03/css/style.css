@@ -119,7 +119,7 @@ label {
   margin-top: 15px;
   margin-bottom: 30px;
   font-weight: bold;
-  color: gray;
+  color: black;
 }
 
 .filter-selected {
@@ -140,6 +140,16 @@ label {
   border-color: black;
   background-color: white;
   border-width: 0px 1px 1px 0px;
+  transform: rotate(-135deg);
+}
+
+.selected-access {
+  height: 15px;
+  width: 15px;
+  border-style: solid;
+  border-color: rgb(254, 178, 76);
+  background-color: white;
+  border-width: 0px 3px 3px 0px;
   transform: rotate(-135deg);
 }
 
@@ -165,14 +175,27 @@ label {
   font-weight: bold;
 }
 
+.no-button {
+  outline: 1px solid rgb(254, 178, 76);
+  border: 1px solid rgb(254, 178, 76); 
+  background: rgb(254, 217, 118);
+  color: white;
+}
+
 .button {
   border: 1px solid black;
 }
 
 .button:hover {
-  outline: 2px solid #333;
-  /*background: black;
-  color: white;*/
+  outline: 1px solid #444;
+  background: grey;
+  color: white;
+}
+
+.selected-button {
+  outline: 1px solid #444;
+  background: #444;
+  color: white;
 }
 
 .vertical-outer {

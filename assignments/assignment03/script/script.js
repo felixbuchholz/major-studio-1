@@ -100,7 +100,7 @@ let updateCountrySelectList = () => {
         }
       })
       if (indicatorHints.length > 0) {
-        return ' ' + indicatorHints.join(', ');
+        return ' ' + indicatorHints.join(',');
       } else {
         return ''
       }
@@ -127,7 +127,7 @@ let getOutOfRangeCountries = (d) => {
           decadeEndValue = filterUpperLimit-1;
         }
         if (country == 'Somalia') {
-          console.log(indicator, decadeEndValue);
+          // console.log(indicator, decadeEndValue);
         }
         // console.log(country, decadeEndValue)
         // console.log(decadeEndValue, filterLowerLimit)
@@ -327,6 +327,8 @@ let metaUpdateGraph = (selectedIndicator, comparison = 2) => {
   d3.select(i.select).select('h3').text(`${i.headline}`);
   d3.select('#selection-indicator').selectAll('.selected-item').classed('selected-item', false)
   d3.select('#selection-indicator').select(`.${selectedIndicator}`).classed('selected-item', true)
+  d3.select('#graph-buttons').selectAll('.selected-button').classed('selected-button', false)
+  d3.select('#graph-buttons').select(`.${selectedIndicator}`).classed('selected-button', true)
 }
 
 function updateGraph(data, selection, label) {
@@ -431,7 +433,13 @@ let svg = () => {
     let scatterplotCont = appendGroupClassTo('scatterplotCont', countryCont);
     let lineCont = appendGroupClassTo('lineCont', countryCont);
 
-  let myColor = d3.rgb(0,0,0).darker(0.4);
+  let myColor;
+  // console.log(selection)
+  if (selection == '#svg-graph-1') {
+    myColor = d3.rgb(254, 178, 76);
+  } else {
+    myColor = d3.rgb(0,0,0);
+  }
 
 
   // Add the scatterplotCont http://bl.ocks.org/d3noob/38744a17f9c0141bcd04

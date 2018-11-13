@@ -171,7 +171,7 @@
     <div class="row no-gutter" id='graph-buttons'>
       
       <div class="col-lg-2">
-        <div class="both-outer button cleanfuels" id='button-cleanfuels'>
+        <div class="both-outer no-button cleanfuels" id='button-cleanfuels'>
           <div class="graph-label"><label class="">Change in access to clean fuels<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
@@ -179,7 +179,7 @@
       </div>
 
       <div class="col-lg-2">
-        <div class="button both-outer lifeexp" id='button-deathrate' onclick="selectIndicator('deathrate')">
+        <div class="button both-outer deathrate" id='button-deathrate' onclick="selectIndicator('deathrate')">
           <div class="graph-label"><label class="">Change in death rate from indoor air pollution<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
@@ -187,7 +187,7 @@
      </div>
       
       <div class="col-lg-2" >
-        <div class="button both-outer inequality" id='button-poverty' onclick="selectIndicator('poverty')">
+        <div class="button both-outer poverty selected-button" id='button-poverty' onclick="selectIndicator('poverty')">
           <div class="graph-label"><label class="">Change in poverty ratio<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
@@ -197,7 +197,7 @@
 
       
       <div class="col-lg-2">
-        <div class="button both-outer education" id='button-schoolyears' onclick="selectIndicator('schoolyears')">
+        <div class="button both-outer schoolyears" id='button-schoolyears' onclick="selectIndicator('schoolyears')">
           <div class="graph-label"><label class="">Change in average schooling years<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
@@ -223,7 +223,7 @@
 
   <div class="row" id='selection-indicator'>
     <div class="col-sm-2 selected-cont">
-      <div class='cleanfuels'></div>
+      <div class='cleanfuels selected-access'></div>
     </div>
     <div class="col-sm-2 selected-cont">
       <div class='deathrate'></div>
