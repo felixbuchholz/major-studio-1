@@ -1,64 +1,234 @@
-[["Algeria",	"DZ",	"DZA"],
-["Angola",	"AO",	"AGO"],
-["St. Helena",	"SH",	"SHN"],
-["Benin",	"BJ",	"BEN"],
-["Botswana",	"BW",	"BWA"],
-["Burkina Faso",	"BF",	"BFA"],
-["Burundi",	"BI",	"BDI"],
-["Cameroon",	"CM",	"CMR"],
-["Cape Verde",	"CV",	"CPV"],
-["Central African Republic",	"CF",	"CAF"],
-["Chad",	"TD",	"TCD"],
-["Comoros",	"KM",	"COM"],
-["Congo, Rep",	"CG",	"COG"],
-["Congo, Dem. Rep.",	"CD",	"COD"],
-["Djibouti",	"DJ",	"DJI"],
-["Egypt",	"EG",	"EGY"],
-["Equatorial Guinea",	"GQ",	"GNQ"],
-["Eritrea",	"ER",	"ERI"],
-["Ethiopia",	"ET",	"ETH"],
-["Gabon Republic",	"GA",	"GAB"],
-["Gambia",	"GM",	"GMB"],
-["Ghana",	"GH",	"GHA"],
-["Guinea",	"GN",	"GIN"],
-["Guinea-Bissau",	"GW",	"GNB"],
-["Cote d'Ivoire",	"CI",	"CIV"],
-["Kenya",	"KE",	"KEN"],
-["Lesotho",	"LS",	"LSO"],
-["Liberia",	"LR",	"LBR"],
-["Libya",	"LY",	"LBY"],
-["Madagascar",	"MG",	"MDG"],
-["Malawi",	"MW",	"MWI"],
-["Mali",	"ML",	"MLI"],
-["Mauritania",	"MR",	"MRT"],
-["Mauritius",	"MU",	"MUS"],
-["Mayotte",	"YT",	"MYT"],
-["Morocco",	"MA",	"MAR"],
-["Mozambique",	"MZ",	"MOZ"],
-["Namibia",	"NA",	"NAM"],
-["Niger Republic",	"NE",	"NER"],
-["Nigeria",	"NG",	"NGA"],
-["Principe",	"ST",	"STP"],
-["Reunion",	"RE",	"REU"],
-["Rwanda",	"RW",	"RWA"],
-["Sao Tome",	"ST",	"STP"],
-["Senegal",	"SN",	"SEN"],
-["Seychelles",	"SC",	"SYC"],
-["Sierra Leone",	"SL",	"SLE"],
-["Somalia",	"SO",	"SOM"],
-["South Africa",	"ZA",	"ZAF"],
-["South Sudan",	"SS",	"SSD"],
-["St. Helena",	"SH",	"SHN"],
-["Sudan",	"SD",	"SDN"],
-["Swaziland",	"SZ",	"SWZ"],
-["Tanzania",	"TZ",	"TZA"],
-["Togo",	"TG",	"TGO"],
-["Tunisia",	"TN",	"TUN"],
-["Uganda",	"UG",	"UGA"],
-["Western Sahara", "EH", "ESH"],
-["Zaire",	"CD",	"COD"],
-["Zambia",	"ZM",	"ZMB"],
-["Zanzibar",	"TZ",	"TZA"],
-["Zimbabwe",	"ZW",	"ZWE"],
-["State of Israel", "IL", "ISR"],
-["Spain", "ES", "ESP"]]
+[
+  [
+    "Angola",
+    "AGO"
+  ],
+  [
+    "Burundi",
+    "BDI"
+  ],
+  [
+    "Benin",
+    "BEN"
+  ],
+  [
+    "Burkina Faso",
+    "BFA"
+  ],
+  [
+    "Botswana",
+    "BWA"
+  ],
+  [
+    "Central African Republic",
+    "CAF"
+  ],
+  [
+    "Ivory Coast",
+    "CIV"
+  ],
+  [
+    "Cameroon",
+    "CMR"
+  ],
+  [
+    "Democratic Republic of the Congo",
+    "COD"
+  ],
+  [
+    "Republic of Congo",
+    "COG"
+  ],
+  [
+    "Comoros",
+    "COM"
+  ],
+  [
+    "Cape Verde",
+    "CPV"
+  ],
+  [
+    "Djibouti",
+    "DJI"
+  ],
+  [
+    "Algeria",
+    "DZA"
+  ],
+  [
+    "Egypt",
+    "EGY"
+  ],
+  [
+    "Eritrea",
+    "ERI"
+  ],
+  [
+    "Western Sahara",
+    "ESH"
+  ],
+  [
+    "Ethiopia",
+    "ETH"
+  ],
+  [
+    "Gabon",
+    "GAB"
+  ],
+  [
+    "Ghana",
+    "GHA"
+  ],
+  [
+    "Guinea",
+    "GIN"
+  ],
+  [
+    "Gambia",
+    "GMB"
+  ],
+  [
+    "Guinea Bissau",
+    "GNB"
+  ],
+  [
+    "Equatorial Guinea",
+    "GNQ"
+  ],
+  [
+    "Kenya",
+    "KEN"
+  ],
+  [
+    "Liberia",
+    "LBR"
+  ],
+  [
+    "Libya",
+    "LBY"
+  ],
+  [
+    "Lesotho",
+    "LSO"
+  ],
+  [
+    "Morocco",
+    "MAR"
+  ],
+  [
+    "Madagascar",
+    "MDG"
+  ],
+  [
+    "Mali",
+    "MLI"
+  ],
+  [
+    "Mozambique",
+    "MOZ"
+  ],
+  [
+    "Mauritania",
+    "MRT"
+  ],
+  [
+    "Mauritius",
+    "MUS"
+  ],
+  [
+    "Malawi",
+    "MWI"
+  ],
+  [
+    "Mayotte",
+    "MYT"
+  ],
+  [
+    "Namibia",
+    "NAM"
+  ],
+  [
+    "Niger",
+    "NER"
+  ],
+  [
+    "Nigeria",
+    "NGA"
+  ],
+  [
+    "Reunion",
+    "REU"
+  ],
+  [
+    "Rwanda",
+    "RWA"
+  ],
+  [
+    "Sudan",
+    "SDN"
+  ],
+  [
+    "Senegal",
+    "SEN"
+  ],
+  [
+    "St. Helena",
+    "SHN"
+  ],
+  [
+    "Sierra Leone",
+    "SLE"
+  ],
+  [
+    "Somalia",
+    "SOM"
+  ],
+  [
+    "South Sudan",
+    "SSD"
+  ],
+  [
+    "Sao Tome and Principe",
+    "STP"
+  ],
+  [
+    "Swaziland",
+    "SWZ"
+  ],
+  [
+    "Seychelles",
+    "SYC"
+  ],
+  [
+    "Chad",
+    "TCD"
+  ],
+  [
+    "Togo",
+    "TGO"
+  ],
+  [
+    "Tunisia",
+    "TUN"
+  ],
+  [
+    "Tanzania",
+    "TZA"
+  ],
+  [
+    "Uganda",
+    "UGA"
+  ],
+  [
+    "South Africa",
+    "ZAF"
+  ],
+  [
+    "Zambia",
+    "ZMB"
+  ],
+  [
+    "Zimbabwe",
+    "ZWE"
+  ]
+]
