@@ -1,62 +1,38 @@
 /*global d3*/
-let selectedCountry = 'Ghana';
 let selectedIndicator = 'poverty';
 let menuOpen = true;
+let yearHint = false;
+let yearRangeHint = false;
+var valueSliders = {}
+const myInfoIndicators = ['cleanfuels', 'lifeexp', 'poverty', 'schoolyears', 'population', 'gdp'];
 
-let data = {};
 
-
-Promise.all([
-  d3.json('data/geo/africa.geo.json'),
-  d3.json('data/conversions/africaCountriesList.json'),
-  d3.csv('data/hdi.csv'),
-  d3.csv('data/gini.csv'),
-  d3.csv('data/lifeexp.csv'),
-  d3.csv('data/schoolyears.csv'),
-  d3.csv('data/population.csv'),
-  d3.csv('data/gdp.csv'),
-  d3.csv('data/clean-fuels.csv'),
-  d3.csv('data/deathrate.csv'),
-  d3.csv('data/poverty-320.csv')
-])
-.then(([africaGeo, africaCountries, hdi, gini, lifeexp, schoolyears, population, gdp, cleanfuels, deathrate, poverty]) => {
-  deathrate = translateOWIData(deathrate);
-  data = {
-    'africaGeo': africaGeo, 
-    'africaCountries': africaCountries,
-    'indicators': {
-      'hdi': hdi, 
-      'gini': gini, 
-      'lifeexp': lifeexp, 
-      'schoolyears': schoolyears, 
-      'population': population, 
-      'gdp': gdp, 
-      'cleanfuels': cleanfuels, 
-      'deathrate': deathrate, 
-      'poverty': poverty
-    }
-  };
-  console.log(data);
-  
-  // Functions
-  selectCountry(selectedCountry);
-  updateCountrySelectList();
-
- });
- 
-// https://stackoverflow.com/a/11764168
-function chunk (arr, len) {
-
-  var chunks = [],
-      i = 0,
-      n = arr.length;
-
-  while (i < n) {
-    chunks.push(arr.slice(i, i += len));
-  }
-
-  return chunks;
+let c = (log) => {
+  console.log(log);
 }
+function updateSlider() {
+  for (var indicator of myInfoIndicators) {
+    
+    valueSliders[indicator] = document.getElementById(`slider-${indicator}`);
+    var min = data.ranges2015.totals[indicator]['lowerLimit']-1;
+    var max = data.ranges2015.totals[indicator]['upperLimit']+1;
+    noUiSlider.create(valueSliders[indicator], {
+      start: [min, max],
+      connect: true,
+      tooltips: true,
+      range: {
+          'min': min,
+          'max': max
+      }
+    });
+  }
+  for (var indicator of myInfoIndicators) {
+    valueSliders[indicator].noUiSlider.on('update', updateCountrySelectList);
+  }
+}
+
+ 
+
 
 
 // FUNCTIONS
@@ -66,6 +42,9 @@ let selectCountry = (countrySelection) => {
   if (menuOpen == true) {
     openCloseMenu();
   }
+  
+  yearHint = false;
+  yearRangeHint = false;
   
   myData = [selectedCountry];
   updateMenuRow(myData);
@@ -91,16 +70,87 @@ let openCloseMenu = () => {
 }
 
 let updateCountrySelectList = () => {
+  // console.log('fire')
   // console.log(data.africaCountries)
   let u = d3.select('#select-list').selectAll('li').data(data.africaCountries);
   u.exit().remove();
+  u.classed('outOfRange', (d, i) => {
+      // let myBooleans = {};
+      return getOutOfRangeCountries(d);
+    })
   u.enter()
     .append('li')
     .attr('class', 'pointer')
-    .text((d) => { return d[0] })
+    .text((d) => {
+      const country = d[0];
+      return country
+    })
     .on('click', (d) => {
       selectCountry(d[0])
     })
+    .append('span')
+    .attr('class', 'sup')
+    .text((d) => {
+      const country = d[0];
+      let indicatorHints = [];
+      myInfoIndicators.forEach((indicator, i) => {
+        let decadeEndValue = data.ranges2015.countries[indicator][country]['decadeEndValue'];
+        if (decadeEndValue == undefined) {
+          indicatorHints.push(i+1);
+        }
+      })
+      if (indicatorHints.length > 0) {
+        return ' ' + indicatorHints.join(', ');
+      } else {
+        return ''
+      }
+      
+    })
+    
+}
+
+let getOutOfRangeCountries = (d) => {
+  let myBooleans = [];
+      myInfoIndicators.forEach((indicator, i) => {
+        // myBooleans[indicator];
+         const currentSlider = valueSliders[indicator];
+        // console.log(indicator, currentSlider)
+        const filterLowerLimit = currentSlider.noUiSlider.get()[0];
+        const filterUpperLimit = currentSlider.noUiSlider.get()[1];
+        
+        const country = d[0];
+        let decadeEndValue = data.ranges2015.countries[indicator][country]['decadeEndValue'];
+        
+        // TODO: Don’t grey out countries without data in one indicator right from the beginning.
+        
+        if (decadeEndValue == undefined) {
+          decadeEndValue = filterUpperLimit-1;
+        }
+        if (country == 'Somalia') {
+          console.log(indicator, decadeEndValue);
+        }
+        // console.log(country, decadeEndValue)
+        // console.log(decadeEndValue, filterLowerLimit)
+        if (decadeEndValue < filterLowerLimit) {
+          myBooleans.push(true);
+        } else {
+          myBooleans.push(false);
+        }
+        
+        if (decadeEndValue > filterUpperLimit) {
+          myBooleans.push(true);
+        } else {
+          myBooleans.push(false);
+        }
+      })
+      // console.log(myBooleans)
+      // console.log(myBooleans.includes(true))
+      const overallBoolean = myBooleans.includes(true)
+      if (overallBoolean == true) {
+        return  true;
+      } else {
+        return false;
+      }
 }
 
 
@@ -147,18 +197,36 @@ let updateInfo = (indicator) => {
   const myselect = d3.selectAll(`#${indicator}`)
   const year = myselect.selectAll('.year').data([mydata])
   const value = myselect.selectAll('.value').data([mydata])
-  year.text((d) => { return d[0] })
+  
+  year
+    .text((d) => { 
+      if (yearHint == false && d[0]=='2015') {
+        
+        //console.log(d)
+        yearHint = true;
+        return d[0]=='2015' ? '*' : `(${d[0]})` 
+      } else {
+        return d[0]=='2015' ? '' : `(${d[0]})`
+      }
+      
+      
+    })
+    .classed('sup', (d) => { return d[0]=='2015' ? true: false})
+    .classed('sub', (d) => { return d[0]=='2015' ? false: true})
+      
   value.text((d) => { return d[1] })
 }
 
 let getIndicatorPair = (indicator) => {
+  // c(indicator);
   let mydata = [];
   // hdi
   if (indicator == 'hdi') {
-    mydata = [2017, arrayPropertyHasValues(data.indicators.hdi, 'Country', [selectedCountry]).rank2017]
+    mydata = [2017, arrayPropertyHasValues(data.indicators.hdi, 'Country Name', [selectedCountry]).rank2017]
   } else { // ––– end hdi
-    mydata = getDecadeUpperLimit(data.indicators[indicator])
+    mydata = getDecadeEnd(data.indicators[indicator])
   }
+  // console.log(mydata)
   mydata[1] = formatValues(mydata[1])
   return mydata;
 }
@@ -198,17 +266,32 @@ let updateButtonRow = () => {
 let updateButton = (indicator) => {
   const array = data.indicators[indicator]
   const change = calculateChange(array).toFixed(1)
-  const yearRange = `${getDecadeLowerLimit(array)[0]} – ${getDecadeUpperLimit(array)[0]}`;
+  const yearRange = `${getDecadeStart(array)[0]} – ${getDecadeEnd(array)[0]}`;
   const myselect = d3.select(`#button-${indicator}`)
   const year = myselect.selectAll('.year').data([yearRange])
   const value = myselect.selectAll('.value').data([change])
-  year.text((d) => { return d});
+  
+  year
+    .text((d) => { 
+      // console.log(d)
+      if (yearRangeHint == false && d=='2005 – 2015') {
+        yearRangeHint = true;
+        return d=='2005 – 2015' ? '**' : `(${d})` 
+      } else {
+        return d=='2005 – 2015' ? '' : `(${d})`
+      }
+      
+      
+    })
+    .classed('sup', (d) => { return d=='2005 – 2015' ? true: false})
+    .classed('sub', (d) => { return d=='2005 – 2015' ? false: true})
+  
   value.text((d) => { return d});
 }
 
 let calculateChange = (array) => {
-  const earlier = parseFloat(getDecadeLowerLimit(array)[1]); 
-  const later = parseFloat(getDecadeUpperLimit(array)[1]);
+  const earlier = parseFloat(getDecadeStart(array)[1]); 
+  const later = parseFloat(getDecadeEnd(array)[1]);
   const change = (later - earlier) / earlier;
   return change * 100;
 };
@@ -220,7 +303,7 @@ let metaUpdateGraph = (selectedIndicator, comparison = 2) => {
     'poverty': '% of the population under the national poverty line',
     'schoolyears': 'Average schooling years',
     'population': 'Population',
-    'gdp': 'GDP per capita (PPP, current int. billion $)'
+    'gdp': 'GDP per capita (PPP, current int. $)'
   }
   const headlines = {
     'cleanfuels': 'Access to clean fuels and cooking technologies',
@@ -389,66 +472,6 @@ let svg = () => {
 svg(data);
 }
 
-let arrayPropertyHasValues = (array, property, values) => {
-  // console.log(array, property, values)
-  let filter = array.filter(f => values.includes(f[property]));
-  if (filter.length == 1) {
-    return filter[0];
-  } else {
-    return filter;
-  }
-};
-
-Array.prototype.isNull = function (){
-    return this.join().replace(/,/g,'').length === 0;
-};
-
-let getDecadeLowerLimit = (array) => {
-  let myArray = getDecadeArray(array)
-  return myArray[0]
-};
-
-let getDecadeUpperLimit = (array) => {
-  let myArray = getDecadeArray(array)
-  return myArray[myArray.length-1]
-};
-
-let getDecadeArray = (array) => {
-  const countryObj = arrayPropertyHasValues(array, 'Country Name', [selectedCountry]);
-  let regYearsArr = [];
-  const regYears = /^\d{4}$/;
-  for (var element in countryObj) {
-    if (regYears.test(element)) {
-      const value = countryObj[element];
-      if (value > 0) {
-      regYearsArr.push([element, value]);
-      }
-    }
-  }
-  let upperLimit;
-  if (countryObj["2015"]  != '') {
-    upperLimit = 2015;
-  } else {
-    upperLimit = parseInt(regYearsArr[regYearsArr.length-1][0]);
-  }
-  const upperLimitDiff = upperLimit-10;
-  
-  let lowerLimit;
-  if (countryObj[upperLimitDiff.toString()]  != '') {
-    lowerLimit = upperLimitDiff;
-  } else {
-    
-    const yearsBelowDiff = regYearsArr.filter(year => year[0] < upperLimitDiff);
-    if (!yearsBelowDiff.isNull()) {
-      lowerLimit = yearsBelowDiff[yearsBelowDiff.length-1][0];
-    } else {
-      const yearsAboveDiff = regYearsArr.filter(year => year[0] < upperLimitDiff)
-      lowerLimit = yearsAboveDiff[0][0];
-    }
-  }
-  return regYearsArr.filter(year => year[0] >= lowerLimit && year[0] <= upperLimit)
-} 
-
 let addCommas = (nStr) => {
   nStr += '';
   var x = nStr.split('.');
@@ -460,20 +483,3 @@ let addCommas = (nStr) => {
   }
   return x1 + x2;
 };
-
-let translateOWIData = (data) => {
-  let dataFormat = [];
-  let myCountries = chunk(data,6)
-  myCountries.forEach((country, i) => {
-    let myObject = {};
-    myObject['Country Name'] = country[0].Entity;
-    myObject['Country Code'] = country[0].Code;
-    country.forEach((year, j) => {
-      myObject[year.Year] = year['Air pollution death rates (indoor solid fuels) per 100,000- IHME (per 100,000 people)']
-      
-    })
-    dataFormat.push(myObject);
-  })
-  // console.log(dataFormat)
-  return dataFormat
-}
