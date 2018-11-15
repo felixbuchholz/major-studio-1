@@ -68,6 +68,15 @@ label {
   margin-bottom: 0.5em;
 }
 
+#sources ul {
+  margin-top: 30px;
+  list-style-type: none;
+}
+
+#sources h2 {
+  font-size: 16px;
+}
+
 .slider {
   margin-top: 15px;
 }
