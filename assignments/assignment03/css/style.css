@@ -56,25 +56,112 @@ label {
 }
 
 #select-list {
+  padding-left: 0;
   font-weight: bold;
-   margin: 40px;
-   list-style-type: none;
-   column-count: 7;
-   column-width: 145px;
-   column-gap: 20px;
+  width: 1380px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#select-list div {
+  margin-bottom: 5px;
+}
+
+#select-list h3 {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+}
+
+.mylist {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 #select-list li {
-  margin-bottom: 0.5em;
+  display: inline-block;
+  letter-spacing: 0.02em;
+  min-width: 215px;
+  margin-bottom: 10px;
+  margin-right: 7.5px;
+  margin-left: 7.5px;
+  /*background: #eee;*/
+  border: 1px solid #111;
+  border-radius: 3px; 
+  color: #111;
+  font-size: 12px;
+  transition: all 0.5s;
+}
+
+.country {
+  display: inline-block;
+  padding: 8px;
+}
+
+#select-list li:hover {
+  background: #444;
+  color: #fff;
+}
+
+.li-value {
+  opacity: 0;
+  background: #111;
+  color: #eee;
+  float: right;
+  border-radius: 3px;
+  padding: 8px;
+  transition: all 0.5s;
+}
+
+.li-value:hover {
+  opacity: 1;
+}
+
+#select-list li.outOfRange {
+  background: #fff;
+  color: #f2f2f2;
+  border: 1px solid #fff;
+}
+
+#sources {
+  border: none;
+  border-top: 1px solid #000;
+}
+
+#sources ul {
+  margin-top: 30px;
+  list-style-type: none;
+}
+
+#sources h2 {
+  font-size: 14px;
+}
+
+#sources ul {
+  column-count: 3;
+   column-width: 240px;
+   column-gap: 40px;
+}
+
+#sources li {
+  -webkit-column-break-inside: avoid;
+  text-indent: -30px;
+  padding-left 30px;
+  padding-right: 30px;
+  margin-bottom: 15px;
 }
 
 .slider {
-  margin-top: 15px;
+  width:100%;
+  align-self: flex-end;
 }
 
-.outOfRange {
-  color: #ddd;
-}
+
 
 #dashboard-container {
   position: relative;
@@ -83,7 +170,7 @@ label {
 
 .row {
   border: 1px solid black;
-  max-width: 1420px;
+  max-width: 1480px;
   margin:auto;
   margin-top: 10px;
   padding: 5px;
@@ -116,10 +203,21 @@ label {
 }
 
 .filter-range {
-  margin-top: 15px;
-  margin-bottom: 30px;
-  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.3s;
+  padding-top: 15px;
+  padding-bottom: 30px;
   color: black;
+  border: 1px solid #fff;
+}
+
+.em {
+  font-weight: bold;
+}
+
+.filter-range:hover {
+  border: 1px solid #000;
 }
 
 .filter-selected {

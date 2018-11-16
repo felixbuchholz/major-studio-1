@@ -1,18 +1,32 @@
 /*global d3*/
+/*global data*/
+/*global noUiSlider*/
+/*global selectedCountry*/
 let selectedIndicator = 'poverty';
 let menuOpen = true;
 let yearHint = false;
 let yearRangeHint = false;
-var valueSliders = {}
-const myInfoIndicators = ['cleanfuels', 'lifeexp', 'poverty', 'schoolyears', 'population', 'gdp'];
+var valueSliders = {};
+const myInfoIndicators = [
+  ['cleanfuels', `<span class='em'>Access to clean fuels</span> and cooking technology in % of the population`],
+  ['lifeexp', `<span class='em'>Average life expectancy</span> at birth in years`], ['poverty', `<span class='em'>Poverty headcount ratio</span> at national poverty line in % the of population`], ['schoolyears', `<span class='em'>Average schooling years</span> of the population with age 25 +`], ['population', `<span class='em'>Population</span>`], ['gdp', `<span class='em'>GDP per capita</span> in PPP current int. $`]];
 
-
-let c = (log) => {
-  console.log(log);
-}
 function updateSlider() {
+  
+  // console.log('test')
+  d3.select('#filters-value2015').selectAll('div').data(myInfoIndicators).enter().append('div')
+    .attr('class', 'col-lg-2 filter-range filter-selected')
+      .html((d) => { 
+        // console.log(d)
+        return `<label class='filter-range-label'>${d[1]}</label><br/>
+                  <div class='slider' id='slider-${d[0]}'></div>` 
+      })
+  .on('mouseenter', (d) => {showClosestValueToRange(d[0])})
+  
+  
   for (var indicator of myInfoIndicators) {
-    
+    indicator = indicator[0]
+    console.log()
     valueSliders[indicator] = document.getElementById(`slider-${indicator}`);
     var min = data.ranges2015.totals[indicator]['lowerLimit']-1;
     var max = data.ranges2015.totals[indicator]['upperLimit']+1;
@@ -26,92 +40,168 @@ function updateSlider() {
       }
     });
   }
+  
+  
+  
   for (var indicator of myInfoIndicators) {
+    //console.log(indicator)
+    indicator = indicator[0]
     valueSliders[indicator].noUiSlider.on('update', updateCountrySelectList);
   }
+  
+  // d3.select(`#slider-${indicator}`).on('click', function(d) {console.log(this)})
 }
 
- 
+let currentIndicatorSelection = "cleanfuels"
 
-
-
-// FUNCTIONS
-let myData = [selectedCountry];
-let selectCountry = (countrySelection) => {
-  selectedCountry = countrySelection;
-  if (menuOpen == true) {
-    openCloseMenu();
-  }
-  
-  yearHint = false;
-  yearRangeHint = false;
-  
-  myData = [selectedCountry];
-  updateMenuRow(myData);
-  updateInfoRow();
-  updateButtonRow();
-  metaUpdateGraph('cleanfuels', 1);
-  metaUpdateGraph(selectedIndicator);
-};
-
-let selectIndicator = (myIndicatorSelection) => {
-  selectedIndicator = myIndicatorSelection;
-  metaUpdateGraph(selectedIndicator);
-}
-
-let openCloseMenu = () => {
-  if (menuOpen == true) {
-    d3.select('#select-menu').style('display', 'none');
-    menuOpen = false;
-  } else {
-    d3.select('#select-menu').style('display', 'block');
-    menuOpen = true;
-  }
+let showClosestValueToRange = (d) => {
+  currentIndicatorSelection = d
+  updateCountrySelectList()
 }
 
 let updateCountrySelectList = () => {
-  // console.log('fire')
-  // console.log(data.africaCountries)
-  let u = d3.select('#select-list').selectAll('li').data(data.africaCountries);
-  u.exit().remove();
-  u.classed('outOfRange', (d, i) => {
+  const indicator = currentIndicatorSelection;
+  
+  const currentSlider = valueSliders[indicator];
+  const filterLowerLimit = currentSlider.noUiSlider.get()[0];
+  const filterUpperLimit = currentSlider.noUiSlider.get()[1];
+  //console.log(filterLowerLimit, filterUpperLimit)
+  let currentArray = []
+  for (var country in data.ranges2015.countries[indicator]) {
+    const value = data.ranges2015.countries[indicator][country]['decadeEndValue']
+    if (value != undefined) {
+      currentArray.push([value, country])
+    }
+   
+  }
+  
+  currentArray = currentArray.sort((function(index){
+    return function(a, b){
+        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+    };
+  })(0));
+  
+  while (parseFloat(currentArray[0]) < filterLowerLimit) {
+    currentArray.splice(0,1)
+  } 
+  while (parseFloat(currentArray[currentArray.length-1]) > filterUpperLimit) {
+    currentArray.splice(currentArray.length-1,1)
+  } 
+    
+  /*
+  let differenceToLowerLimitMin = [+Infinity, "country"];
+  currentArray.forEach((country, i) => {
+    if (country[0] > filterLowerLimit) {
+      let differenceToLowerLimit = country[0] - filterLowerLimit
+       if (differenceToLowerLimit < differenceToLowerLimitMin[0]) {
+       differenceToLowerLimitMin[0] = country[0]
+       differenceToLowerLimitMin[1] = country[1]
+     }
+    }
+     
+  })
+ console.log(differenceToLowerLimitMin)
+ */
+  const lowSelector = currentArray[0][1].toLowerCase().split(' ').join('-')
+  const lowValue = reformatNumVeryShort(currentArray[0][0].toFixed(1))
+  const highSelector = currentArray[currentArray.length-1][1].toLowerCase().split(' ').join('-')
+  const highValue = reformatNumVeryShort(currentArray[currentArray.length-1][0].toFixed(1))
+  
+  d3.select('#select-list').selectAll('.li-value').style('opacity', '0')
+  d3.select('#select-list').select(`#${lowSelector}`).select('.li-value').style('opacity', '1').text(`${lowValue}`)
+  d3.select('#select-list').select(`#${highSelector}`).select('.li-value').style('opacity', '1').text(`${highValue}`)
+  
+  
+  
+  
+  const onlyRegions = ["Northern Africa", "Eastern Africa", "Central Africa", "Western Africa", "Southern Africa"];
+  let regionsAndCountries = [];
+  onlyRegions.forEach((region, i) => {
+    let countries = data.africaCountries.filter((x) => x[2] == region);
+    countries = countries.sort();
+    countries.map((x) => {
+      let properIdName = x[2];
+      properIdName = properIdName.toLowerCase().split(' ').join('-');
+      x[3] = properIdName;
+      
+      //console.log(x[3])
+    });
+    regionsAndCountries.push(countries);
+  });
+  //console.log(regionsAndCountries);
+  let up = d3.select('#select-list').selectAll('div').data(regionsAndCountries).enter().append('div');
+  up.append('h3').text((d) => { return d[0][2]; });
+  up.append('ul').attr('class', 'mylist').attr('id', (d) => { 
+    return d[0][3]; 
+  });
+  regionsAndCountries.forEach((e, i) => {
+    // console.log(`#${e[0][3]}`)
+    let u = d3.select(`#${e[0][3]}`).selectAll('li').data(e);
+    
+    u.exit().remove();
+    u.classed('outOfRange', (d, i) => {
       // let myBooleans = {};
       return getOutOfRangeCountries(d);
     })
-  u.enter()
-    .append('li')
-    .attr('class', 'pointer')
-    .text((d) => {
-      const country = d[0];
-      return country
-    })
-    .on('click', (d) => {
-      selectCountry(d[0])
-    })
-    .append('span')
-    .attr('class', 'sup')
-    .text((d) => {
-      const country = d[0];
-      let indicatorHints = [];
-      myInfoIndicators.forEach((indicator, i) => {
-        let decadeEndValue = data.ranges2015.countries[indicator][country]['decadeEndValue'];
-        if (decadeEndValue == undefined) {
-          indicatorHints.push(i+1);
-        }
+    let li = u.enter()
+      .append('li')
+      .attr('id', (d) => {
+        return d[0].toLowerCase().split(' ').join('-')
       })
-      if (indicatorHints.length > 0) {
-        return ' ' + indicatorHints.join(',');
-      } else {
-        return ''
-      }
+      .on('click', (d) => {
+        console.log(d[0]);
+        selectCountry(d[0]);
+      })
+      .attr('class', 'pointer');
       
-    })
+      li.append('span')
+        .attr('class', 'country')
+        .text((d) => {
+          const country = d[0];
+          return country;
+        })
+
+        .append('span')
+        .attr('class', 'sup')
+        .text((d) => {
+          const country = d[0];
+          let indicatorHints = [];
+          myInfoIndicators.forEach((indicator, i) => {
+            indicator = indicator[0]
+            let decadeEndValue = data.ranges2015.countries[indicator][country]['decadeEndValue'];
+            if (decadeEndValue == undefined) {
+              indicatorHints.push(i+1);
+            }
+          })
+          if (indicatorHints.length > 0) {
+            return ' ' + indicatorHints.join(',');
+          } else {
+            return ''
+          }
+          
+        });
     
+    let value = li.append('span')
+      .attr('class', 'li-value')
+      .text((d, i) => { 
+        return 1 
+      });
+    
+    value.style('opacity', (d) => {
+      if (true) {
+        
+      }
+    })
+  })
+  
+  
 }
 
 let getOutOfRangeCountries = (d) => {
   let myBooleans = [];
+  
       myInfoIndicators.forEach((indicator, i) => {
+        indicator = indicator[0]
         // myBooleans[indicator];
          const currentSlider = valueSliders[indicator];
         // console.log(indicator, currentSlider)
@@ -154,6 +244,46 @@ let getOutOfRangeCountries = (d) => {
 }
 
 
+// FUNCTIONS
+let myData = [selectedCountry];
+let selectCountry = (countrySelection) => {
+  selectedCountry = countrySelection;
+  if (menuOpen == true) {
+    openCloseMenu();
+  }
+  
+  yearHint = false;
+  yearRangeHint = false;
+  
+  myData = [selectedCountry];
+  updateMenuRow(myData);
+  updateInfoRow();
+  updateButtonRow();
+  metaUpdateGraph('cleanfuels', 1);
+  metaUpdateGraph(selectedIndicator);
+};
+
+let selectIndicator = (myIndicatorSelection) => {
+  selectedIndicator = myIndicatorSelection;
+  metaUpdateGraph(selectedIndicator);
+}
+
+let openCloseMenu = () => {
+  if (menuOpen == true) {
+    d3.select('#select-menu').style('display', 'none');
+    menuOpen = false;
+  } else {
+    d3.select('#select-menu').style('display', 'block');
+    menuOpen = true;
+  }
+};
+
+// https://stackoverflow.com/questions/11246758/how-to-get-unique-values-in-an-array
+let getUniqueItems = (array) => {
+  return array.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+};
+
+
 let updateMenuRow = (myData) => {
   // console.log(myData)
   let u = d3.select('#name')
@@ -180,9 +310,7 @@ let updateMenuRow = (myData) => {
     });
   
   // region
-  const geoAfricaProperties = data.africaGeo.features.map(f => f.properties);
-  const countryRegion = arrayPropertyHasValues(geoAfricaProperties, 'geounit', [selectedCountry]).subregion;
-  d3.select('#region').selectAll('.value').html("").text(`${countryRegion}`);
+  d3.select('#region').selectAll('.value').data(data.africaCountries).html("").text((d) => { return d[2]; });
 }
 
 let updateInfoRow = () => {
@@ -491,3 +619,22 @@ let addCommas = (nStr) => {
   }
   return x1 + x2;
 };
+
+let reformatNumVeryShort = (n) => {
+  if (n >= 100 && n < 950) {
+    n = Math.round(n/100) + 'H'
+  }
+  if (n >= 950 && n < 1000) {
+    n = '1 K'
+  }
+  if (n >= 1000 && n < 1000000) {
+    n = Math.round(n/1000) + ' K'
+  }
+  if (n >= 950000 && n < 1000000) {
+    n = '1 M'
+  }
+    if (n >= 1000000 && n < 1000000000) {
+    n = Math.round(n/1000000) + ' M'
+  }
+  return n
+}

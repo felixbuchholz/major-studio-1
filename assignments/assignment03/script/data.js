@@ -31,6 +31,19 @@ Promise.all([
       'gdp': gdp
     }
   };
+  const geoAfricaProperties = data.africaGeo.features.map(f => f.properties);
+  data.africaCountries.forEach((e, i) => {
+    const region = arrayPropertyHasValues(geoAfricaProperties, 'geounit', e).subregion;
+    if (region == undefined) {
+      data.africaCountries[i][2] = 'Eastern Africa'
+    } else if (region == 'Middle Africa') {
+      data.africaCountries[i][2] = 'Central Africa';
+    } else {
+      data.africaCountries[i][2] = region;
+    }
+    
+  })
+    
   
   
   let allNames = [];

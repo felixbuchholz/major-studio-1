@@ -8,87 +8,30 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <div class='mockup'>
+    <!--<div class='mockup'>-->
       
-      <img class='responsive' src="mockup/page.png"></img>
-      <img class='responsive' src="mockup/page2.png"></img>
-      <img class='responsive' src="mockup/page3.png"></img>
-    </div>
-    
-    
+    <!--  <img class='responsive' src="mockup/page.png"></img>-->
+    <!--  <img class='responsive' src="mockup/page2.png"></img>-->
+    <!--  <img class='responsive' src="mockup/page3.png"></img>-->
+    <!--</div>-->
     
     <div id="dashboard-container">
       <div id="select-menu">
         <div class="row" id='selection-menu'>
           <div class="col-md-11 vertical-outer">
-            <div class="info-content" id='input'><input id='awesomeplete'></input></div>
+            <!-- <div class="info-content" id='input'><input id='awesomeplete'></input></div> -->
           </div>
           <div class="col-sm-1" id='selection-menu-button'>
             <span class="oi oi-menu pointer" onclick='openCloseMenu()'><img src="lib/open-iconic/svg/menu.svg" alt="menu"></span>
           </div>
           <div class="row menu" id='filters-value2015'>
-            <div class='row label'><label>filter by value of 2015, or most recent</label></div>
-            <div class='col-lg-2 filter-range filter-selected'><label class='filter-range-label'>Access to clean fuels</label><br/>
-              <div class='slider' id='slider-cleanfuels'></div>
-            </div>
-            <div class='col-lg-2 filter-range'><label class='filter-range-label'>Life expectancy</label><br/>
-              <div class='slider' id='slider-lifeexp'></div>
-              </div>
-            <div class='col-lg-2 filter-range'><label class='filter-range-label'>Relative poverty</label><br/>
-              <div class='slider' id='slider-poverty'></div>
-              </div>
-            <div class='col-lg-2 filter-range'><label class='filter-range-label'>Schooling years</label><br/>
-              <div class='slider' id='slider-schoolyears'></div>
-              </div>
-            <div class='col-lg-2 filter-range'><label class='filter-range-label'>Population</label><br/>
-              <div class='slider' id='slider-population'></div></div>
-            <div class='col-lg-2 filter-range'><label class='filter-range-label'>GDP</label><br/>
-              <div class='slider' id='slider-gdp'></div></div>
+            
+            <span class='row label'><label>filter by value of 2015, or most recent</label></span>
           </div> <!-- filters-value2015 -->
-          <!--<div class="row menu" id='filters-rate'>-->
-          <!--  <div class='row label'><label>filter by rate between 2005–15, or closest decade</label></div>-->
-          <!--  <div class='col-lg-2 filter-range'><label class='filter-range-label'>Access to clean fuels</label><br/>-->
-          <!--    <svg width="200" height="10">-->
-          <!--        <rect height="1" width="200" x='0' y='5' />-->
-          <!--        <circle cx='5' cy='5' r='5'/>-->
-          <!--        <circle cx='195' cy='5' r='5'/>-->
-          <!--    </svg>-->
-          <!--  </div>-->
-          <!--  <div class='col-lg-2 filter-range'><label class='filter-range-label'>Life expectancy</label><br/>-->
-          <!--    <svg width="200" height="10">-->
-          <!--        <rect height="1" width="200" x='0' y='5' />-->
-          <!--        <circle cx='5' cy='5' r='5'/>-->
-          <!--        <circle cx='195' cy='5' r='5'/>-->
-          <!--    </svg></div>-->
-          <!--  <div class='col-lg-2 filter-range filter-selected'><label class='filter-range-label'>Relative poverty</label><br/>-->
-          <!--    <svg width="200" height="10">-->
-          <!--        <rect height="1" width="200" x='0' y='5' />-->
-          <!--        <circle cx='5' cy='5' r='5'/>-->
-          <!--        <circle cx='155' cy='5' r='5'/>-->
-          <!--    </svg></div>-->
-          <!--  <div class='col-lg-2 filter-range'><label class='filter-range-label'>Schooling years</label><br/>-->
-          <!--    <svg width="200" height="10">-->
-          <!--        <rect height="1" width="200" x='0' y='5' />-->
-          <!--        <circle cx='5' cy='5' r='5'/>-->
-          <!--        <circle cx='195' cy='5' r='5'/>-->
-          <!--    </svg></div>-->
-          <!--  <div class='col-lg-2 filter-range'><label class='filter-range-label'>Population</label><br/>-->
-          <!--    <svg width="200" height="10">-->
-          <!--        <rect height="1" width="200" x='0' y='5' />-->
-          <!--        <circle cx='5' cy='5' r='5'/>-->
-          <!--        <circle cx='195' cy='5' r='5'/>-->
-          <!--    </svg></div>-->
-          <!--  <div class='col-lg-2 filter-range'><label class='filter-range-label'>GDP</label><br/>-->
-          <!--    <svg width="200" height="10">-->
-          <!--        <rect height="1" width="200" x='0' y='5' />-->
-          <!--        <circle cx='5' cy='5' r='5'/>-->
-          <!--        <circle cx='195' cy='5' r='5'/>-->
-          <!--    </svg></div>-->
-          <!--</div>--> <!-- filters-rate -->
           <div class="row menu">
-            <ul id='select-list'>
+            <div id='select-list'>
              
-            </ul>
+            </div>
           </div> <!-- select-list -->
         </div> <!-- selection-menu -->
         
@@ -253,12 +196,12 @@
   
 </div> <!-- dashboard-container -->
 
- <div class='mockup'>
+ <!-- <div class='mockup'>
       
       <img class='responsive' src="mockup/page4.png"></img>
       <img class='responsive' src="mockup/page5.png"></img>
       <img class='responsive' src="mockup/page6.png"></img>
-  </div>
+  </div> -->
   
   <div class="row" id='sources'>
     <div class="col-md-12 both-outer">
@@ -267,7 +210,13 @@
         <ul>
           <li><span class='name'>“Human Development Index (HDI).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
           <li><span class='name'>“Access to Clean Fuels and Technologies for Cooking (% of Population).” </span><span class="institution">World Bank, </span><span class='series'>Sustainable Energy for All (SE4ALL) Database from WHO Global Household Energy Database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS'>Link to the source</a></span></li>
-          <li><span class='name'>“Life expectancy at birth, total (years).” </span><span class="institution">World Bank, </span><span class='series'>Sustainable Energy for All (SE4ALL) Database from WHO Global Household Energy Database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS'>Link to the source</a></span></li>
+          <li><span class='name'>“Life expectancy at birth, total (years).” </span><span class="institution">World Bank. </span><span class='series'></span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SP.DYN.LE00.IN'>Link to the source</a></span></li>
+          <li><span class='name'>“GINI index (World Bank estimate).” </span><span class="institution"World Bank, Development Research Group, </span><span class='series'>Data are based on primary household survey data obtained from government statistical agencies and World Bank country departments. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.GINI'>Link to the source</a></span></li>
+          <li><span class='name'>“Mean years of schooling (years).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
+          <li><span class='name'>“Population, total.” </span><span class="institution">World Bank. </span><span class='series'></span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SP.POP.TOTL'>Link to the source</a></span></li>
+          <li><span class='name'>“GDP per capita, PPP (current international $).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, International Comparison Program database.</span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD'>Link to the source</a></span></li>
+          <li><span class='name'>“Deaths from indoor air pollution.” </span><span class="institution">Our World in Data, </span><span class='series'>Indoor Air Pollution. </span><span class="original">Data originally collected from: Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2016 (GBD 2016) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2017.</span><span class="retrieved">Accessed November 15, 2018. <a href='https://ourworldindata.org/grapher/household-air-pollution-deaths-by-region'>Link to the source</a></span></li>
+          <li><span class='name'>“Poverty headcount ratio at national poverty lines (% of population).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, Global Poverty Working Group. Data are compiled from official government sources or are computed by World Bank staff using national ( i.e. country–specific ) poverty lines.</span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.NAHC'>Link to the source</a></span></li>
         </ul>
       </div>
     </div>
