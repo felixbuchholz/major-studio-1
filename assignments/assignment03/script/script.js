@@ -28,16 +28,17 @@ function updateSlider() {
     indicator = indicator[0]
     console.log()
     valueSliders[indicator] = document.getElementById(`slider-${indicator}`);
-    var min = data.ranges2015.totals[indicator]['lowerLimit']-1;
+    var min = data.ranges2015.totals[indicator]['lowerLimit']-0.5;
     var max = data.ranges2015.totals[indicator]['upperLimit']+1;
     noUiSlider.create(valueSliders[indicator], {
       start: [min, max],
       connect: true,
-      tooltips: true,
+      tooltips: [wNumb({mark: '.', thousand: ',', decimals: 0}), wNumb({mark: '.', thousand: ',', decimals: 0})],
       range: {
           'min': min,
           'max': max
-      }
+      },
+      behaviour: "tap-drag"
     });
   }
   
@@ -88,20 +89,6 @@ let updateCountrySelectList = () => {
     currentArray.splice(currentArray.length-1,1)
   } 
     
-  /*
-  let differenceToLowerLimitMin = [+Infinity, "country"];
-  currentArray.forEach((country, i) => {
-    if (country[0] > filterLowerLimit) {
-      let differenceToLowerLimit = country[0] - filterLowerLimit
-       if (differenceToLowerLimit < differenceToLowerLimitMin[0]) {
-       differenceToLowerLimitMin[0] = country[0]
-       differenceToLowerLimitMin[1] = country[1]
-     }
-    }
-     
-  })
- console.log(differenceToLowerLimitMin)
- */
   const lowSelector = currentArray[0][1].toLowerCase().split(' ').join('-')
   const lowValue = reformatNumVeryShort(currentArray[0][0].toFixed(1))
   const highSelector = currentArray[currentArray.length-1][1].toLowerCase().split(' ').join('-')
@@ -110,30 +97,15 @@ let updateCountrySelectList = () => {
   d3.select('#select-list').selectAll('.li-value').style('opacity', '0')
   d3.select('#select-list').select(`#${lowSelector}`).select('.li-value').style('opacity', '1').text(`${lowValue}`)
   d3.select('#select-list').select(`#${highSelector}`).select('.li-value').style('opacity', '1').text(`${highValue}`)
+
+  regionsAndCountries = getRegionsAndCountries();
   
-  
-  
-  
-  const onlyRegions = ["Northern Africa", "Eastern Africa", "Central Africa", "Western Africa", "Southern Africa"];
-  let regionsAndCountries = [];
-  onlyRegions.forEach((region, i) => {
-    let countries = data.africaCountries.filter((x) => x[2] == region);
-    countries = countries.sort();
-    countries.map((x) => {
-      let properIdName = x[2];
-      properIdName = properIdName.toLowerCase().split(' ').join('-');
-      x[3] = properIdName;
-      
-      //console.log(x[3])
-    });
-    regionsAndCountries.push(countries);
-  });
-  //console.log(regionsAndCountries);
   let up = d3.select('#select-list').selectAll('div').data(regionsAndCountries).enter().append('div');
-  up.append('h3').text((d) => { return d[0][2]; });
+  up.append('h4').text((d) => { return d[0][2]; });
   up.append('ul').attr('class', 'mylist').attr('id', (d) => { 
     return d[0][3]; 
   });
+  
   regionsAndCountries.forEach((e, i) => {
     // console.log(`#${e[0][3]}`)
     let u = d3.select(`#${e[0][3]}`).selectAll('li').data(e);
@@ -197,6 +169,24 @@ let updateCountrySelectList = () => {
   
 }
 
+let getRegionsAndCountries = () => {
+  const onlyRegions = ["Northern Africa", "Eastern Africa", "Central Africa", "Western Africa", "Southern Africa"];
+  let regionsAndCountries = [];
+  onlyRegions.forEach((region, i) => {
+    let countries = data.africaCountries.filter((x) => x[2] == region);
+    countries = countries.sort();
+    countries.map((x) => {
+      let properIdName = x[2];
+      properIdName = properIdName.toLowerCase().split(' ').join('-');
+      x[3] = properIdName;
+      
+      //console.log(x[3])
+    });
+    regionsAndCountries.push(countries);
+  });
+  return regionsAndCountries;
+}
+
 let getOutOfRangeCountries = (d) => {
   let myBooleans = [];
   
@@ -243,6 +233,77 @@ let getOutOfRangeCountries = (d) => {
       }
 }
 
+let getNextCountryEndDecade = (direction) => {
+  const currentDisplayValue= d3.select('#cleanfuels').select('.value').html();
+  let cleanfuelsArr = [];
+  for (var country in data.ranges2015.countries.cleanfuels) {
+    const value = data.ranges2015.countries.cleanfuels[country]['decadeEndValue']
+    if (value != undefined) {
+      cleanfuelsArr.push([value, country])
+    }
+  }
+  cleanfuelsArr = cleanfuelsArr.sort((function(index){
+    return function(a, b){
+        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+    };
+  })(0));
+  if (direction == 'up') {
+      while (parseFloat(cleanfuelsArr[0]) <= parseFloat(currentDisplayValue)+0.01) {
+    cleanfuelsArr.splice(0,1)
+    } 
+    selectCountry(cleanfuelsArr[0][1])
+  } else {
+    while (parseFloat(cleanfuelsArr[cleanfuelsArr.length-1]) >= parseFloat(currentDisplayValue)-0.001) {
+      cleanfuelsArr.splice(-1,1)
+    }
+    console.log(cleanfuelsArr)
+    selectCountry(cleanfuelsArr[cleanfuelsArr.length-1][1])
+  }
+}
+
+
+let getNextCountryRate = (direction) => {
+  // console.log(direction)
+  // const 
+  const currentDisplayValue= d3.select('#button-cleanfuels').select('.value').html();
+  let cleanfuelsArr = [];
+  for (var country in data.ranges2015.countries.cleanfuels) {
+    const earlier = data.ranges2015.countries.cleanfuels[country]['decadeStartValue'];
+    const later = data.ranges2015.countries.cleanfuels[country]['decadeEndValue'];
+    if (earlier != undefined && later != undefined) {
+      const rate = ((later - earlier) / earlier) * 100;
+      cleanfuelsArr.push([rate, country])
+    }
+  }
+  cleanfuelsArr = cleanfuelsArr.sort((function(index){
+    return function(a, b){
+        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+    };
+  })(0));
+  
+  
+  
+  if (direction == 'up') {
+      while (parseFloat(cleanfuelsArr[0]) <= parseFloat(currentDisplayValue)+0.1) {
+    cleanfuelsArr.splice(0,1)
+    } 
+    console.log(cleanfuelsArr)
+    selectCountry(cleanfuelsArr[0][1])
+  } else {
+    while (parseFloat(cleanfuelsArr[cleanfuelsArr.length-1]) >= parseFloat(currentDisplayValue)-0.1) {
+      cleanfuelsArr.splice(-1,1)
+    }
+    console.log(cleanfuelsArr)
+    selectCountry(cleanfuelsArr[cleanfuelsArr.length-1][1])
+  }
+}
+
+/*
+  const earlier = parseFloat(getDecadeStart(array)[1]); 
+  const later = parseFloat(getDecadeEnd(array)[1]);
+  const change = (later - earlier) / earlier;
+  return change * 100;
+*/
 
 // FUNCTIONS
 let myData = [selectedCountry];
@@ -270,11 +331,11 @@ let selectIndicator = (myIndicatorSelection) => {
 
 let openCloseMenu = () => {
   if (menuOpen == true) {
-    d3.select('#select-menu').style('display', 'none');
     menuOpen = false;
+    d3.select('#select-menu').transition(400).style('opacity', 0).transition(300).delay(300).style('display', 'none');
   } else {
-    d3.select('#select-menu').style('display', 'block');
     menuOpen = true;
+    d3.select('#select-menu').style('display', 'block').transition(400).style('opacity', 1);
   }
 };
 
@@ -366,7 +427,7 @@ let formatValues = (nStr) => {
   if (nStr.split('.')[1] != undefined) {
     const decNums = nStr.split('.')[1].length
     if (decNums > 3) {
-      res = parseFloat(nStr).toFixed(3)
+      res = parseFloat(nStr).toFixed(2)
     } else if (decNums <= 3  && decNums > 1) {
       res = parseFloat(nStr).toFixed(2)
     } else {
@@ -426,20 +487,20 @@ let calculateChange = (array) => {
 
 let metaUpdateGraph = (selectedIndicator, comparison = 2) => {
   const labels = {
-    'cleanfuels': '% of the population with access to clean fuels',
-    'deathrate': 'death rates (per 100,000 people)',
-    'poverty': '% of the population under the national poverty line',
-    'schoolyears': 'Average schooling years',
-    'population': 'Population',
-    'gdp': 'GDP per capita (PPP, current int. $)'
+    'cleanfuels': '% of the population with access to clean fuels and cooking technologies',
+    'deathrate': 'Air pollution death rates (indoor solid fuels) per 100,000 people',
+    'poverty': 'Poverty headcount ratio at national poverty line in % the of population',
+    'schoolyears': 'Average schooling years of the population with age 25 +',
+    'population': 'Population, total',
+    'gdp': 'GDP per capita in PPP, current international $'
   }
   const headlines = {
     'cleanfuels': 'Access to clean fuels and cooking technologies',
-    'deathrate': 'Indoor air pollution death rates',
-    'poverty': 'Poverty gap, national poverty line',
+    'deathrate': 'Deaths from indoor air pollution',
+    'poverty': 'Poverty ratio',
     'schoolyears': 'Average schooling years',
     'population': 'Population',
-    'gdp': 'GDP per capita PPP'
+    'gdp': 'GDP per capita'
   }
   let i = {
     'data': getDecadeArray(data.indicators[selectedIndicator]),
@@ -452,9 +513,10 @@ let metaUpdateGraph = (selectedIndicator, comparison = 2) => {
     i['select'] = '#svg-comparison'
   }
   updateGraph(i.data, i.select, i.label)
-  d3.select(i.select).select('h3').text(`${i.headline}`);
-  d3.select('#selection-indicator').selectAll('.selected-item').classed('selected-item', false)
-  d3.select('#selection-indicator').select(`.${selectedIndicator}`).classed('selected-item', true)
+  d3.select(i.select).select('h3').transition(50).style('opacity', 0)
+ d3.select(i.select).select('h3').transition(100).delay(200).text(`${i.headline}`).transition(100).delay(0).attr('class', 'graph-headline').style('opacity', 1)
+  d3.selectAll('.selected-cont').selectAll('.selected-item').classed('selected-item', false)
+  d3.selectAll('.selected-cont').select(`.${selectedIndicator}`).classed('selected-item', true)
   d3.select('#graph-buttons').selectAll('.selected-button').classed('selected-button', false)
   d3.select('#graph-buttons').select(`.${selectedIndicator}`).classed('selected-button', true)
 }
@@ -462,14 +524,15 @@ let metaUpdateGraph = (selectedIndicator, comparison = 2) => {
 function updateGraph(data, selection, label) {
   d3.select(selection).select('svg').remove();
   
-  const margin = {top: 30, right: 60, bottom: 50, left: 50};
-  let w = 700 - margin.left - margin.right;
+  const margin = {top: 20, right: 100, bottom: 40, left: 40};
+  let w = 680 - margin.left - margin.right;
   let h = 500 - margin.top - margin.bottom;
   
   let graph = d3.select(selection)
   .append('svg')
     .attr('width', w + margin.left + margin.right)
-    .attr('height', h + margin.top + margin.bottom);
+    .attr('height', h + margin.top + margin.bottom)
+    .style('opacity', 0)
   
   let appendGroupTo = (name, appendTo) => {
       return appendTo
@@ -511,42 +574,49 @@ function updateGraph(data, selection, label) {
   let xAxisCont = appendGroupTo('xAxisCont', axes);
   let yAxisCont = appendGroupTo('yAxisCont', axes);
   // console.log(new Date(data[0][0]))
+  
+  // https://stackoverflow.com/questions/3674539/incrementing-a-date-in-javascript
+  // https://stackoverflow.com/questions/36561064/last-tick-not-being-displayed-in-d3-charts
+  var tomorrow = new Date(data[data.length-1][0]);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  
   xScale = d3.scaleTime()
-      .domain([new Date(data[0][0]), new Date(data[data.length-1][0])])
+      .domain([new Date(data[0][0]), tomorrow])
       .range([0, w])
   xAxis = d3.axisBottom(xScale)
 
   xAxisCont.append("g").attr('class', 'axis')
-      .call(xAxis.ticks(d3.timeYear.every(1)));
+      .call(xAxis.ticks(2));
   
   var max = d3.max(data.map(x => parseFloat(x[1])));
   yScale = d3.scaleLinear()
-    .domain([0, max])
+    .domain([0, max+1])
     .range([0, -h])
     .nice()
-
+  // Adjust to specific scale
   yAxis = d3.axisLeft(yScale)
   yAxisCont.append("g").attr('class', 'axis')
-      .call(yAxis);
+      .call(yAxis.ticks(8).tickFormat(d3.format(".2s")));
+      
+  yAxisCont.selectAll('.tick')
+    .filter(function(d, i,list) {
+      return i === list.length - 1;
+    })
+    .select('text')
+    .style('font-weight','bold')
+    .style('font-size','12px');
 
   // https://bl.ocks.org/d3noob/23e42c8f67210ac6c678db2cd07a747e
   xAxisCont.append("text").attr('class', 'label')
       .attr("transform",
-            "translate(" + (w/2) + " ," +
-                           (margin.bottom/1.25) + ")")
+            "translate(" + (w + 20) + " ," +
+                           (margin.bottom - 50) + ")")
       .style("text-anchor", "middle")
       .text("Year");
 
   yAxisCont.append("text").attr('class', 'label')
-      .attr("y", `${-margin.left+10}`)
-      .attr("x", `${h/2}`)
-      .attr('transform', (d,i) => {
-        let a = -90;
-        let x = 0;
-        let y = 0
-        return `rotate(${a}, ${x}, ${y})`;
-      })
-      .style("text-anchor", "middle")
+      .attr("y", `${-h - 10}`)
+      .attr("x", `${0}`)
       .text(`${label}`);
   }
   createAxes()
@@ -604,6 +674,9 @@ let svg = () => {
       .attr("d", valueline(data))
       .attr('stroke', 'rgba(0,0,0,0)')
       .attr('stroke-width', 9)
+      
+      // d3.select(selection).select('svg')
+      graph.transition(500).delay(500).style('opacity', 1.0);
 }
 svg(data);
 }
@@ -638,3 +711,12 @@ let reformatNumVeryShort = (n) => {
   }
   return n
 }
+
+d3.selection.prototype.first = function() {
+  return d3.select(this[0][0]);
+};
+
+d3.selection.prototype.last = function() {
+  var last = this.size() - 1;
+  return d3.select(this[0][last]);
+};

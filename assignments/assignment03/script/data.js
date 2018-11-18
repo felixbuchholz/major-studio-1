@@ -100,7 +100,7 @@ Promise.all([
   
   
   // Functions
-  selectedCountry='Namibia'
+  selectedCountry='Nigeria'
   selectCountry(selectedCountry);
   updateSlider();
  });

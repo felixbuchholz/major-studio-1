@@ -208,7 +208,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 }
 .noUi-value-sub {
   color: #ccc;
-  font-size: 10px;
+  font-size: 14px;
 }
 /* Markings;
  *
@@ -284,19 +284,21 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .noUi-tooltip {
   display: block;
   position: absolute;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #888;
   border-radius: 3px;
   background: #fff;
   color: #000;
-  padding: 5px;
+  padding: 8px;
   text-align: center;
   white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
 }
 .noUi-horizontal .noUi-tooltip {
   -webkit-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
   left: 50%;
-  bottom: -750%;
+  bottom: -900%;
 }
 .noUi-vertical .noUi-tooltip {
   -webkit-transform: translate(0, -50%);

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Climbing the Energy Ladder – A Way out of Poverty?</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css'>
     <link rel="stylesheet" type="text/css" href="lib/noUiSlider/nouislider.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
@@ -17,31 +18,43 @@
     
     <div id="dashboard-container">
       <div id="select-menu">
-        <div class="row" id='selection-menu'>
-          <div class="col-md-11 vertical-outer">
-            <!-- <div class="info-content" id='input'><input id='awesomeplete'></input></div> -->
+        <div class="row-select" id='selection-menu'>
+          <div class="col-md-12 vertical-outer country-selector pointer" onclick='openCloseMenu()' id='menu-row'>
+           <div class='move-left'>
+            <i class="large caret square up outline icon"></i>Filter and select countries
+            </div>
           </div>
-          <div class="col-sm-1" id='selection-menu-button'>
-            <span class="oi oi-menu pointer" onclick='openCloseMenu()'><img src="lib/open-iconic/svg/menu.svg" alt="menu"></span>
-          </div>
+          
           <div class="row menu" id='filters-value2015'>
-            
-            <span class='row label'><label>filter by value of 2015, or most recent</label></span>
-          </div> <!-- filters-value2015 -->
+             <!--
+             <span class='row label'><label>filter by value of 2015, or most recent</label></span> 
+             -->
+          </div><!-- filters-value2015 -->
+          
           <div class="row menu">
             <div id='select-list'>
              
             </div>
           </div> <!-- select-list -->
+          <div class="row menu">
+            <div class='footnotes'>
+               <span class="sup">1 – 6</span>: No data available for this indicator. Numbered left to right. 1: Access to clean fuels and coocking technologies, … 6: GDP per capita
+            </div>
+          </div> <!-- footnotes -->
+          
         </div> <!-- selection-menu -->
         
         
       </div> <!-- select-menu -->
       
-      <div class="row" id='selection'>
+      <div class="row country-selector pointer" id='selection' onclick='openCloseMenu()'>
         
         <div class="col-sm-4 vertical-outer" id='name'>
-          <div><h2><span class='value'></span></h2></div>
+          <div>
+            <i class="large caret square down outline icon"></i>
+            <h2><span class='value'></span></h2>
+          </div>
+          
         </div>
         
         <div class="col-sm-4 vertical-outer region" id='region'>
@@ -59,19 +72,22 @@
         </div>
         
         <div class="col-sm-1" id='selection-menu-button'>
-          <span class="oi oi-menu pointer" onclick='openCloseMenu()'><img src="lib/open-iconic/svg/menu.svg" alt="menu"></span>
+          
         </div>
         
       </div> <!-- selection -->
       
-      <div class="row" id='info'>
+      <div class="row no-padding" id='info'>
         
         <div class="col-md-2 vertical-outer cleanfuels" id='cleanfuels'>
+          <div class="pos-right country-selector pointer" onclick="getNextCountryEndDecade('up')"><i class="chevron up icon"></i></div>
           <div class='one-line'>
             <label class="info-label">Clean fuels access<span class="year"></span>:</label>
             <span class="value"></span>
             <label class="info-label"> %</label>
           </div>
+          <div class="pos-right country-selector pointer" onclick="getNextCountryEndDecade('down')"><i class="chevron down icon"></i></div>
+          
         </div>
         
         <div class="col-md-2 vertical-outer lifeexp" id='lifeexp'>
@@ -115,25 +131,38 @@
       
       <div class="col-lg-2">
         <div class="both-outer no-button cleanfuels" id='button-cleanfuels'>
-          <div class="graph-label"><label class="">Change in access to clean fuels<span class="year"></span>:</div>
-          <div class="graph-content"><span class="value"></span>
-            <label class=""> %</label></div>
+          <div class="graph-label"><label class="">Access to clean fuels, rate<span class="year"></span>:</div>
+          <div class="graph-content">
+            <div class='rate-button' onclick="getNextCountryRate('up')"><i class="chevron up icon"></i></div>
+            <span class="value"></span>
+            <label class=""> %</label>
+            <div class='rate-button' onclick="getNextCountryRate('down')"><i class="chevron down icon"></i></div>
+            </div>
+        </div>
+        <div class="selected-cont">
+          <div class='cleanfuels selected-access'></div>
         </div>
       </div>
 
       <div class="col-lg-2">
         <div class="button both-outer deathrate" id='button-deathrate' onclick="selectIndicator('deathrate')">
-          <div class="graph-label"><label class="">Change in death rate from indoor air pollution<span class="year"></span>:</div>
+          <div class="graph-label"><label class="">Deaths from indoor air pollution, rate<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='deathrate'></div>
         </div>
      </div>
       
       <div class="col-lg-2" >
         <div class="button both-outer poverty selected-button" id='button-poverty' onclick="selectIndicator('poverty')">
-          <div class="graph-label"><label class="">Change in poverty ratio<span class="year"></span>:</div>
+          <div class="graph-label"><label class="">Poverty ratio, rate<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='poverty selected-item'></div>
         </div>
       </div>
       
@@ -141,48 +170,45 @@
       
       <div class="col-lg-2">
         <div class="button both-outer schoolyears" id='button-schoolyears' onclick="selectIndicator('schoolyears')">
-          <div class="graph-label"><label class="">Change in average schooling years<span class="year"></span>:</div>
+          <div class="graph-label"><label class="">Avg. schooling years, rate<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='schoolyears'></div>
         </div>
       </div>
       
       <div class="col-lg-2">
         <div class="button both-outer population" id='button-population' onclick="selectIndicator('population')">
-          <div class="graph-label"><label class="">Population change<span class="year"></span>:</div>
+          <div class="graph-label"><label class="">Population, rate<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='population' class=''></div>
         </div>
       </div>
       
       <div class="col-lg-2">
         <div class="button both-outer gdp" id='button-gdp' onclick="selectIndicator('gdp')">
-          <div class="graph-label"><label class="">GDP change<span class="year"></span>:</div>
+          <div class="graph-label"><label class="">GDP per capita, rate<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
+      </div>
+      <div class="selected-cont">
+        <div class='gdp' class=''></div>
       </div>
     </div>
   </div> <!-- buttons -->
 
   <div class="row" id='selection-indicator'>
-    <div class="col-sm-2 selected-cont">
-      <div class='cleanfuels selected-access'></div>
-    </div>
-    <div class="col-sm-2 selected-cont">
-      <div class='deathrate'></div>
-    </div>
-    <div class="col-sm-2 selected-cont">
-      <div class='poverty selected-item'></div>
-    </div>
-    <div class="col-sm-2 selected-cont">
-      <div class='schoolyears'></div>
-    </div>
-    <div class="col-sm-2 selected-cont">
-      <div class='population' class=''></div>
-    </div>
-    <div class="col-sm-2 selected-cont">
-      <div class='gdp' class=''></div>
-    </div>
+    
+    
+    
+    
+    
+
   </div> <!-- selection indicator -->
   
   <div class="row" id='comparison'>
@@ -194,6 +220,12 @@
     </div>
   </div> <!-- comparison -->
   
+  <div class="row footnotes">
+    <div class="col-xl-12">
+      *: All values of 2015, if not indicated otherwise. <br>
+      **: All changes between 2005 and 2015, if not indicated otherwise.
+    </div>
+  </div> <!-- footnotes -->
 </div> <!-- dashboard-container -->
 
  <!-- <div class='mockup'>
@@ -225,6 +257,7 @@
 
 
 <script src="lib/noUiSlider/nouislider.js"></script>
+<script src="lib/wNumb.js"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
