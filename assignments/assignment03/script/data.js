@@ -21,6 +21,7 @@ Promise.all([
   data = {
     'africaGeo': africaGeo, 
     'worldGeo' : worldGeo,
+    'worldDeath' : deathrate,
     'africaCountries': africaCountries,
     'indicators': {
       'hdi': hdi, 
@@ -35,8 +36,17 @@ Promise.all([
     }
   };
   
-  //console.log(data.worldGeo)
-  buildMap();
+  
+  /*
+  // TODO: make deathrate smaller
+  // https://stackoverflow.com/questions/5072136/javascript-filter-for-objects/40562289#40562289
+  object = {firstname: 'abd', lastname:'tm', age:16, school:'insat'};
+  
+  keys = ['firstname', 'age'];
+  then :
+  
+  keys.reduce((result, key) => ({ ...result, [key]: object[key] }), {});
+  */
   
   const geoAfricaProperties = data.africaGeo.features.map(f => f.properties);
   data.africaCountries.forEach((e, i) => {
@@ -161,6 +171,8 @@ data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
   selectedCountry='Nigeria'
   selectCountry(selectedCountry);
   updateSlider();
+  //console.log(data.worldGeo)
+  buildMap();
  });
  
  let translateOWIData = (data) => {

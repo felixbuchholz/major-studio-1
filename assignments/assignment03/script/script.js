@@ -906,4 +906,4 @@ function initate() {
 }
 
 window.onload = initate;
-swapStyleSheet("css/sdg.css");
+//swapStyleSheet("css/sdg.css");

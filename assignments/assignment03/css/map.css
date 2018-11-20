@@ -1,0 +1,38 @@
+#death-map svg{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 1480px;
+  height: 700px;
+}
+
+#death-legend svg{
+  margin: auto;
+  margin-top: 0px;
+  margin-bottom: 60px;
+  width: 700px;
+  height: 50px;
+}
+
+#death-legend p {
+  width: 700;
+  margin: auto;
+}
+
+#death-legend .tick {
+  stroke-width: 2;
+}
+
+#death-legend .tick text {
+  y: "4";
+}
+
+.horizontal-align {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-align div {
+}
+
+.x-axis line, .x-axis path { stroke: #fff; }

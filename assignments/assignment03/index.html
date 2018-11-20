@@ -8,10 +8,11 @@
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css'>
     <link rel="stylesheet" type="text/css" href="lib/noUiSlider/nouislider.css">
     <link id="pagestyle" rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
   </head>
   <body>
     <div id='landing'>
-      <div class="scale-svg"><img id='ladder-svg' src="assets/ladder_clouds_maxim_basinski_fff.svg" alt="Energy Ladder"></div>
+      <div class="scale-svg"><img id='ladder-svg' src="assets/ladder_clouds_sun_maxim_basinski_fff.svg" alt="Energy Ladder"></div>
       
       <h1 id='landing-head'>Climbing the Energy Ladder – A Way out of Poverty?</h1>
     </div>
@@ -40,16 +41,19 @@
       </div>
     </div>
     <div class="row no-border editorial">
-      <h2>Number of Deaths from Household Air Pollution</h2>
+      <h2>Death rates from Household Air Pollution</h2>
     </div>
-      <div class='row no-border' id='death-map'>
-    </div>
-    
-    <div class='editorial row no-border' id='dashboard-intro'>
-            <h2>Access to Clean Fuels Dashboard:</h2>
-    </div>
+      <div class='row no-border' id='death-map'></div>
+      <div class='row no-border ' id='death-legend'>
+        <div class="horizontal-align">
+          <div>Air pollution death rates (indoor, solid fuels) per 100,00 people in 2015</div>
+        </div>
+      </div>
     
     <div id="dashboard-container">
+      <div id="dashboard-intro">
+        <h2>Access to Clean Fuels Dashboard:</h2>
+      </div>
       <div id="select-menu">
         <div class="row-select" id='selection-menu'>
           <div class="col-md-12 vertical-outer country-selector pointer" onclick='openCloseMenu()' id='menu-row'>
@@ -313,12 +317,13 @@
           <li><span class='name'>“Mean years of schooling (years).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
           <li><span class='name'>“Population, total.” </span><span class="institution">World Bank. </span><span class='series'></span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SP.POP.TOTL'>Link to the source</a></span></li>
           <li><span class='name'>“GDP per capita, PPP (current international $).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, International Comparison Program database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD'>Link to the source</a></span></li>
-          <li><span class='name'>“Deaths from indoor air pollution.” </span><span class="institution">Our World in Data, </span><span class='series'>Indoor Air Pollution. </span><span class="original">Data originally collected from: Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2016 (GBD 2016) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2017. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://ourworldindata.org/grapher/household-air-pollution-deaths-by-region'>Link to the source</a></span></li>
+          <li><span class='name'>“Deaths from indoor air pollution.” </span><span class="institution">Our World in Data, </span><span class='series'>Indoor Air Pollution. </span><span class="original">Data originally collected from: Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2016 (GBD 2016) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2017. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://ourworldindata.org/grapher/death-rate-by-source-from-indoor-air-pollution'>Link to the source</a></span></li>
           <li><span class='name'>“Poverty headcount ratio at national poverty lines (% of population).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, Global Poverty Working Group. Data are compiled from official government sources or are computed by World Bank staff using national ( i.e. country–specific ) poverty lines. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.NAHC'>Link to the source</a></span></li>
         </ul>
         
         <h3>Articles, Placeholder Text</h3>
         <ul>
+          <li> “Indoor Air Pollution.” Max Roser and Hannah Ritchie. Published online at OurWorldInData.org. Accessed November 20. <a href='https://ourworldindata.org/indoor-air-pollution'>Link to the source</a></li>
           <li>“Obama Ipsum.” William Donahoe. Accessed November 20, 2018. <a href=http://obamaipsum.com/>Link to source</a></li>
         </ul>
         
@@ -341,7 +346,9 @@
 <!-- development version, includes helpful console warnings -->
 <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
 <script src="script/data.js"></script>
-<script src="script/map.js"></script>
 <script src="script/script.js"></script>
+
+<script src="lib/colorbrewer.js"></script>
+<script src="script/map.js"></script>
   </body>
 </html>

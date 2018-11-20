@@ -21,7 +21,7 @@ a:hover {
   width: 100vw;
   height: 100vh;
   max-width:100%;
-  background: rgb(246, 199, 99);
+  background: rgb(252, 195, 11);
 }
 
 .scale-svg {
@@ -40,7 +40,7 @@ h1 {
   margin-top: 75px; 
   font-weight: bold;
   font-size: 28px;
-  color: rgb(246, 199, 99);
+  color: rgb(252, 195, 11);
 }
 
 h1#landing-head {
@@ -78,12 +78,7 @@ h1#landing-head {
   max-width: 1200px;
 }
 
-#death-map svg{
-  margin-top: 0px;
-  margin-bottom: 120px;
-  width: 1480px;
-  height: 700px;
-}
+
 .juxtapose-data {
   display: flex;
   align-items: center;
@@ -332,7 +327,18 @@ i.in-value {
   align-self: flex-end;
 }
 
+#dashboard-intro {
+  width: 1480px;
+  margin:auto;
+}
 
+#dashboard-intro h2{
+
+  margin-top: 75px; 
+  margin-bottom: 45px;
+  font-weight: bold;
+  font-size: 28px;
+}
 
 #dashboard-container {
   position: relative;
@@ -451,7 +457,7 @@ i.in-value {
   height: 15px;
   width: 15px;
   border-style: solid;
-  border-color: rgb(254, 178, 76);
+  border-color: rgb(252, 195, 11);
   background-color: white;
   border-width: 0px 3px 3px 0px;
   transform: rotate(-135deg);
@@ -487,7 +493,7 @@ h3.graph-headline {
 .no-button {
   outline: 1px solid rgb(254, 178, 76);
   border: 1px solid rgb(254, 178, 76); 
-  background: rgb(246, 199, 99);
+  background: rgb(252, 195, 11);
   color: white;
 }
 

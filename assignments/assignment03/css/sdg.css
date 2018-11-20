@@ -185,12 +185,6 @@ h1#landing-head {
   max-width: 1200px;
 }
 
-#death-map svg{
-  margin-top: 0px;
-  margin-bottom: 120px;
-  width: 1480px;
-  height: 700px;
-}
 .juxtapose-data {
   display: flex;
   align-items: center;
@@ -213,7 +207,7 @@ h1#landing-head {
   padding-left: 0px;
 }
 .country-selector:hover {
-  background: #444;
+  background: rgb(252, 195, 11);
   color: #fff;
   /*outline: 12px solid #444;*/
 }
@@ -225,7 +219,7 @@ h1#landing-head {
 #menu-row {
   padding: 11px 15px;
   margin-bottom: -11px;
-  border-bottom: 1px solid black;
+  /*border-bottom: 1px solid black;*/
 }
 
 i.large.icon {
@@ -242,7 +236,7 @@ i.large.icon {
 .pos-right {
   width: 100%;
   text-align: center;
-  color: #444;
+  color: rgb(252, 195, 11);
   border-radius: 3px;
 }
 
@@ -295,7 +289,7 @@ label {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  top: -14px;
+  top: 78px;
   left: 0;
   right: 0;
   /*background-color: #fff;*/
@@ -350,8 +344,8 @@ h4 {
   margin-bottom: 10px;
   margin-right: 7.5px;
   margin-left: 7.5px;
-  /*background: #eee;*/
-  border: 1px solid #111;
+  background: #eee;
+  /*border: 1px solid #111;*/
   border-radius: 3px; 
   color: #111;
   font-size: 13px;
@@ -439,7 +433,18 @@ i.in-value {
   align-self: flex-end;
 }
 
+#dashboard-intro {
+  width: 1480px;
+  margin:auto;
+}
 
+#dashboard-intro h2{
+  margin-top: 75px; 
+  margin-bottom: 45px;
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
+}
 
 #dashboard-container {
   position: relative;
@@ -463,7 +468,7 @@ i.in-value {
 }
 
 .row-select {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   max-width: 1480px;
   margin:auto;
   margin-top: 14px;
