@@ -1,20 +1,31 @@
 # Until tomorrow
 
-1. Values only jump within those values that are still active !!
-2. Deactivate button up / down when end of range
-2. Yellow Color: SDG
+# In general
+2. SDG bonus
+1. Writing
+3. Map
 
+
+# bonus: 
+
+
+1. Deactivate button up / down when end of range
+
+3. Show also the high and low, when hovering over a country
+
+# style 
 
 3. CSS clean fuels acces is now a button!
 3. CSS toggle switch: SDG focus, plain
 
-4. The whole thing around it
 
-# In general
 
-1. Sorting ?
-- 2. Use ISO-Code on backend instead of countryname // not for now :)
-Probably not 3. Enable the map view
-- Dashboard of dashboards
+# Dashboard of dashboards:
+
+- Mobile-view
+- Sorting ?
+- Use ISO-Code on backend instead of countryname // not for now :)
+- Enable the map view
+- On jumping to next country: compare two countries
 
 # Datawrangling

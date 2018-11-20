@@ -9,19 +9,31 @@ let yearRangeHint = false;
 var valueSliders = {};
 const myInfoIndicators = [
   ['cleanfuels', `<span class='em'>Access to clean fuels</span> and cooking technology in % of the population`],
-  ['lifeexp', `<span class='em'>Average life expectancy</span> at birth in years`], ['poverty', `<span class='em'>Poverty headcount ratio</span> at national poverty line in % the of population`], ['schoolyears', `<span class='em'>Average schooling years</span> of the population with age 25 +`], ['population', `<span class='em'>Population</span>`], ['gdp', `<span class='em'>GDP per capita</span> in PPP current int. $`]];
+  ['lifeexp', `<span class='em'>Average life expectancy</span> at birth in years`], ['poverty', `<span class='em'>Poverty headcount ratio</span> at national poverty line in % the of population`], ['schoolyears', `<span class='em'>Average schooling years</span> of the population with age 25&nbsp;+`], ['population', `<span class='em'>Population</span>`], ['gdp', `<span class='em'>GDP per capita,</span> PPP current int. $`]];
 
 function updateSlider() {
   
   // console.log('test')
   d3.select('#filters-value2015').selectAll('div').data(myInfoIndicators).enter().append('div')
-    .attr('class', 'col-lg-2 filter-range filter-selected')
+    .attr('class', 'col-lg-2 no-padding')
+    .append('div')
+    .attr('class', 'filter-range')
+    .attr('id', (d) => { return `filter-${d[0]}`; })
       .html((d) => { 
         // console.log(d)
-        return `<label class='filter-range-label'>${d[1]}</label><br/>
+        return `<label class='filter-range-label'>${d[1]}</label>
                   <div class='slider' id='slider-${d[0]}'></div>` 
       })
-  .on('mouseenter', (d) => {showClosestValueToRange(d[0])})
+  .on('mouseover', function(d, i) {
+    
+    // console.log(this.id)
+    d3.selectAll('.filter-range').classed('last-hover', false);
+    d3.select(`#${this.id}`).classed('last-hover', true);
+    showClosestValueToRange(d[0])
+    d3.selectAll('.noUi-connect').classed('last-hover-bar', false);
+    d3.select(`#${this.id}`).select('.noUi-connect').classed('last-hover-bar', true);
+    
+  })
   
   
   for (var indicator of myInfoIndicators) {
@@ -61,19 +73,41 @@ let showClosestValueToRange = (d) => {
 }
 
 let updateCountrySelectList = () => {
+  
   const indicator = currentIndicatorSelection;
+  
+    d3.select(`#filter-${indicator}`).classed("in-use", () => {
+    let inUse = true
+    
+    const currentSlider = valueSliders[indicator];
+    const filterLowerLimit = currentSlider.noUiSlider.get()[0];
+    const filterMin = currentSlider.noUiSlider.options.range.min;
+    const filterUpperLimit = currentSlider.noUiSlider.get()[1];
+    const filterMax = currentSlider.noUiSlider.options.range.max;
+    // console.log(indicator, filterMin, filterLowerLimit, filterMax, filterUpperLimit)
+    const closeToMin = filterLowerLimit - filterMin < 1;
+    const closeToMax = filterUpperLimit/filterMax > 0.985;
+    if (closeToMin && closeToMax) {
+      inUse = false
+    }
+    return inUse
+    });
   
   const currentSlider = valueSliders[indicator];
   const filterLowerLimit = currentSlider.noUiSlider.get()[0];
   const filterUpperLimit = currentSlider.noUiSlider.get()[1];
   //console.log(filterLowerLimit, filterUpperLimit)
-  let currentArray = []
+  
+  let currentArray = [];
+  let inRangeArr = getInRangeCountriesArr();
   for (var country in data.ranges2015.countries[indicator]) {
-    const value = data.ranges2015.countries[indicator][country]['decadeEndValue']
-    if (value != undefined) {
-      currentArray.push([value, country])
+    if (inRangeArr.includes(country)) {
+      const value = data.ranges2015.countries[indicator][country]['decadeEndValue'];
+      if (value != undefined) {
+        currentArray.push([value, country]);
+        
+      }
     }
-   
   }
   
   currentArray = currentArray.sort((function(index){
@@ -83,23 +117,29 @@ let updateCountrySelectList = () => {
   })(0));
   
   while (parseFloat(currentArray[0]) < filterLowerLimit) {
-    currentArray.splice(0,1)
+    currentArray.splice(0,1);
   } 
   while (parseFloat(currentArray[currentArray.length-1]) > filterUpperLimit) {
-    currentArray.splice(currentArray.length-1,1)
+    currentArray.splice(currentArray.length-1,1);
   } 
+  // console.log(currentArray);
+  if (currentArray.length > 0) {
+    const lowSelector = currentArray[0][1].toLowerCase().split(' ').join('-');
+    const lowValue = reformatNumVeryShort(currentArray[0][0].toFixed(1));
+    const highSelector = currentArray[currentArray.length-1][1].toLowerCase().split(' ').join('-');
+    const highValue = reformatNumVeryShort(currentArray[currentArray.length-1][0].toFixed(1));
     
-  const lowSelector = currentArray[0][1].toLowerCase().split(' ').join('-')
-  const lowValue = reformatNumVeryShort(currentArray[0][0].toFixed(1))
-  const highSelector = currentArray[currentArray.length-1][1].toLowerCase().split(' ').join('-')
-  const highValue = reformatNumVeryShort(currentArray[currentArray.length-1][0].toFixed(1))
+    d3.select('#select-list').selectAll('.li-value').style('opacity', '0');
+    d3.select('#select-list').select(`#${lowSelector}`).select('.li-value').style('opacity', '1').html(`${lowValue} <i class="arrow down icon in-value"></i>`);
+    d3.select('#select-list').select(`#${highSelector}`).select('.li-value').style('opacity', '1').html(`${highValue} <i class="arrow up icon in-value"></i>`);
+  } else {
+    d3.select('#select-list').selectAll('.li-value').style('opacity', '0');
+  }
+  //
   
-  d3.select('#select-list').selectAll('.li-value').style('opacity', '0')
-  d3.select('#select-list').select(`#${lowSelector}`).select('.li-value').style('opacity', '1').text(`${lowValue}`)
-  d3.select('#select-list').select(`#${highSelector}`).select('.li-value').style('opacity', '1').text(`${highValue}`)
 
   regionsAndCountries = getRegionsAndCountries();
-  
+  // console.log(regionsAndCountries)
   let up = d3.select('#select-list').selectAll('div').data(regionsAndCountries).enter().append('div');
   up.append('h4').text((d) => { return d[0][2]; });
   up.append('ul').attr('class', 'mylist').attr('id', (d) => { 
@@ -121,15 +161,30 @@ let updateCountrySelectList = () => {
         return d[0].toLowerCase().split(' ').join('-')
       })
       .on('click', (d) => {
-        console.log(d[0]);
+        //console.log(d[0]);
         selectCountry(d[0]);
       })
-      .attr('class', 'pointer');
+      .attr('class', 'pointer')
+      .on('mouseenter', function(d, i) {
+        d3.selectAll('.li-value').style('opacity', 0)
+        const value = reformatNumVeryShort(data.ranges2015.countries[currentIndicatorSelection][d[0]]['decadeEndValue'])
+        if (value != undefined) {
+          d3.select(`#${this.id}`).select('.li-value').text(value).style('opacity', 1.0)
+        }
+        
+        
+        
+      });
       
       li.append('span')
         .attr('class', 'country')
         .text((d) => {
-          const country = d[0];
+          let country = d[0];
+          if (country == 'Democratic Republic of the Congo') {
+            country = 'Dem. Rep. Congo'
+          } else if (country == 'Central African Republic') {
+            country = 'Central African Rep.'
+          }
           return country;
         })
 
@@ -187,7 +242,54 @@ let getRegionsAndCountries = () => {
   return regionsAndCountries;
 }
 
+let getInRangeCountriesArr = () => {
+  let objectInRangePerIndicator = {};
+  let africaCountries = data.africaCountries;
+  africaCountries = africaCountries.map((x) => { return x[0]; })
+  let inRangeCountriesArr = [];
+  
+  myInfoIndicators.forEach((indicator, i) => {
+    indicator = indicator[0]
+    objectInRangePerIndicator[indicator] = [];
+    
+    africaCountries.forEach((country, i) => {
+      // console.log(country)
+      const currentSlider = valueSliders[indicator];
+      const filterLowerLimit = currentSlider.noUiSlider.get()[0];
+      const filterUpperLimit = currentSlider.noUiSlider.get()[1];
+      
+      let decadeEndValue = data.ranges2015.countries[indicator][country]['decadeEndValue'];
+      
+      if (decadeEndValue == undefined) {
+        decadeEndValue = filterUpperLimit-1;
+      }
+      if (decadeEndValue > filterLowerLimit && decadeEndValue < filterUpperLimit) {
+        objectInRangePerIndicator[indicator].push(country)
+      }
+      
+    })
+  })
+      
+  let myBooleans = [];
+  africaCountries.forEach((country, i) => {
+   if (objectInRangePerIndicator.cleanfuels.includes(country) && objectInRangePerIndicator.lifeexp.includes(country) && objectInRangePerIndicator.poverty.includes(country) && objectInRangePerIndicator.schoolyears.includes(country) && objectInRangePerIndicator.population.includes(country) && objectInRangePerIndicator.gdp.includes(country)) {
+     inRangeCountriesArr.push(country)
+   }
+  })
+
+  return inRangeCountriesArr;
+}
+
 let getOutOfRangeCountries = (d) => {
+   const country = d[0];  
+   let inRangeCountriesArr = getInRangeCountriesArr();
+   if (inRangeCountriesArr.includes(country)) {
+     return false;
+   } else {
+     return true;
+   }
+   
+  /*
   let myBooleans = [];
   
       myInfoIndicators.forEach((indicator, i) => {
@@ -231,22 +333,17 @@ let getOutOfRangeCountries = (d) => {
       } else {
         return false;
       }
+      */
 }
 
 let getNextCountryEndDecade = (direction) => {
-  const currentDisplayValue= d3.select('#cleanfuels').select('.value').html();
-  let cleanfuelsArr = [];
-  for (var country in data.ranges2015.countries.cleanfuels) {
-    const value = data.ranges2015.countries.cleanfuels[country]['decadeEndValue']
-    if (value != undefined) {
-      cleanfuelsArr.push([value, country])
-    }
+  let currentDisplayValue = d3.select('#cleanfuels').select('.value').html();
+  if (currentDisplayValue == '–') {
+    currentDisplayValue = 0;
   }
-  cleanfuelsArr = cleanfuelsArr.sort((function(index){
-    return function(a, b){
-        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
-    };
-  })(0));
+  
+  let cleanfuelsArr = data['sorting']['decadeEnd'].slice(0);
+  // console.log(cleanfuelsArr)
   if (direction == 'up') {
       while (parseFloat(cleanfuelsArr[0]) <= parseFloat(currentDisplayValue)+0.01) {
     cleanfuelsArr.splice(0,1)
@@ -264,38 +361,27 @@ let getNextCountryEndDecade = (direction) => {
 
 let getNextCountryRate = (direction) => {
   // console.log(direction)
-  // const 
-  const currentDisplayValue= d3.select('#button-cleanfuels').select('.value').html();
-  let cleanfuelsArr = [];
-  for (var country in data.ranges2015.countries.cleanfuels) {
-    const earlier = data.ranges2015.countries.cleanfuels[country]['decadeStartValue'];
-    const later = data.ranges2015.countries.cleanfuels[country]['decadeEndValue'];
-    if (earlier != undefined && later != undefined) {
-      const rate = ((later - earlier) / earlier) * 100;
-      cleanfuelsArr.push([rate, country])
-    }
+  let currentDisplayValue= d3.select('#button-cleanfuels').select('.value').html();
+  
+  if (currentDisplayValue == '–') {
+    currentDisplayValue = 0;
   }
-  cleanfuelsArr = cleanfuelsArr.sort((function(index){
-    return function(a, b){
-        return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
-    };
-  })(0));
   
-  
-  
+  let cleanfuelsArr = data['sorting']['rate'].slice(0);
+  // console.log(cleanfuelsArr)
   if (direction == 'up') {
-      while (parseFloat(cleanfuelsArr[0]) <= parseFloat(currentDisplayValue)+0.1) {
+      while (parseFloat(cleanfuelsArr[0]) <= parseFloat(currentDisplayValue)+0.01) {
     cleanfuelsArr.splice(0,1)
     } 
-    console.log(cleanfuelsArr)
     selectCountry(cleanfuelsArr[0][1])
   } else {
-    while (parseFloat(cleanfuelsArr[cleanfuelsArr.length-1]) >= parseFloat(currentDisplayValue)-0.1) {
+    while (parseFloat(cleanfuelsArr[cleanfuelsArr.length-1]) >= parseFloat(currentDisplayValue)-0.01) {
       cleanfuelsArr.splice(-1,1)
     }
     console.log(cleanfuelsArr)
     selectCountry(cleanfuelsArr[cleanfuelsArr.length-1][1])
   }
+  
 }
 
 /*
@@ -371,7 +457,10 @@ let updateMenuRow = (myData) => {
     });
   
   // region
-  d3.select('#region').selectAll('.value').data(data.africaCountries).html("").text((d) => { return d[2]; });
+  let findRegion = data.africaCountries.filter((x) => { return x.includes(selectedCountry)})
+  // console.log(findRegion)
+  d3.select('#region').selectAll('.value').data(findRegion).style('opacity', 0).text((d) => { 
+    return d[2]; }).transition(300).delay(300).style('opacity', 1);
 }
 
 let updateInfoRow = () => {
@@ -383,44 +472,70 @@ let updateInfoRow = () => {
 let updateInfo = (indicator) => {
   const mydata = getIndicatorPair(indicator);
   // TODO: .enter()
-  const myselect = d3.selectAll(`#${indicator}`)
-  const year = myselect.selectAll('.year').data([mydata])
-  const value = myselect.selectAll('.value').data([mydata])
-  
+  const myselect = d3.selectAll(`#${indicator}`);
+  const year = myselect.selectAll('.year').data([mydata]);
+  const value = myselect.selectAll('.value').data([mydata]);
+    value.style('opacity', 0);
   year
     .text((d) => { 
+      //console.log(d)
       if (yearHint == false && d[0]=='2015') {
         
-        //console.log(d)
         yearHint = true;
-        return d[0]=='2015' ? '*' : `(${d[0]})` 
+        return d[0]=='2015' ? '*' : `(${d[0]})` ;
       } else {
-        return d[0]=='2015' ? '' : `(${d[0]})`
+        if (d[0]=='2015') {
+          return '';
+        } else if(d[0]==undefined) {
+          return '';
+        } else {
+          return `(${d[0]})`;
+        }
       }
       
-      
+      /*
+      if (d=='2005 – 2015') {
+          return ''
+        } else if(d=='- – -') {
+          return ''
+        } else {
+          return `(${d})`
+        }
+        */
     })
     .classed('sup', (d) => { return d[0]=='2015' ? true: false})
-    .classed('sub', (d) => { return d[0]=='2015' ? false: true})
+    .classed('sub', (d) => { return d[0]=='2015' ? false: true});
       
-  value.text((d) => { return d[1] })
+  value.text((d) => { return d[1] });
+  value.transition(300).delay(300).style('opacity', 1);
 }
 
 let getIndicatorPair = (indicator) => {
   // c(indicator);
   let mydata = [];
+  /*
   // hdi
   if (indicator == 'hdi') {
     mydata = [2017, arrayPropertyHasValues(data.indicators.hdi, 'Country Name', [selectedCountry]).rank2017]
   } else { // ––– end hdi
     mydata = getDecadeEnd(data.indicators[indicator])
   }
-  // console.log(mydata)
-  mydata[1] = formatValues(mydata[1])
+  console.log(mydata)
+  mydata[1] = formatValues(data.ranges2015.countries[indicator][selectedCountry]['decadeEndValue'])
+  */
+  
+  mydata.push(data.ranges2015.countries[indicator][selectedCountry]['decadeEndYear']);
+  mydata.push(formatValues(data.ranges2015.countries[indicator][selectedCountry]['decadeEndValue']));
+  
   return mydata;
+  
 }
 
 let formatValues = (nStr) => {
+  if (nStr == undefined) {
+    return '–'
+  }
+  nStr = nStr.toString();
   if (nStr != undefined) {
     // console.log(nStr.split('.')[1] != undefined);
   let res;
@@ -438,27 +553,45 @@ let formatValues = (nStr) => {
   }
   
   if (res > 1000) {
-    res = addCommas(res.toString())
+    res = addCommas(res.toString());
   }
   // console.log(res)
   return res;
   } else
   return '–';
   
-}
+};
 
 let updateButtonRow = () => {
-  const myButtonIndicators = ['cleanfuels', 'deathrate', 'poverty', 'schoolyears', 'population', 'gdp']
-  myButtonIndicators.forEach((e, i) => {updateButton(e)})
-}
+  const myButtonIndicators = ['cleanfuels', 'deathrate', 'poverty', 'schoolyears', 'population', 'gdp'];
+  myButtonIndicators.forEach((e, i) => {updateButton(e)});
+};
 
 let updateButton = (indicator) => {
-  const array = data.indicators[indicator]
-  const change = calculateChange(array).toFixed(1)
-  const yearRange = `${getDecadeStart(array)[0]} – ${getDecadeEnd(array)[0]}`;
-  const myselect = d3.select(`#button-${indicator}`)
-  const year = myselect.selectAll('.year').data([yearRange])
-  const value = myselect.selectAll('.value').data([change])
+  const array = data.indicators[indicator];
+  let change = data.ranges2015.countries[indicator][selectedCountry]['rate'];
+  //console.log(change)
+  if (change != undefined) {
+    change = change.toFixed(2);
+  } else {
+    change = '–';
+  }
+  
+  let myEnd = data.ranges2015.countries[indicator][selectedCountry]['decadeEndYear']
+  if (myEnd == undefined) {
+    myEnd = '-'
+  }
+  
+  let myStart = data.ranges2015.countries[indicator][selectedCountry]['decadeStartYear']
+  if (myStart == undefined) {
+    myStart = '-'
+  }
+  
+  const yearRange = `${myStart} – ${myEnd}`;
+  const myselect = d3.select(`#button-${indicator}`);
+  const year = myselect.selectAll('.year').data([yearRange]);
+  const value = myselect.selectAll('.value').data([change]);
+  value.style('opacity', 0)
   
   year
     .text((d) => { 
@@ -467,7 +600,13 @@ let updateButton = (indicator) => {
         yearRangeHint = true;
         return d=='2005 – 2015' ? '**' : `(${d})` 
       } else {
-        return d=='2005 – 2015' ? '' : `(${d})`
+        if (d=='2005 – 2015') {
+          return ''
+        } else if(d=='- – -') {
+          return ''
+        } else {
+          return `(${d})`
+        }
       }
       
       
@@ -475,7 +614,9 @@ let updateButton = (indicator) => {
     .classed('sup', (d) => { return d=='2005 – 2015' ? true: false})
     .classed('sub', (d) => { return d=='2005 – 2015' ? false: true})
   
-  value.text((d) => { return d});
+  
+    value.text((d) => { return d});
+    value.transition(300).delay(300).style('opacity', 1);
 }
 
 let calculateChange = (array) => {
@@ -505,23 +646,38 @@ let metaUpdateGraph = (selectedIndicator, comparison = 2) => {
   let i = {
     'data': getDecadeArray(data.indicators[selectedIndicator]),
     'label': labels[selectedIndicator],
-    'headline': headlines[selectedIndicator]
+    'headline': headlines[selectedIndicator],
+    'indicator': selectedIndicator
   };
   if (comparison == 1) {
     i['select'] = '#svg-graph-1'
   } else {
     i['select'] = '#svg-comparison'
   }
-  updateGraph(i.data, i.select, i.label)
-  d3.select(i.select).select('h3').transition(50).style('opacity', 0)
- d3.select(i.select).select('h3').transition(100).delay(200).text(`${i.headline}`).transition(100).delay(0).attr('class', 'graph-headline').style('opacity', 1)
+  const isDataAvailable = i.data.join('') != '';
+  if (isDataAvailable) {
+    updateGraph(i.data, i.select, i.label, i.indicator)
+    let transitionLength = 50;
+    if (!d3.select(i.select).select('svg').empty()) {
+      transitionLength = 10;
+    }
+    d3.select(i.select).select('h3').transition(transitionLength).style('opacity', 0)
+      d3.select(i.select).select('h3').transition(100).delay(200).text(`${i.headline}`).transition(100).delay(0).attr('class', 'graph-headline').style('opacity', 1)
+  } else {
+    d3.select(i.select).select('svg').remove();
+    d3.select(i.select).select('h3').style('opacity', 0)
+    d3.select(i.select).select('h3').transition(100).delay(200).text(`Sorry, there’s no data available for “${i.headline}”.`).style('opacity', 1)
+  }
+  
+
   d3.selectAll('.selected-cont').selectAll('.selected-item').classed('selected-item', false)
   d3.selectAll('.selected-cont').select(`.${selectedIndicator}`).classed('selected-item', true)
   d3.select('#graph-buttons').selectAll('.selected-button').classed('selected-button', false)
   d3.select('#graph-buttons').select(`.${selectedIndicator}`).classed('selected-button', true)
 }
 
-function updateGraph(data, selection, label) {
+function updateGraph(data, selection, label, indicator) {
+
   d3.select(selection).select('svg').remove();
   
   const margin = {top: 20, right: 100, bottom: 40, left: 40};
@@ -654,15 +810,20 @@ let svg = () => {
           
         })
         .attr('fill', myColor)
+        .attr("class", function(d) {
+          return `circle-${indicator}`
+        })
 
   // Add the line
   let valueline = d3.line()
     .x(function(d) { return xScale(new Date(d[0])); })
     .y(function(d) { return yScale(d[1]); });
 
-
   lineCont.append("path")
     .attr("class", "dataLine")
+    .attr("class", function(d) {
+      return `line-${indicator}`
+    })
     .attr("d", valueline(data))
     .attr('stroke', myColor)
     .attr('stroke-width', 2)
@@ -694,6 +855,16 @@ let addCommas = (nStr) => {
 };
 
 let reformatNumVeryShort = (n) => {
+  n = parseFloat(n);
+  if (isNaN(n)) {
+    return '–'
+  }
+  if (!isNaN(n)) {
+    if (n < 100) {
+      n = n.toFixed(1);
+    }
+  }
+
   if (n >= 100 && n < 950) {
     n = Math.round(n/100) + 'H'
   }
@@ -709,6 +880,7 @@ let reformatNumVeryShort = (n) => {
     if (n >= 1000000 && n < 1000000000) {
     n = Math.round(n/1000000) + ' M'
   }
+  
   return n
 }
 
@@ -720,3 +892,18 @@ d3.selection.prototype.last = function() {
   var last = this.size() - 1;
   return d3.select(this[0][last]);
 };
+
+function swapStyleSheet(sheet) {
+    document.getElementById("pagestyle").setAttribute("href", sheet);  
+}
+
+function initate() {
+    var style1 = document.getElementById("stylesheet1");
+    var style2 = document.getElementById("stylesheet2");
+
+    style1.onclick = function () { swapStyleSheet("css/style.css") };
+    style2.onclick = function () { swapStyleSheet("css/sdg.css"); };
+}
+
+window.onload = initate;
+swapStyleSheet("css/sdg.css");

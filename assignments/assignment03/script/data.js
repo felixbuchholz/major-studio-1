@@ -1,8 +1,10 @@
+/* global d3 */
 let data = {};
 let selectedCountry;
 
 Promise.all([
   d3.json('data/geo/africa.geo.json'),
+  d3.json('data/geo/sm-world-countries.geo.json'),
   d3.json('data/conversions/africaCountriesList.json'),
   d3.csv('data/hdi.csv'),
   d3.csv('data/gini.csv'),
@@ -14,10 +16,11 @@ Promise.all([
   d3.csv('data/deathrate.csv'),
   d3.csv('data/poverty-320.csv')
 ])
-.then(([africaGeo, africaCountries, hdi, gini, lifeexp, schoolyears, population, gdp, cleanfuels, deathrate, poverty]) => {
+.then(([africaGeo, worldGeo, africaCountries, hdi, gini, lifeexp, schoolyears, population, gdp, cleanfuels, deathrate, poverty]) => {
   deathrate = translateOWIData(deathrate);
   data = {
     'africaGeo': africaGeo, 
+    'worldGeo' : worldGeo,
     'africaCountries': africaCountries,
     'indicators': {
       'hdi': hdi, 
@@ -31,6 +34,10 @@ Promise.all([
       'gdp': gdp
     }
   };
+  
+  //console.log(data.worldGeo)
+  buildMap();
+  
   const geoAfricaProperties = data.africaGeo.features.map(f => f.properties);
   data.africaCountries.forEach((e, i) => {
     const region = arrayPropertyHasValues(geoAfricaProperties, 'geounit', e).subregion;
@@ -67,35 +74,86 @@ Promise.all([
     data['ranges2015']['countries'][indicator] = {};
     data['ranges2015']['totals'][indicator] = {}
     allNames.forEach((country, i) => {
+      
       data['ranges2015']['countries'][indicator][country] = {};
       selectedCountry = country;
       
-      let myDecadeEndValue;
-      myDecadeEndValue = getDecadeEnd(data.indicators[indicator]);
-      if (myDecadeEndValue != undefined && myDecadeEndValue.length != 0) {
-       // console.log(indicator, country, myLog)
-       myDecadeEndValue = parseFloat(myDecadeEndValue[1])
-       data['ranges2015']['countries'][indicator][country]['decadeEndValue'] = myDecadeEndValue;
-       if (myDecadeEndValue > max) {
-          max = myDecadeEndValue;
-       }
-      }
-      
-      let myDecadeStartValue;
-      myDecadeStartValue = getDecadeStart(data.indicators[indicator]);
-      if (myDecadeStartValue != undefined && myDecadeStartValue.length != 0) {
-       // console.log(indicator, country, myLog)
-       myDecadeStartValue = parseFloat(myDecadeStartValue[1])
-       data['ranges2015']['countries'][indicator][country]['decadeStartValue'] = myDecadeStartValue;
-       if (myDecadeEndValue < min) {
-          min = myDecadeStartValue;
-       }
+       if (indicator == 'hdi') {
+        
+        data['ranges2015']['countries'][indicator][country]['decadeEndValue'] = arrayPropertyHasValues(data.indicators.hdi, 'Country Name', [selectedCountry]).rank2017;
+        data['ranges2015']['countries'][indicator][country]['decadeEndYear'] = 2017;
+        
+      } else {
+        
+        let myDecadeEnd = getDecadeEnd(data.indicators[indicator]);
+        //console.log(myDecadeEnd)
+        if (myDecadeEnd != undefined && myDecadeEnd.length > 0) {
+         // console.log(indicator, country, myLog)
+         let myDecadeEndYear = parseFloat(myDecadeEnd[0])
+         let myDecadeEndValue = parseFloat(myDecadeEnd[1])
+         data['ranges2015']['countries'][indicator][country]['decadeEndValue'] = myDecadeEndValue;
+         data['ranges2015']['countries'][indicator][country]['decadeEndYear'] = myDecadeEndYear;
+         if (myDecadeEndValue > max) {
+            max = myDecadeEndValue;
+         }
+         if (myDecadeEndValue < min) {
+            min = myDecadeEndValue;
+         }
+         let myDecadeStart = getDecadeStart(data.indicators[indicator]);
+         if (myDecadeStart != undefined && myDecadeStart.length > 0) {
+           // console.log(indicator, country, myLog)
+           let myDecadeStartYear = parseFloat(myDecadeStart[0])
+           let myDecadeStartValue = parseFloat(myDecadeStart[1])
+           data['ranges2015']['countries'][indicator][country]['decadeStartValue'] = myDecadeStartValue;
+           data['ranges2015']['countries'][indicator][country]['decadeStartYear'] = myDecadeStartYear;
+           
+           let myRate;
+           const later = myDecadeEndValue;
+           const earlier = myDecadeStartValue;
+           myRate = ((later - earlier) / earlier) * 100;
+           data['ranges2015']['countries'][indicator][country]['rate'] = myRate;
+          }
+        }
+        
       }
       
     })
     data['ranges2015']['totals'][indicator]['upperLimit'] = max;
     data['ranges2015']['totals'][indicator]['lowerLimit'] = min;
   }
+
+// Not according to indicator !!!
+
+data['sorting'] = {};
+data['sorting']['decadeEnd'] = [];
+data['sorting']['rate'] = [];
+
+for (var country in data.ranges2015.countries.cleanfuels) {
+  const value = data.ranges2015.countries.cleanfuels[country]['decadeEndValue']
+  if (value != undefined) {
+    data['sorting']['decadeEnd'].push([value, country])
+  } else {
+    data['sorting']['decadeEnd'].push([0, country])
+  }
+  const rate = data.ranges2015.countries.cleanfuels[country]['rate']
+  if (rate != undefined) {
+    data['sorting']['rate'].push([rate, country])
+  } else {
+    data['sorting']['rate'].push([0, country])
+  }
+}
+data['sorting']['decadeEnd'] = data['sorting']['decadeEnd'].sort((function(index){
+  return function(a, b){
+      return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+  };
+})(0));
+data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
+  return function(a, b){
+      return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
+  };
+})(0));
+  
+  
   console.log(data);
   
   

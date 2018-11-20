@@ -4,24 +4,57 @@
     <meta charset="utf-8">
     <title>Climbing the Energy Ladder – A Way out of Poverty?</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Assistant:200,400,700" rel="stylesheet">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css'>
     <link rel="stylesheet" type="text/css" href="lib/noUiSlider/nouislider.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <!--<div class='mockup'>-->
+    <div id='landing'>
+      <div class="scale-svg"><img id='ladder-svg' src="assets/ladder_clouds_maxim_basinski_fff.svg" alt="Energy Ladder"></div>
       
-    <!--  <img class='responsive' src="mockup/page.png"></img>-->
-    <!--  <img class='responsive' src="mockup/page2.png"></img>-->
-    <!--  <img class='responsive' src="mockup/page3.png"></img>-->
-    <!--</div>-->
+      <h1 id='landing-head'>Climbing the Energy Ladder – A Way out of Poverty?</h1>
+    </div>
+    <div id='start' class="editorial">
+      <div class="row no-border">
+        <h1>Climbing the Energy Ladder – A Way out of Poverty?</h1>
+      </div>
+      <div class="row no-border narrower">
+        <div class="intro">
+          <p class='first-p'>
+            There is real evil and hardship and pain and suffering in the world and we should be humble in our belief that we can eliminate them. What we have already achieved gives us hope - the audacity to hope - for what we can and must achieve tomorrow.
+          </p>
+          <p>
+          The people I meet - in small towns and big cities, in diners and office parks - they don't expect government to solve all their problems. John Edwards calls on us to hope. More recently, tension has been fed by colonialism that denied rights and opportunities to many Muslims, and a Cold War in which Muslim-majority countries were too often treated as proxies without regard to their own aspirations. Instead, they overlap, and share common principles - principles of justice and progress; tolerance and the dignity of all human beings. But we have a responsibility to join together on behalf of the world we seek - a world where extremists no longer threaten our people, and American troops have come home; a world where Israelis and Palestinians are each secure in a state of their own, and nuclear energy is used for peaceful purposes; a world where governments serve their citizens, and the rights of all God's children are respected.
+          </p>
+          <p>
+          I was not raised in a particularly religious household. Let us keep that promise - that American promise - and in the words of Scripture hold firmly, without wavering, to the hope that we confess. That is why we welcome efforts like Saudi Arabian King Abdullah's Interfaith dialogue and Turkey's leadership in the Alliance of Civilizations.
+          </p>
+          <p>
+          We can do that. And we will keep our promise to every young American - if you commit to serving your community or your country, we will make sure you can afford a college education. Some are eager to stoke the flames of division, and to stand in the way of progress.
+          <p>
+          </p> 
+          "I'm here because of Ashley." By itself, that single moment of recognition between that young white girl and that old black man is not enough. So don't tell me that Democrats won't defend this country. The challenges we face require tough choices, and Democrats as well as Republicans will need to cast off the worn-out ideas and politics of the past. The richness of religious diversity must be upheld - whether it is for Maronites in Lebanon or the Copts in Egypt. We know that is God's vision.
+          </p>
+          </div> <!-- intro -->
+      </div>
+    </div>
+    <div class="row no-border editorial">
+      <h2>Number of Deaths from Household Air Pollution</h2>
+    </div>
+      <div class='row no-border' id='death-map'>
+    </div>
+    
+    <div class='editorial row no-border' id='dashboard-intro'>
+            <h2>Access to Clean Fuels Dashboard:</h2>
+    </div>
     
     <div id="dashboard-container">
       <div id="select-menu">
         <div class="row-select" id='selection-menu'>
           <div class="col-md-12 vertical-outer country-selector pointer" onclick='openCloseMenu()' id='menu-row'>
            <div class='move-left'>
-            <i class="large caret square up outline icon"></i>Filter and select countries
+            <i class="large caret square up outline icon"></i><h4>Filter and select countries</h4>
             </div>
           </div>
           
@@ -37,7 +70,7 @@
             </div>
           </div> <!-- select-list -->
           <div class="row menu">
-            <div class='footnotes'>
+            <div class='footnotes adjust-left'>
                <span class="sup">1 – 6</span>: No data available for this indicator. Numbered left to right. 1: Access to clean fuels and coocking technologies, … 6: GDP per capita
             </div>
           </div> <!-- footnotes -->
@@ -127,7 +160,7 @@
 
     </div> <!-- info -->
     
-    <div class="row no-gutter" id='graph-buttons'>
+    <div class="row no-gutter no-background" id='graph-buttons'>
       
       <div class="col-lg-2">
         <div class="both-outer no-button cleanfuels" id='button-cleanfuels'>
@@ -195,50 +228,83 @@
           <div class="graph-label"><label class="">GDP per capita, rate<span class="year"></span>:</div>
           <div class="graph-content"><span class="value"></span>
             <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='gdp' class=''></div>
+        </div>
       </div>
-      <div class="selected-cont">
-        <div class='gdp' class=''></div>
-      </div>
-    </div>
-  </div> <!-- buttons -->
+    </div> <!-- buttons -->
 
-  <div class="row" id='selection-indicator'>
-    
-    
-    
-    
-    
-
-  </div> <!-- selection indicator -->
-  
-  <div class="row" id='comparison'>
-    <div class="col-xl-6">
-      <div class='both-outer'><div id='svg-graph-1'><h3>Access to clean fuels</h3></div></div>
-    </div>
-    <div class="col-xl-6">
-      <div class='both-outer'><div id='svg-comparison'><h3>Poverty headcount ratio</h3></div></div>
-    </div>
-  </div> <!-- comparison -->
-  
-  <div class="row footnotes">
-    <div class="col-xl-12">
-      *: All values of 2015, if not indicated otherwise. <br>
-      **: All changes between 2005 and 2015, if not indicated otherwise.
-    </div>
-  </div> <!-- footnotes -->
-</div> <!-- dashboard-container -->
-
- <!-- <div class='mockup'>
+    <div class="row" id='selection-indicator'>
       
-      <img class='responsive' src="mockup/page4.png"></img>
-      <img class='responsive' src="mockup/page5.png"></img>
-      <img class='responsive' src="mockup/page6.png"></img>
-  </div> -->
+      
+    </div> <!-- selection indicator -->
+  
+    <div class="row" id='comparison'>
+      <div class="col-xl-6">
+        <div class='both-outer'><div id='svg-graph-1'><h3 class='graph-headline'></h3></div></div>
+      </div>
+      <div class="col-xl-6">
+        <div class='both-outer'><div id='svg-comparison'><h3 class='graph-headline'></h3></div></div>
+      </div>
+    </div> <!-- comparison -->
+  
+    <div class="row footnotes">
+      <div class="col-xl-12">
+        *: All values of 2015, if not indicated otherwise. <br>
+        **: All changes between 2005 and 2015, if not indicated otherwise. <br>
+        – Switch style: 
+        <button id="stylesheet1"> Plain </button> /
+        <button id="stylesheet2"> SDG focus </button> 
+      </div>
+      
+      
+    </div> <!-- footnotes -->
+ 
+  </div> <!-- dashboard-container -->
+
+  <div id='end' class="editorial">
+    <div class="row no-border">
+      <h2>Spotlight on an	outstanding country</h2>
+    </div>
+      <div class="row no-border narrower">
+        <div class="juxtapose-data">
+          <div class="text">
+            <p class='first-p'>
+            Now is the time to finally keep the promise of affordable, accessible health care for every single American. I've seen it in Illinois, when we provided health care to more children and moved more families from welfare to work. The United States has been one of the greatest sources of progress that the world has ever known.
+            </p>
+            <p>
+            John Kerry believes in energy independence, so we aren't held hostage to the profits of oil companies, or the sabotage of foreign oil fields. Universities and states, including Illinois, are taking part in a divestment campaign to pressure the Sudanese government to stop the killings. So let's rededicate ourselves to a new kind of politics - a politics of conscience. But the failure to respond is a direct result of a broken politics in Washington and the failed policies of George W. Bush. I know there is debate about this issue.
+            </p>
+            <p>
+           They're ready to turn the page on the old politics and the old policies - whether it's the war in Iraq or the health care crisis we're in, or a school system that's leaving too many kids behind despite the slogans. And there's another issue we must confront as well. That's the promise of America - the idea that we are responsible for ourselves, but that we also rise or fall as one nation; the fundamental belief that I am my brother's keeper; I am my sister's keeper. But we must also admit that programs alone can't replace parents; that government can't turn off the television and make a child do her homework; that fathers must take more responsibility for providing the love and guidance their children need. And I've seen it in this campaign.
+            </p>
+            <p>
+            Because whether it's poverty or racism, the uninsured or the unemployed, war or peace, the challenges we face today are not simply technical problems in search of the perfect ten-point plan. No, the word is very near. For more than sixty years they have endured the pain of dislocation. It is time for us to act on what everyone knows to be true. This is not simply about America's interests.
+            <p>
+          </div>
+          <div class="data">
+            <div class="both-outer-around">
+             <i class="huge icons">
+              <i class="circular inverted search icon"></i>
+            </i>
+            <i class="circular inverted huge icons">
+              
+              <i class="circular inverted signal icon"></i>
+              <i class="bottom right corner pencil alternate icon"></i>
+            </i>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
   
   <div class="row" id='sources'>
     <div class="col-md-12 both-outer">
       <div>
         <h2>Sources</h2>
+        <h3>Data</h3>
         <ul>
           <li><span class='name'>“Human Development Index (HDI).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
           <li><span class='name'>“Access to Clean Fuels and Technologies for Cooking (% of Population).” </span><span class="institution">World Bank, </span><span class='series'>Sustainable Energy for All (SE4ALL) Database from WHO Global Household Energy Database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS'>Link to the source</a></span></li>
@@ -246,9 +312,19 @@
           <li><span class='name'>“GINI index (World Bank estimate).” </span><span class="institution"World Bank, Development Research Group, </span><span class='series'>Data are based on primary household survey data obtained from government statistical agencies and World Bank country departments. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.GINI'>Link to the source</a></span></li>
           <li><span class='name'>“Mean years of schooling (years).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
           <li><span class='name'>“Population, total.” </span><span class="institution">World Bank. </span><span class='series'></span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SP.POP.TOTL'>Link to the source</a></span></li>
-          <li><span class='name'>“GDP per capita, PPP (current international $).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, International Comparison Program database.</span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD'>Link to the source</a></span></li>
-          <li><span class='name'>“Deaths from indoor air pollution.” </span><span class="institution">Our World in Data, </span><span class='series'>Indoor Air Pollution. </span><span class="original">Data originally collected from: Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2016 (GBD 2016) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2017.</span><span class="retrieved">Accessed November 15, 2018. <a href='https://ourworldindata.org/grapher/household-air-pollution-deaths-by-region'>Link to the source</a></span></li>
-          <li><span class='name'>“Poverty headcount ratio at national poverty lines (% of population).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, Global Poverty Working Group. Data are compiled from official government sources or are computed by World Bank staff using national ( i.e. country–specific ) poverty lines.</span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.NAHC'>Link to the source</a></span></li>
+          <li><span class='name'>“GDP per capita, PPP (current international $).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, International Comparison Program database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD'>Link to the source</a></span></li>
+          <li><span class='name'>“Deaths from indoor air pollution.” </span><span class="institution">Our World in Data, </span><span class='series'>Indoor Air Pollution. </span><span class="original">Data originally collected from: Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2016 (GBD 2016) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2017. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://ourworldindata.org/grapher/household-air-pollution-deaths-by-region'>Link to the source</a></span></li>
+          <li><span class='name'>“Poverty headcount ratio at national poverty lines (% of population).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, Global Poverty Working Group. Data are compiled from official government sources or are computed by World Bank staff using national ( i.e. country–specific ) poverty lines. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.NAHC'>Link to the source</a></span></li>
+        </ul>
+        
+        <h3>Articles, Placeholder Text</h3>
+        <ul>
+          <li>“Obama Ipsum.” William Donahoe. Accessed November 20, 2018. <a href=http://obamaipsum.com/>Link to source</a></li>
+        </ul>
+        
+        <h3>Graphics</h3>
+        <ul>
+          <li>Icon: Career Ladder by Maxim Basinski from the Noun Project.</li>
         </ul>
       </div>
     </div>
@@ -265,6 +341,7 @@
 <!-- development version, includes helpful console warnings -->
 <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
 <script src="script/data.js"></script>
+<script src="script/map.js"></script>
 <script src="script/script.js"></script>
   </body>
 </html>
