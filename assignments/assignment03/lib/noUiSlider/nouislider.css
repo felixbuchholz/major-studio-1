@@ -283,6 +283,8 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .noUi-marker-vertical.noUi-marker-large {
   width: 15px;
 }
+
+
 .noUi-tooltip {
   display: block;
   position: absolute;

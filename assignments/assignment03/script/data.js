@@ -1,6 +1,8 @@
 /* global d3 */
 let data = {};
 let selectedCountry;
+let currentYearMin = 2000;
+let currentYearMax = 2017;
 
 Promise.all([
   d3.json('data/geo/africa.geo.json'),
@@ -14,9 +16,10 @@ Promise.all([
   d3.csv('data/gdp.csv'),
   d3.csv('data/clean-fuels.csv'),
   d3.csv('data/deathrate.csv'),
-  d3.csv('data/poverty-320.csv')
+  d3.csv('data/poverty-320.csv'),
+  d3.csv('data/poverty-190.csv')
 ])
-.then(([africaGeo, worldGeo, africaCountries, hdi, gini, lifeexp, schoolyears, population, gdp, cleanfuels, deathrate, poverty]) => {
+.then(([africaGeo, worldGeo, africaCountries, hdi, gini, lifeexp, schoolyears, population, gdp, cleanfuels, deathrate, poverty, poverty190]) => {
   deathrate = translateOWIData(deathrate);
   data = {
     'africaGeo': africaGeo, 
@@ -28,6 +31,7 @@ Promise.all([
       'cleanfuels': cleanfuels, 
       'deathrate': deathrate, 
       'poverty': poverty,
+      'poverty190': poverty190,
       'lifeexp': lifeexp, 
       'gini': gini, 
       'schoolyears': schoolyears, 
@@ -36,6 +40,7 @@ Promise.all([
     }
   };
   
+ 
   
   /*
   // TODO: make deathrate smaller
@@ -162,18 +167,93 @@ data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
       return (a[index] === b[index] ? 0 : (a[index] < b[index] ? -1 : 1));
   };
 })(0));
+
+// Good way to combine two arrays (worldbank format) over years
   
+   data['activeMap'] = {};
+    
+   data.indicators.poverty190.forEach((e, i) => {
+    
+    let regYearsArr = [];
+    const regYears = /^\d{4}$/;
+    for (var year in e) {
+      //console.log(data.activeMap.some(x => x.year == year));
+      if (regYears.test(year)) {
+        const value = e[year];
+        if (value > 0) {
+          //console.log(year, data.activeMap)
+          //console.log(Object.keys(data.activeMap), e['Country Name'])
+          if (data.activeMap[year] == undefined) {
+            data.activeMap[year] = [[e['Country Name'], value]];
+          } else {
+            data.activeMap[`${year}`].push([e['Country Name'], value])
+          }
+        
+        /*data.activeMap.push([e['Country Name'], e, value]);*/
+        }
+      }
+    }
+    // console.log(regYearsArr, e['Country Name']);
+  })
+  
+  data.indicators.cleanfuels.forEach((e, i) => {
+    const country = e['Country Name'];
+    let regYearsArr = [];
+    const regYears = /^\d{4}$/;
+    for (var year in e) {
+      if (regYears.test(year)) {
+        const value = e[year];
+        if (value > 0) {
+          if (data.activeMap[year] != undefined) {
+            data.activeMap[`${year}`].forEach((countryelement, i) => {
+              if (countryelement[0] == country) {
+                countryelement.push(value)
+              }
+            })
+          }
+        }
+      }
+    }
+  })
+  
+  for (var year in data.activeMap) {
+    const yearArr = data.activeMap[year]
+    // console.log(yearArr)
+    data.activeMap[year] = data.activeMap[year].filter(x => x.length > 2)
+   if (data.activeMap[year] === undefined || data.activeMap[year].length == 0) {
+     delete data.activeMap[year];
+   }
+  }
+  data['activeMapByCountry'] = {};
+  for (var year in data.activeMap) {
+    data.activeMap[year].forEach((country, i) => {
+      if (data.activeMapByCountry[country[0]] == undefined) {
+        data.activeMapByCountry[country[0]] = [[year, country[1], country[2]]];
+      } else {
+        data.activeMapByCountry[country[0]].push([year, country[1], country[2]])
+      }
+    })
+  }
+  
+  data.activeMapByCountryFiltered = {};
+  
+  updateYearFilter();
   
   console.log(data);
   
   
+  
   // Functions
-  selectedCountry='Nigeria'
+  selectedCountry='Ghana'
   selectCountry(selectedCountry);
   updateSlider();
   //console.log(data.worldGeo)
   buildMap();
- });
+  activeMapSetup();
+  activeMapUpdate();
+
+  
+});
  
  let translateOWIData = (data) => {
   let dataFormat = [];
@@ -279,3 +359,21 @@ let arrayPropertyHasValues = (array, property, values) => {
     return filter;
   }
 };
+
+let updateYearFilter = () => {
+  data.activeMapByCountryFiltered = {};
+  for (var country in data.activeMapByCountry) {
+    data.activeMapByCountry[country].forEach((e, i) => {
+      if (parseFloat(e[0]) >= currentYearMin && parseFloat(e[0]) <= currentYearMax) {
+        
+        // console.log(country, e);
+        if (data.activeMapByCountryFiltered[country] == undefined) {
+          data.activeMapByCountryFiltered[country] = [[e[0], e[1], e[2]]]
+        } else {
+          data.activeMapByCountryFiltered[country].push([e[0], e[1], e[2]])
+        }
+      }
+    })
+  }
+  
+}

@@ -27,7 +27,7 @@ let buildMap = () => {
     myCombinedDataset.features.forEach((e, i) => {
       deathratesArr.push(parseFloat(e.deathrate));
     })
-    console.log(d3.max(deathratesArr))
+    // console.log(d3.max(deathratesArr))
     let colorScale = d3.scaleSequential(d3.interpolateYlOrBr).domain([0, d3.max(deathratesArr)]);
     
      let featureElement = map.selectAll("path")
@@ -39,7 +39,7 @@ let buildMap = () => {
         .attr("stroke", "white")
         .attr('stroke-width', 2)
         .attr("fill", (d, i) => {
-          console.log(isNaN(d.deathrate))
+          // console.log(isNaN(d.deathrate))
           if (isNaN(d.deathrate)) {
             return `rgb(250, 250, 250)`;
           } else {
