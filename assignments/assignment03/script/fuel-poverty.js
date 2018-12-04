@@ -1,12 +1,15 @@
 /* global d3 */
 let xScaleActiveMap, yScaleActiveMap;
+let yearSlider, activeMapYearsArr, lastYear;
+let yAxisMax = 100;
 
 function activeMapSetup() {
+    activeMapYearsArr = Object.keys(data.activeMap);
+    lastYear = parseInt(activeMapYearsArr[activeMapYearsArr.length-1]);
     
-    
-    const margin = {top: 40, right: 40, bottom: 40, left: 40};
+    const margin = {top: 60, right: 180, bottom: 40, left: 30};
       let w = 1200 - margin.left - margin.right;
-      let h = 800 - margin.top - margin.bottom;
+      let h = 700 - margin.top - margin.bottom;
     
     let graph = d3.select('#active-map-graph')
       .append('svg')
@@ -51,7 +54,7 @@ function activeMapSetup() {
     
     // var max = d3.max(data.map(x => parseFloat(x[1])));
     yScaleActiveMap = d3.scaleLinear()
-    .domain([0, 100])
+    .domain([0, yAxisMax])
     .range([0, -h])
     
     // Adjust to specific scale
@@ -70,18 +73,30 @@ function activeMapSetup() {
     // https://bl.ocks.org/d3noob/23e42c8f67210ac6c678db2cd07a747e
     xAxisCont.append("text").attr('class', 'label')
       .attr("transform",
-            "translate(" + (w + 20) + " ," +
-                           (margin.bottom - 50) + ")")
-      .style("text-anchor", "middle")
-      .text("Poverty");
+            "translate(" + (w + 30) + " ," +
+                           (margin.bottom - 80) + ")")
+      .style("text-anchor", "left")
+        .append('tspan')
+          .attr('x', '0')
+          .attr('dy', '0.6em')
+          .text("Poverty headcount ratio")
+        .append('tspan')
+          .attr('x', '0')
+          .attr('dy', '1.2em')
+          .text("at $1.90 a day (2011 PPP)")
+        .append('tspan')
+          .attr('x', '0')
+          .attr('dy', '1.2em')
+          .text("(% of population)")
     
     yAxisCont.append("text").attr('class', 'label')
-      .attr("y", `${-h - 10}`)
+      .attr("y", `${-h - 30}`)
       .attr("x", `${0}`)
-      .text(`${'Access to clean fuels'}`);
+      .text(`${'Access to clean fuels and technologies for cooking (% of population)'}`);
   }
   createAxes()
   
+  createYearSlider();
 
   // g Container for each country!
   /*
@@ -150,12 +165,13 @@ updateLineActiveMap = (country) => {
       return `line-${country}`
     })
     .attr("d", valueline(myData))
-    .attr('stroke', myColor)
-    .attr('stroke-width', 2)
+    .attr('stroke', '#888')
+    .attr('stroke-width', 0.5)
     .attr('fill', 'none')
     
   lineCont.append("circle")
       .attr("r", 2.5)
+      // .transition().duration(200) // if circle already available: select & move, else: transition form origin. When data is not matching current year: add * 
       .attr("cx", function() {
         return xScaleActiveMap(myData[myData.length-1][1]);
       })
@@ -166,58 +182,132 @@ updateLineActiveMap = (country) => {
       .attr("class", function() {
         return `${myData[0][0]}`
       })
+  
+  let textX = xScaleActiveMap(myData[myData.length-1][1])+5;
+  let textY = yScaleActiveMap(myData[myData.length-1][2])+1;
   lineCont.append("text")
     .text(`${country}`)
-    .attr("x", function() {
-        return xScaleActiveMap(myData[myData.length-1][1]);
+      .attr("x", function() {
+          return textX;
       })
       .attr("y", function(d) { 
-        return yScaleActiveMap(myData[myData.length-1][2]); 
+          return textY; 
+      })
+      .attr('transform', (d,i) => {
+      let a = -20;
+      let x = textX;
+      let y = textY;
+      return `rotate(${a}, ${x}, ${y})`; //translate(${-width/2+barWidth/2},0)
       })
 }
 
-let yearSlider = document.getElementById('active-map-slider');
-noUiSlider.create(yearSlider, {
-  start: [2000, 2003],
-  step: 1,
-  connect: true,
-  tooltips: [wNumb({mark: '.', decimals: 0}), wNumb({mark: '.', decimals: 0})],
-  range: {
-      'min': 2000,
-      'max': 2017
-  },
-  behaviour: "tap-drag"
-});
-yearSlider.noUiSlider.on('update', activeMapUpdate);
+let createYearSlider = () => {
+  // console.log(lastYear)
+  yearSlider = document.getElementById('active-map-slider');
+  noUiSlider.create(yearSlider, {
+    start: [2000, 2003],
+    step: 1,
+    connect: true,
+    tooltips: [wNumb({mark: '.', decimals: 0}), wNumb({mark: '.', decimals: 0})],
+    range: {
+        'min': 2000,
+        'max': lastYear
+    },
+    behaviour: "tap-drag"
+  });
+  yearSlider.noUiSlider.on('update', sliderUpdate);
+}
+
+function sliderUpdate () {
+  if (currentYearMax == lastYear) {
+    d3.select('#play-pause-button').classed('play', false);
+    d3.select('#play-pause-button').classed('pause', false);
+    d3.select('#play-pause-button').classed('stop', true);
+  } else {
+    if (!running) {
+      d3.select('#play-pause-button').classed('play', true);
+      d3.select('#play-pause-button').classed('pause', false);
+      d3.select('#play-pause-button').classed('stop', false);
+    } else {
+      d3.select('#play-pause-button').classed('play', false);
+      d3.select('#play-pause-button').classed('pause', true);
+      d3.select('#play-pause-button').classed('stop', false);
+    }
+  } 
+  activeMapUpdate();
+}
+
 
 function activeMapUpdate() {
     d3.select('#active-map-graph').selectAll('.lineCont').remove();
-    currentYearMin = yearSlider.noUiSlider.get()[0];
-    currentYearMax = yearSlider.noUiSlider.get()[1];
+    currentYearMin = parseInt(yearSlider.noUiSlider.get()[0]);
+    currentYearMax = parseInt(yearSlider.noUiSlider.get()[1]);
     updateYearFilter();
     for (var country in data.activeMapByCountryFiltered) {
       updateLineActiveMap(country);
     }
+    if (currentYearMax == lastYear) {
+      d3.select('#play-pause-button').classed('play', false);
+      d3.select('#play-pause-button').classed('pause', false);
+      d3.select('#play-pause-button').classed('stop', true);
+    }
   }
 
-/*
+
 let myVar;
 let currentYear = 2000;
-
+let running = false;
 function myStartFunction() {
-  myVar = setInterval(myTimer, 1000);
+  if (currentYearMax == lastYear) {
+    clearInterval(myVar);
+    running = false;
+    d3.select('#play-pause-button').classed('play', false);
+    d3.select('#play-pause-button').classed('pause', false);
+    d3.select('#play-pause-button').classed('stop', true);
+  } else {
+    if (!running) {
+      running = true;
+      d3.select('#play-pause-button').classed('play', false);
+      d3.select('#play-pause-button').classed('pause', true);
+      d3.select('#play-pause-button').classed('stop', false);
+      
+      myVar = setInterval(myTimer, 1000);
+    } else {
+      running = false;
+      clearInterval(myVar);
+      d3.select('#play-pause-button').classed('play', true);
+      d3.select('#play-pause-button').classed('pause', false);
+      d3.select('#play-pause-button').classed('stop', false);
+      
+    }
+  }
 }
 
 function myTimer() {
-  console.log('yes');  
-  updateDataActiveMap(currentYear);
-  currentYear++;
+  if (currentYearMax == lastYear) {
+    myStartFunction();
+  } else {
+    // console.log('yes');  
+    yearSlider.noUiSlider.set([null, currentYearMax + 1]);;
+    activeMapUpdate();
+  }
 }
 
-function myStopFunction() {
-    clearInterval(myVar);
+function myBackFunction() {
+  yearSlider.noUiSlider.set([2000, 2003]);
+  if (!running) {
+    d3.select('#play-pause-button').classed('play', true);
+    d3.select('#play-pause-button').classed('pause', false);
+    d3.select('#play-pause-button').classed('stop', false);
+  } else {
+    d3.select('#play-pause-button').classed('play', false);
+    d3.select('#play-pause-button').classed('pause', true);
+    d3.select('#play-pause-button').classed('stop', false);
+    
+  }
+  activeMapUpdate();
 }
-*/
+
 // -- Utility functions
 
 

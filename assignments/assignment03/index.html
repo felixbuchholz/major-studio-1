@@ -54,7 +54,7 @@
         </p>
         </div>
         <p>
-          A first one is to look at a single and uniform indicator. The Worldbank introduced a threshold of 1.25 <a class="hover">int. $ PPP a day</a>. It was updated in 2015 to 1.90  a day. – This measure offers the opportunity to directly juxtapose it with the development of access to clean fuels in <a href="active-map">a single graph</a>.
+          A first one is to look at a single and uniform indicator. The Worldbank introduced a threshold of 1.25 <a class="hover">int. $ PPP a day</a>. It was updated in 2015 to 1.90  a day. – This measure offers the opportunity to directly juxtapose it with the development of access to clean fuels in <a href="#active-map">a single graph</a>.
         </p>
         <p>
           Another method would be to look at the context of a country, the state of its development and its own national poverty line to try and offer perspectives on how different changes over time could be related. 
@@ -343,15 +343,25 @@
           
           <div class='box'>
             <div class='label' id='years-range'>Range of years:</div>
-            <div class='mid'>
-              <div id="active-map-slider"></div>
-              <div class='slider-labels'>
-                <div>2000</div><div>2017</div>
-              </div>
+            <div class="play-interface">
+                <div class='interface-icon'>
+                    <i class="play circle outline icon" onclick='myStartFunction()' id='play-pause-button'></i>
+                </div>
+                <div>
+                    <div class='mid'>
+                      <div id="active-map-slider"></div>
+                      <div class='slider-labels'>
+                        <div>2000</div><div>2016</div>
+                      </div>
+                    </div>
+                </div>
+                <div class='interface-icon backward'>
+                    <i class="fast backward icon" onclick='myBackFunction()'></i>
+                </div>
             </div>
+
           </div>
-          
-          
+
         </div>
       </div>
       

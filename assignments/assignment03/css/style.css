@@ -637,12 +637,31 @@ h3.graph-headline {
   padding-left: 5px;
 }
 
-
+.play-interface {
+    display: flex;
+}
 
 #active-map-slider {
   width: 270px;
   margin: auto;
 }
+
+.interface-icon {
+    margin-top: -13.8px;
+    font-size: 1.31em;
+}
+.interface-icon.backward {
+    margin-top: -7px;
+    font-size: 0.75em;
+}
+.interface-icon:hover {
+    color: rgb(252, 195, 11);
+}
+
+.stop:hover {
+    color: rgb(229, 36, 59);
+}
+
 
 #active-map-slider .noUi-handle:hover {
   border: 5px solid black;
@@ -692,7 +711,8 @@ h3.graph-headline {
 
 #slider-container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  margin-left: 30px;
 }
 
 .box {

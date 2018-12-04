@@ -1,14 +1,10 @@
 # Until tomorrow
 
-1. Startyear, Endyear -> make it an array
-2. restructure the data: each country gets an array of years
 
-1. Do the direct comparison
-    Structure
-    For every year: [year, country, cleanfuels, poverty190]
 2. Read & write about Ghana and make the small graphs
 3. Make the navigation and the dashboard pop up in sequence
-
+4. Make another y-Axis option to include countries under 4 % access
+5. Hover for the graphs (comparison within graph!)
 
 # bonus: 
 
