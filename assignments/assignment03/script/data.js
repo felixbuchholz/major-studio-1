@@ -1,5 +1,6 @@
 /* global d3 */
 let data = {};
+
 let selectedCountry;
 let currentYearMin = 2000;
 let currentYearMax = 2017;
@@ -39,6 +40,9 @@ Promise.all([
       'gdp': gdp
     }
   };
+  data['activeMapSequence'] = [];
+  data['activeMapSequenceLines'] = [];
+  data['activeMapSequencePoints'] = [];
   
  
   
@@ -228,9 +232,9 @@ data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
   for (var year in data.activeMap) {
     data.activeMap[year].forEach((country, i) => {
       if (data.activeMapByCountry[country[0]] == undefined) {
-        data.activeMapByCountry[country[0]] = [[year, country[1], country[2]]];
+        data.activeMapByCountry[country[0]] = [[year, country[1], country[2], country[0]]];
       } else {
-        data.activeMapByCountry[country[0]].push([year, country[1], country[2]])
+        data.activeMapByCountry[country[0]].push([year, country[1], country[2], country[0]])
       }
     })
   }

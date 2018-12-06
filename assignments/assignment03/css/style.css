@@ -712,20 +712,37 @@ h3.graph-headline {
 #slider-container {
   display: flex;
   justify-content: left;
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 .box {
+  margin-left: 15px;
   padding: 30px;
   padding-bottom: 15px;
   padding-top: 30px;
   border: 1px solid black;
 }
 
-#years-range {
+.box .label {
   margin-left: -25px;
   margin-top: -29px;
   margin-bottom: 25px;
+}
+
+.box form {
+  margin-top: -9px;
+}
+
+form input {
+    display: inline;
+}
+
+.label-percentage {
+  margin-left: 5px;
+}
+
+#p100{
+    margin-left: 15px;
 }
 
 .mid {
