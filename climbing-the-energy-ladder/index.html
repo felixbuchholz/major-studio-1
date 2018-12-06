@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Climbing the Energy Ladder – A Way out of Poverty?</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800" rel="stylesheet">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css'>
+    <link rel="stylesheet" type="text/css" href="lib/noUiSlider/nouislider.css">
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/map.css">
+  </head>
+  <body>
+    <!--
+    <div id='landing'>
+      <div class="scale-svg"><img id='ladder-svg' src="assets/ladder_clouds_sun_maxim_basinski_fff.svg" alt="Energy Ladder"></div>
+      
+      <h1 id='landing-head'>Climbing the Energy Ladder – A Way out of Poverty?</h1>
+    </div>
+    -->
+    <div id='start' class="editorial">
+      
+      <div class="row no-border narrower">
+        <div id="head-and-icon">
+          <div class="scale-svg"><img id='ladder-svg' src="assets/ladder_clouds_sun_maxim_basinski_fff.svg" alt="Energy Ladder"></div>
+          <h1>Climbing the Energy Ladder – A Way out of Poverty?</h1>
+        </div>
+      </div>
+  
+    </div>
+    
+    <div class="row no-border narrower editorial">
+    
+      <div class="intro">
+        <p class='first-p'>
+          Using dirty fuels has devastating effects on health. A detriment especially the already most vulnerable communities and individuals can’t opt out of when they want to meet their most basic needs: heating, cooking and lighting.
+        </p>
+        <p> 
+        Immediately the image of a vicious circle comes to mind, when thinking about the consequences of respiratory health issues dramatically diminishing the possibilities to participate in society and economy.
+        
+        </p>
+        <p>
+        The Energy ladder is a model for the idea that with growing socio-economic status, people can (and will) choose cleaner fuels to satisfy their energy needs. Primitive fuels like firewood are substituted by transitioning fuels like kerosene and coal to finally reach the top of the ladder: LPG, electricity and biofuels.
+        </p>
+        <p>
+        I want to use this model but change the perspective: Can higher access to clean fuels help reducing poverty?
+        </p>
+        <div class="no-col-break">
+        <p>
+          <h3>How can we look at this from a data perspective?</h3>
+        </p>
+        <p>
+          Poverty is a complex societal issue, so there are a multitude of perspectives to look at and ways to measure it.
+        </p>
+        </div>
+        <p>
+          A first one is to look at a single and uniform indicator. The Worldbank introduced a threshold of 1.25 <a class="hover">int. $ PPP a day</a>. It was updated in 2015 to 1.90  a day. – This measure offers the opportunity to directly juxtapose it with the development of access to clean fuels in <a href="#active-map">a single graph</a>.
+        </p>
+        <p>
+          Another method would be to look at the context of a country, the state of its development and its own national poverty line to try and offer perspectives on how different changes over time could be related. 
+        </p>
+        <p>
+          We’ll start with this.
+        </p>
+        </div> <!-- intro -->
+        
+        <div id="toc" class="row no-border even-narrower">
+          <h3>Table of Contents:</h3>
+          <ul>
+            <li>Intro</li>
+            <li>A (more) Holistic Approach</li>
+            <li>Country Spotlight</li>
+            <li>A Direct Comparison</li>
+            <li>What’s at stake? – The Immense Threat to Health</li>
+          </ul>
+        </div>
+
+    </div> <!-- row no-border narrower editorial -->
+    
+    
+    <div id="dashboard-container">
+      <div id="dashboard-intro">
+        <h2><div class="tophead">A (more) Holistic Approach</div>Access to Clean Fuels and Poverty in Context in <span class="insert-selected-country-here"></span>Ghana</span></h2>
+      </div>
+      <div id="select-menu">
+        <div class="row-select" id='selection-menu'>
+          <div class="col-md-12 vertical-outer country-selector pointer" onclick='openCloseMenu()' id='menu-row'>
+           <div class='move-left'>
+            <i class="large caret square up outline icon"></i><h4>Filter and select countries</h4>
+            </div>
+          </div>
+          
+          <div class="row menu" id='filters-value2015'>
+             <!--
+             <span class='row label'><label>filter by value of 2015, or most recent</label></span> 
+             -->
+          </div><!-- filters-value2015 -->
+          
+          <div class="row menu">
+            <div id='select-list'>
+             
+            </div>
+          </div> <!-- select-list -->
+          <div class="row menu">
+            <div class='footnotes adjust-left'>
+               <span class="sup">1 – 6</span>: No data available for this indicator. Numbered left to right. 1: Access to clean fuels and coocking technologies, … 6: GDP per capita
+            </div>
+          </div> <!-- footnotes -->
+          
+        </div> <!-- selection-menu -->
+        
+        
+      </div> <!-- select-menu -->
+      
+      <div class="row country-selector pointer" id='selection' onclick='openCloseMenu()'>
+        
+        <div class="col-sm-4 vertical-outer" id='name'>
+          <div>
+            <i class="large caret square down outline icon"></i>
+            <h2><span class='value'></span></h2>
+          </div>
+          
+        </div>
+        
+        <div class="col-sm-4 vertical-outer region" id='region'>
+          <div class='one-line'>
+            <label for='region' class='info-label'>Region: </label><span class='value'></span> 
+          </div>
+        </div>
+        
+        <div class="col-sm-3 vertical-outer hdi" id='hdi'>
+          <div class='one-line'>
+            <label class="info-label">HDI-Rank<span class="year"></span>:</label>
+            <span class="value"></span>
+            <label class="info-label"> / 189</label>
+          </div>
+        </div>
+        
+        <div class="col-sm-1" id='selection-menu-button'>
+          
+        </div>
+        
+      </div> <!-- selection -->
+      
+      <div class="row no-padding" id='info'>
+        
+        <div class="col-md-2 vertical-outer cleanfuels" id='cleanfuels'>
+          <div class="pos-right country-selector pointer" onclick="getNextCountryEndDecade('up')"><i class="chevron up icon"></i></div>
+          <div class='one-line'>
+            <label class="info-label">Clean fuels access<span class="year"></span>:</label>
+            <span class="value"></span>
+            <label class="info-label"> %</label>
+          </div>
+          <div class="pos-right country-selector pointer" onclick="getNextCountryEndDecade('down')"><i class="chevron down icon"></i></div>
+          
+        </div>
+        
+        <div class="col-md-2 vertical-outer lifeexp" id='lifeexp'>
+          <div class='one-line'>
+            <label class="info-label">Life expectancy<span class="year"></span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer inequality" id='gini'>
+          <div class='one-line'>
+            <label class="info-label">Gini-index<span class="year"></span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer education" id='schoolyears'>
+          <div class='one-line'>
+            <label class="info-label">Schooling years<span class="year"></span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer population" id='population'>
+          <div class='one-line'>
+            <label class="info-label">Population<span class="year"></span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+        
+        <div class="col-md-2 vertical-outer gdp" id='gdp'>
+          <div class='one-line'>
+            <label class="info-label">GDP per capita<span class="year"></span>:</label>
+            <span class="value"></span>
+          </div>
+        </div>
+
+    </div> <!-- info -->
+    
+    <div class="row no-gutter no-background" id='graph-buttons'>
+      
+      <div class="col-lg-2">
+        <div class="both-outer no-button cleanfuels" id='button-cleanfuels'>
+          <div class="graph-label"><label class="">Access to clean fuels, rate<span class="year"></span>:</div>
+          <div class="graph-content">
+            <div class='rate-button' onclick="getNextCountryRate('up')"><i class="chevron up icon"></i></div>
+            <span class="value"></span>
+            <label class=""> %</label>
+            <div class='rate-button' onclick="getNextCountryRate('down')"><i class="chevron down icon"></i></div>
+            </div>
+        </div>
+        <div class="selected-cont">
+          <div class='cleanfuels selected-access'></div>
+        </div>
+      </div>
+
+      <div class="col-lg-2">
+        <div class="button both-outer deathrate" id='button-deathrate' onclick="selectIndicator('deathrate')">
+          <div class="graph-label"><label class="">Deaths from indoor air pollution, rate<span class="year"></span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='deathrate'></div>
+        </div>
+     </div>
+      
+      <div class="col-lg-2" >
+        <div class="button both-outer poverty selected-button" id='button-poverty' onclick="selectIndicator('poverty')">
+          <div class="graph-label"><label class="">Poverty ratio, rate<span class="year"></span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='poverty selected-item'></div>
+        </div>
+      </div>
+      
+
+      
+      <div class="col-lg-2">
+        <div class="button both-outer schoolyears" id='button-schoolyears' onclick="selectIndicator('schoolyears')">
+          <div class="graph-label"><label class="">Avg. schooling years, rate<span class="year"></span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='schoolyears'></div>
+        </div>
+      </div>
+      
+      <div class="col-lg-2">
+        <div class="button both-outer population" id='button-population' onclick="selectIndicator('population')">
+          <div class="graph-label"><label class="">Population, rate<span class="year"></span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='population' class=''></div>
+        </div>
+      </div>
+      
+      <div class="col-lg-2">
+        <div class="button both-outer gdp" id='button-gdp' onclick="selectIndicator('gdp')">
+          <div class="graph-label"><label class="">GDP per capita, rate<span class="year"></span>:</div>
+          <div class="graph-content"><span class="value"></span>
+            <label class=""> %</label></div>
+        </div>
+        <div class="selected-cont">
+          <div class='gdp' class=''></div>
+        </div>
+      </div>
+    </div> <!-- buttons -->
+
+    <div class="row" id='selection-indicator'>
+      
+      
+    </div> <!-- selection indicator -->
+  
+    <div class="row" id='comparison'>
+      <div class="col-xl-6">
+        <div class='both-outer'><div id='svg-graph-1'><h3 class='graph-headline'></h3></div></div>
+      </div>
+      <div class="col-xl-6">
+        <div class='both-outer'><div id='svg-comparison'><h3 class='graph-headline'></h3></div></div>
+      </div>
+    </div> <!-- comparison -->
+  
+    <div class="row footnotes">
+      <div class="col-xl-12">
+        *: All values of 2015, if not indicated otherwise. <br>
+        **: All changes between 2005 and 2015, if not indicated otherwise. <br>
+        – Switch style: 
+        <button id="stylesheet1"> Plain </button> /
+        <button id="stylesheet2"> SDG focus </button> 
+      </div>
+      
+      
+    </div> <!-- footnotes -->
+ 
+  </div> <!-- dashboard-container -->
+  
+  
+
+  <div id='end' class="editorial">
+    <div class="row no-border">
+      <h2><div class="tophead">Country Spotlight</div>Ghana Alliance for Clean Cookstoves (GHACCO)</h2>
+    </div>
+      <div class="row no-border narrower">
+        <div class="juxtapose-data">
+          <div class="text">
+            <p class='first-p'>
+            Now is the time to finally keep the promise of affordable, accessible health care for every single American. I've seen it in Illinois, when we provided health care to more children and moved more families from welfare to work. The United States has been one of the greatest sources of progress that the world has ever known.
+            </p>
+            <p>
+            John Kerry believes in energy independence, so we aren't held hostage to the profits of oil companies, or the sabotage of foreign oil fields. Universities and states, including Illinois, are taking part in a divestment campaign to pressure the Sudanese government to stop the killings. So let's rededicate ourselves to a new kind of politics - a politics of conscience. But the failure to respond is a direct result of a broken politics in Washington and the failed policies of George W. Bush. I know there is debate about this issue.
+            </p>
+            <p>
+           They're ready to turn the page on the old politics and the old policies - whether it's the war in Iraq or the health care crisis we're in, or a school system that's leaving too many kids behind despite the slogans. And there's another issue we must confront as well. That's the promise of America - the idea that we are responsible for ourselves, but that we also rise or fall as one nation; the fundamental belief that I am my brother's keeper; I am my sister's keeper. But we must also admit that programs alone can't replace parents; that government can't turn off the television and make a child do her homework; that fathers must take more responsibility for providing the love and guidance their children need. And I've seen it in this campaign.
+            </p>
+            <p>
+            Because whether it's poverty or racism, the uninsured or the unemployed, war or peace, the challenges we face today are not simply technical problems in search of the perfect ten-point plan. No, the word is very near. For more than sixty years they have endured the pain of dislocation. It is time for us to act on what everyone knows to be true. This is not simply about America's interests.
+            <p>
+          </div>
+          <div class="data">
+            <div class="both-outer-around">
+             <i class="huge icons">
+              <i class="circular inverted search icon"></i>
+            </i>
+            <i class="circular inverted huge icons">
+              
+              <i class="circular inverted signal icon"></i>
+              <i class="bottom right corner pencil alternate icon"></i>
+            </i>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+  <div class="row no-border editorial" id="active-map">
+      <div id="active-map-intro">
+        <h2><div class="tophead">A Direct Comparison</div>Access to Clean Fuels and Poverty Headcount Ratio at the 1.90 $ line</h2>
+      </div>
+      <div id='active-map-container'>
+        <div id="active-map-graph"></div>
+        <div id ="slider-container">
+          
+          <div class='box'>
+            <div class='label' id='years-range'>Range of years:</div>
+            <div class="play-interface">
+                <div class='interface-icon'>
+                    <i class="play circle outline icon" onclick='myStartFunction()' id='play-pause-button'></i>
+                </div>
+                <div>
+                    <div class='mid'>
+                      <div id="active-map-slider"></div>
+                      <div class='slider-labels'>
+                        <div>2000</div><div>2016</div>
+                      </div>
+                    </div>
+                </div>
+                <div class='interface-icon backward'>
+                    <i class="fast backward icon" onclick='myBackFunction()'></i>
+                </div>
+            </div>
+
+          </div>
+          <div class='box'>
+            <div class='label' id='y-axis'>Range of the y-axis:</div>
+            <form>
+              <input type="radio" name="y-axis-scale" value="4" onclick="scaleYAxis(4)"><label class="label-percentage">4 %</label>
+              <input type="radio" name="y-axis-scale" value="100" id="p100" checked="checked" onclick="scaleYAxis(100)"><label class="label-percentage"">100 %</label>
+            </form>
+          </div>
+          
+
+        </div>
+      </div>
+      
+  </div>
+  
+  <div class="row no-border editorial">
+      <h2><div class="tophead">What’s at stake? – The Immense Threat to Health</div>Death Rates from Household Air Pollution</h2>
+    </div>
+      <div class='row no-border' id='death-map'></div>
+      <div class='row no-border ' id='death-legend'>
+        <div class="horizontal-align">
+          <div>Air pollution death rates (indoor, solid fuels) per 100,00 people in 2015</div>
+        </div>
+      </div>
+
+  
+  <div class="row" id='sources'>
+    <div class="col-md-12 both-outer">
+      <div>
+        <h2>Sources</h2>
+        <h3>Data</h3>
+        <ul>
+          <li><span class='name'>“Human Development Index (HDI).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
+          <li><span class='name'>“Access to Clean Fuels and Technologies for Cooking (% of Population).” </span><span class="institution">World Bank, </span><span class='series'>Sustainable Energy for All (SE4ALL) Database from WHO Global Household Energy Database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS'>Link to the source</a></span></li>
+          <li><span class='name'>“Life expectancy at birth, total (years).” </span><span class="institution">World Bank. </span><span class='series'></span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SP.DYN.LE00.IN'>Link to the source</a></span></li>
+          <li><span class='name'>“GINI index (World Bank estimate).” </span><span class="institution"World Bank, Development Research Group, </span><span class='series'>Data are based on primary household survey data obtained from government statistical agencies and World Bank country departments. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.GINI'>Link to the source</a></span></li>
+          <li><span class='name'>“Mean years of schooling (years).” </span><span class ='institution'>United Nations Development Programme, </span><span class='series'>Human Development Reports, </span><span class="publication">Human Development Data (1990-2017). </span><span class="retrieved">Accessed November 15, 2018. </span><span class='time-date'><a href='http://hdr.undp.org/en/data'>Link to the source</a></span></li>
+          <li><span class='name'>“Population, total.” </span><span class="institution">World Bank. </span><span class='series'></span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SP.POP.TOTL'>Link to the source</a></span></li>
+          <li><span class='name'>“GDP per capita, PPP (current international $).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, International Comparison Program database. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/NY.GDP.PCAP.PP.CD'>Link to the source</a></span></li>
+          <li><span class='name'>“Deaths from indoor air pollution.” </span><span class="institution">Our World in Data, </span><span class='series'>Indoor Air Pollution. </span><span class="original">Data originally collected from: Global Burden of Disease Collaborative Network. Global Burden of Disease Study 2016 (GBD 2016) Results. Seattle, United States: Institute for Health Metrics and Evaluation (IHME), 2017. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://ourworldindata.org/grapher/death-rate-by-source-from-indoor-air-pollution'>Link to the source</a></span></li>
+          <li><span class='name'>“Poverty headcount ratio at national poverty lines (% of population).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, Global Poverty Working Group. Data are compiled from official government sources or are computed by World Bank staff using national ( i.e. country–specific ) poverty lines. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.NAHC'>Link to the source</a></span></li>
+        </ul>
+        
+        <h3>Articles, Placeholder Text</h3>
+        <ul>
+          <li> “Indoor Air Pollution.” Max Roser and Hannah Ritchie. Published online at OurWorldInData.org. Accessed November 20. <a href='https://ourworldindata.org/indoor-air-pollution'>Link to the source</a></li>
+          <li>“Obama Ipsum.” William Donahoe. Accessed November 20, 2018. <a href=http://obamaipsum.com/>Link to source</a></li>
+        </ul>
+        
+        <h3>Graphics</h3>
+        <ul>
+          <li>Icon: Career Ladder by Maxim Basinski from the Noun Project.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+<script src="lib/noUiSlider/nouislider.js"></script>
+<script src="lib/wNumb.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- development version, includes helpful console warnings -->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="script/data.js"></script>
+<script src="script/script.js"></script>
+<script src="lib/colorbrewer.js"></script>
+<script src="script/map.js"></script>
+<script src="script/fuel-poverty.js"></script>
+  </body>
+</html>
