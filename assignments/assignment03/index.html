@@ -351,7 +351,7 @@
                     <div class='mid'>
                       <div id="active-map-slider"></div>
                       <div class='slider-labels'>
-                        <div>2000</div><div>2016</div>
+                        <!-- <div>2000</div><div>2016</div> -->
                       </div>
                     </div>
                 </div>
@@ -364,8 +364,8 @@
           <div class='box'>
             <div class='label' id='y-axis'>Range of the y-axis:</div>
             <form>
-              <input type="radio" name="y-axis-scale" value="4" onclick="scaleYAxis(4)"><label class="label-percentage">4 %</label>
-              <input type="radio" name="y-axis-scale" value="100" id="p100" checked="checked" onclick="scaleYAxis(100)"><label class="label-percentage"">100 %</label>
+              <input type="radio" name="y-axis-scale" value="4" id="p4" onclick="scaleYAxis(4)" checked="checked"><label class="label-percentage">4 %</label>
+              <input type="radio" name="y-axis-scale" value="100" id="p100" onclick="scaleYAxis(100)"><label class="label-percentage">100 %</label>
             </form>
           </div>
           
@@ -432,5 +432,6 @@
 <script src="lib/colorbrewer.js"></script>
 <script src="script/map.js"></script>
 <script src="script/fuel-poverty.js"></script>
+<script src="script/tooltips.js"></script>
   </body>
 </html>

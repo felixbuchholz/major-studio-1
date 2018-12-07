@@ -687,7 +687,7 @@ h3.graph-headline {
   position: absolute;
   background: #fff;
   color: #000;
-  padding: 0px 8px;
+  padding: 0px 1px;
   text-align: center;
   white-space: nowrap;
   font-size: 15px;
@@ -702,7 +702,7 @@ h3.graph-headline {
 }
 
 #active-map-slider .noUi-tooltip {
-    display: none;
+    /* display: none; */
 }
 
 #active-map-slider .noUi-active .noUi-tooltip {
@@ -754,6 +754,7 @@ form input {
 .slider-labels {
   margin-top: 10px;
   width: 100%;
+  min-height: 25px;
   display: flex;
   justify-content: space-between;
 }
@@ -782,3 +783,27 @@ form input {
 
 
 /* [class*='col-'] */
+
+.deact circle {
+    fill: #ddd;
+}
+
+.deact text {
+    fill: #ddd;
+}
+
+.deact path {
+    stroke: #ddd;
+}
+
+.country text {
+    paint-order: stroke;
+    stroke: #fff;
+    stroke-width: 3px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+}
+
+.grayed-out {
+  opacity: 0.1;
+}

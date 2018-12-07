@@ -1,31 +1,40 @@
 # Until tomorrow
 
-0. Hover Population, GDP, Region, etc. 
-1. Animate the path country by country (that’s a good excercise) !
-5. Hover for the graphs (comparison within graph!)
-2. Read & write about Ghana and make the small graphs
-3. Make the navigation vanish and the dashboard pop up in sequence
-4. Make another y-Axis option to include countries under 4 % access
-5. Current Year BOLD BIG next to the Interface
+- style the radio buttons. 
+- Connect slider and map again.
+  - setting during animation works! – Make it less present during that, and after the animation is finished, use the slider to filter by year. 
+
+- Hover Population, GDP, Region, etc. – only available after animation -> roll them in
+- Hover for the graphs (comparison within graph!)
+- Read & write about Ghana and make the small graphs
+- ~Make the navigation vanish and the dashboard pop up in sequence~ !! // Don’t do that, change the landing page layout instead
+- Current Year BOLD BIG next to the Interface
 
 # bonus: 
-
-1. Deactivate button up / down when end of range
-3. Show also the high and low, when hovering over a country
+- Deactivate button up / down when end of range
 
 # style 
-
-3. CSS clean fuels acces is now a button!
-3. CSS toggle switch: SDG focus, plain
-
+- CSS clean fuels acces is now a button!
 
 
 # Dashboard of dashboards:
-
 - Mobile-view
-- Sorting ?
-- Use ISO-Code on backend instead of countryname // not for now :)
-- Enable the map view
-- On jumping to next country: compare two countries
 
-# Datawrangling
+
+
+
+
+## Done (only after 20181206)
+- Make another y-Axis option to include countries under 4 % access //
+- CSS toggle switch: SDG focus, plain
+- Enable the map view
+
+## Decided against
+- Show also the high and low, when hovering over a country
+- Dashboard sorting 
+- Use ISO-Code on backend instead of countryname // not for now :) // Would be better next time!
+- On jumping to next country: compare two countries
+- // .transition().duration(pointTimer)
+  // .style('font-size', '12px')
+  // .style('fill', 'rgb(0, 0, 0)')
+- 
