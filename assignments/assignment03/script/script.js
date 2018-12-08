@@ -681,7 +681,7 @@ function updateGraph(data, selection, label, indicator) {
   d3.select(selection).select('svg').remove();
   
   const margin = {top: 20, right: 100, bottom: 40, left: 40};
-  let w = 680 - margin.left - margin.right;
+  let w = 660 - margin.left - margin.right;
   let h = 500 - margin.top - margin.bottom;
   
   let graph = d3.select(selection)

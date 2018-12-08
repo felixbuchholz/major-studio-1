@@ -1,5 +1,14 @@
 /* global d3 */
 /* global data */
+
+let scale =  (scaleFactor) => {
+    return d3.geoTransform({
+        point: function(x, y) {
+            this.stream.point(x * scaleFactor, -1 * y * scaleFactor);
+        }
+    });
+};
+
 let buildMap = () => {
 
   let myCombinedDataset = data.worldGeo;
@@ -12,16 +21,15 @@ let buildMap = () => {
     })
   })
   //console.log(myCombinedDataset)
-  
-    let map = d3.select("#death-map").append("svg");
+    let contWidth = d3.select('#death-map-container').node().getBoundingClientRect().width;
+    console.log(contWidth)
+    let map = d3.select("#death-map")
+      .append("svg")
+        .attr('width', `${contWidth}`)
+        .attr('height', `${contWidth*0.42}`)
+      .append('g');
     // let scaleFactor = 0.5;
-    let scale =  (scaleFactor) => {
-        return d3.geoTransform({
-            point: function(x, y) {
-                this.stream.point(x * scaleFactor + window.innerWidth/2, -1 * y * scaleFactor + window.innerHeight/2);
-            }
-        });
-    };
+
     
     let deathratesArr = [];
     myCombinedDataset.features.forEach((e, i) => {
@@ -35,7 +43,7 @@ let buildMap = () => {
     	.enter()
         .append("path")
         .attr("d", d3.geoPath().projection(scale(4)))
-        .attr('transform', 'translate(-250, -80)')
+        .attr('transform', 'translate(600, 350)')
         .attr("stroke", "white")
         .attr('stroke-width', 2)
         .attr("fill", (d, i) => {
@@ -47,11 +55,14 @@ let buildMap = () => {
           }
         })
         .attr("fill-opacity", 1);
-  let margin = ({top: 0, right: 40, bottom: 20, left: 40})
+        
+  // ––––––––––––––––––––––– LEGEND
+  
+  
+  let margin = ({top: 0, right: 0, bottom: 20, left: 3})
   let height = 50;
   let barHeight = 10;
-  let width = 700;
-  
+  let width = 450;
   
   
   let legend = d3.select("#death-legend").append("svg");
@@ -93,42 +104,27 @@ let buildMap = () => {
     
   legend.selectAll('text').attr('y', '6')
   // .style('font-size', '12px')
+  
+  // ------------------- legend
+  
 }
-  /*
-  else if (d.deathrate==0) {
-            return `rgb(250, 250, 250)`;
-          } 
-  */
-  /*  .on('mouseover', function(d) {
-        console.log(d.properties.subregion);
-        d3.select(this).attr("fill", (d, i) => {
-          if (d.properties.subregion == 'Middle Africa') {
-            return '#e41a1c';
-          } else if (d.properties.subregion == 'Western Africa') {
-            return '#377eb8';
-          } else if (d.properties.subregion == 'Northern Africa') {
-            return '#4daf4a';
-          } else if (d.properties.subregion == 'Eastern Africa') {
-            return '#984ea3';
-          } else if (d.properties.subregion == 'Southern Africa') {
-            return '#ff7f00';
-          }
-        });
-        d3.select("#hover")
-            .text(d.properties.name.toUpperCase() + ' (Population: ' + (d.properties.pop_est/1000000).toFixed(1) + 'Mio.) ' + 'Region: ' + d.properties.subregion);
-        d3.select('#hover').attr("fill-opacity", 1);
-    })
-    .on('mouseout', function() {
-        d3.select(this).attr("fill", "lightgray");
-        d3.select('#hover').attr("fill-opacity", 0);
-    })
-    .on('mousemove', function(d) {
-        d3.select("#hover")
-            .attr('x', function() { return d3.mouse(this)[0] + 20; })
-            .attr('y', function() { return d3.mouse(this)[1] + 10; });
-    });
 
-    */
 
-// svg.append("text")
-//    .attr('id', 'hover');
+
+function resizeMap() {
+  let contWidth = d3.select('#death-map-container').node().getBoundingClientRect().width;
+    // console.log(contWidth)
+  d3.select("#death-map").select('g').attr('transform', `scale(${1*contWidth/1458})`);
+  d3.select("#death-map")
+    .select("svg")
+      .attr('width', `${contWidth}`)
+      .attr('height', `${contWidth*0.42}`)
+}
+
+
+d3.select(window)
+  .on("resize", sizeChange);
+  
+function sizeChange() {
+  resizeMap();
+}

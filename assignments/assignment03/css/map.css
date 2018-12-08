@@ -1,21 +1,47 @@
+#death-map-outer {
+  width: 100%;
+  margin: auto;
+}
+#death-map-container {
+  width: 100%; /* 100% of width of container */
+  padding-bottom: 42%; /* 75% of width of container */
+  position:relative;
+}
+
+#death-map {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  /* background: #eee; */
+}
+
 #death-map svg{
   margin-top: 0px;
   margin-bottom: 0px;
-  width: 1480px;
-  height: 700px;
 }
 
-#death-legend svg{
+/* ------- LEGEND ----- */
+
+#death-legend-cont {
+  margin: auto;
+}
+
+#death-map-container div {
+  margin: auto;
+}
+
+
+#death-legend svg {
   margin: auto;
   margin-top: 0px;
   margin-bottom: 60px;
-  width: 700px;
+  width: 450px;
   height: 50px;
 }
 
-#death-legend p {
-  width: 700;
-  margin: auto;
+#death-legend-label {
+  margin:0;
+  text-align: center;
+  font-size: 15px;
 }
 
 #death-legend .tick {
@@ -26,13 +52,6 @@
   y: "4";
 }
 
-.horizontal-align {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 
-.horizontal-align div {
-}
 
 .x-axis line, .x-axis path { stroke: #fff; }

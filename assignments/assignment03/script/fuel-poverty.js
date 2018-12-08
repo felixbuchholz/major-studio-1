@@ -8,6 +8,8 @@ let countryTimer = 4; // good choice: 420
 let yAxisTimer = 1000;
 let distanceFromCircle = 6;
 
+
+
 function scaleYAxis(value) {
   yAxisMax = value;
   yScaleActiveMap.domain([0, yAxisMax]);
@@ -248,7 +250,40 @@ function getNextCountryAndData() {
   //countryCounter++;
   dataPointCounter = 0;
   //console.log(countryCounter, data.activeMapSequencePoints);
+} 
+
+// -------------------- TOOLTIPS
+
+var tooltip = d3.select("#active-map")
+    .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+function mouseover(d){
+  tooltip.transition()
+    .duration(200)
+    .style("opacity", .9);
 }
+
+function mousemove(d){
+    console.log(this);
+    d3.select(this).classed('deact', false)
+    // Data – DOM does get out of sync. Observe that. https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+    // .raise();
+    tooltip.html(`Country: ${d[3]} <br /> Year: ${d[0]} <br /> Poverty Headcount Ratio: ${d[1]} %<br /> Access to Clean Fuels: ${d[2]} %`)
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 50) + "px");
+}
+
+function mouseout(d){
+    d3.select(this).classed('deact', true);
+    tooltip.transition()
+      .duration(500)
+      .style("opacity", 0);
+}
+
+// -------------------- tooltips
+
 
 function getAndDrawNextDataPoint() {
   
@@ -391,6 +426,12 @@ function getAndDrawNextDataPoint() {
         .attr("year", function(d) {
           return `${d[0]}`
         })
+    
+    d3.select(this)
+          .data(p)
+          .on("mouseenter", mouseover)
+          .on("mousemove", mousemove)
+          .on("mouseleave", mouseout);
         
     d3.select(this)
       .selectAll('text')
