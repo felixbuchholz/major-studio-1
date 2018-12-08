@@ -3,8 +3,8 @@
 let xScaleActiveMap, yScaleActiveMap, xAxis, yAxis;
 let yearSlider, activeMapYearsArr, lastYear;
 let yAxisMax = 4;
-let pointTimer = 3; // good choice: 350
-let countryTimer = 4; // good choice: 420
+let pointTimer = 350; // good choice: 350
+let countryTimer = 420; // good choice: 420
 let yAxisTimer = 1000;
 let distanceFromCircle = 6;
 
