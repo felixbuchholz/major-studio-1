@@ -22,7 +22,7 @@ let buildMap = () => {
   })
   //console.log(myCombinedDataset)
     let contWidth = d3.select('#death-map-container').node().getBoundingClientRect().width;
-    console.log(contWidth)
+    // console.log(contWidth)
     let map = d3.select("#death-map")
       .append("svg")
         .attr('width', `${contWidth}`)
@@ -39,13 +39,13 @@ let buildMap = () => {
     let colorScale = d3.scaleSequential(d3.interpolateYlOrBr).domain([0, d3.max(deathratesArr)]);
     
      let featureElement = map.selectAll("path")
-    	.data(myCombinedDataset.features)
+    	.data(myCombinedDataset.features, function(d) {return d.properties.name})
     	.enter()
         .append("path")
         .attr("d", d3.geoPath().projection(scale(4)))
         .attr('transform', 'translate(600, 350)')
         .attr("stroke", "white")
-        .attr('stroke-width', 2)
+        .attr('stroke-width', 1)
         .attr("fill", (d, i) => {
           // console.log(isNaN(d.deathrate))
           if (isNaN(d.deathrate)) {
@@ -54,7 +54,11 @@ let buildMap = () => {
             return colorScale(d.deathrate);
           }
         })
-        .attr("fill-opacity", 1);
+        .attr("fill-opacity", 1)
+        .on("mouseenter", mouseoverMap)
+          .on("mousemove", mousemoveMap)
+          .on("mouseleave", mouseoutMap)
+          .on("click", clickToDashMap);
         
   // ––––––––––––––––––––––– LEGEND
   
@@ -109,7 +113,47 @@ let buildMap = () => {
   
 }
 
+var tooltipMap = d3.select("#death-map-outer")
+    .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
 
+function mouseoverMap(d){
+  tooltipMap.transition()
+    .duration(200)
+    .style("opacity", 1);
+}
+
+function mousemoveMap(d){
+    // console.log(d);
+    d3.select(this).classed('active-country', true).raise();
+    // Data – DOM does get out of sync. Observe that. https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+    // .raise();
+    tooltipMap.html(`Country: <span class='em'>${d.properties.name}</span> <br /> Death Rate from Household Air Pollution: <span class='em'>${parseFloat(d.deathrate).toFixed(0)}</span>`)
+      .style("left", (d3.event.pageX - 170) + "px")
+      .style("top", (d3.event.pageY - 150) + "px");
+}
+
+function mouseoutMap(d){
+    d3.select(this).classed('active-country', false);
+    tooltipMap.transition()
+      .duration(500)
+      .style("opacity", 0);
+}
+
+function clickToDashMap (d) {
+  let country = d.properties.name;
+  console.log(country)
+  if (country == 'United Republic of Tanzania') {
+    country = 'Tanzania';
+  }
+  selectCountry(country);
+  document.querySelector('#holistic').scrollIntoView({
+            block: 'start',
+            behavior: 'smooth'
+        });
+ // window.location.href = '#holistic';
+}
 
 function resizeMap() {
   let contWidth = d3.select('#death-map-container').node().getBoundingClientRect().width;

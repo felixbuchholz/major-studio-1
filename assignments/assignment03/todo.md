@@ -1,43 +1,26 @@
 # Until tomorrow
 
-## Increase margins between sections
+### CONCLUSION // SDG 2030
+- icon – ends in yellow. 
+- Sources are a menu!
+
+## keep track of scroll – Make an arrow down – lower opacity of the following dashboard – 
+
+
 
 ## H1
 - Fix resizing the h1.icon
-- Change dashboard headline according to selectedCountry
 
-## MAP 
-1. hover and 
-2. onclick to dashboard 
 
 ## COMPARISON
 
--   While the relationship between access to clean fuels and poverty is quite obvious for countries where access to clean fuels is above 4 % of the population other factors might be more influential below this threshold. To understand if this value is a tipping point in development let’s look at countries that in the given timeframe started just above the the threshold: Burkina Faso, Kenya and Ghana.
-
-- style the tooltip
-- onclick to dashboard
 - reduce the interaction for the direct comparison =
-    - Mobile view
-    - remove slider
-    - remove radio buttons
-    - allow replay
-    - allow raise
-    - changeAxis?
-    - Current Year BOLD BIG next to the Interface
-
-### SUB-Conclusion
-
-### CONCLUSION
-
-## SCROLL & MOVEMENT
-- Animation?
-
-## GHANA
--  and make the small graphs
-  - -50% poverty +115% Access to clean fuels
-  - efficiency 40 % // cookstove illustration
-  - 5000 –220000 tonnes LPG
-  - annual loss of 502,000 disability adjusted life-years
+  - Mobile view   - changeAxis?
+  - remove slider
+  - remove radio buttons
+  - allow replay
+  - allow raise
+  - Current Year BOLD BIG next to the Interface
 
 
 # Requires big restructuring: 
@@ -86,6 +69,25 @@ Second hierarchy level
 - Re-positioning
 - Activate links
 - Read & write about Ghana
+  -50% poverty +115% Access to clean fuels
+  - efficiency 40 % // cookstove illustration
+  - annual loss of 502,000 disability adjusted life-years
+- ### Add the paper to the Sources
+- Change dashboard headline according to selectedCountry
+- style the tooltip
+- onclick to dashboard
+## GHANA
+-  and make the small graphs
+- 5000 –220000 tonnes LPG
+- ## MAP 
+1. hover and 
+2. onclick to dashboard 
+
+### SUB-Conclusion after Fuels / Poverty
+-   While the relationship between access to clean fuels and poverty is quite obvious for countries where access to clean fuels is above 4 % of the population other factors might be more influential below this threshold. To understand if this value is a tipping point in development let’s look at countries that in the given timeframe started just above the the threshold: Burkina Faso, Kenya and Ghana.
+
+## SCROLL & MOVEMENT
+- Animation?
 
 ## Decided against
 - Show also the high and low, when hovering over a country

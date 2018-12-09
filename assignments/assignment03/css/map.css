@@ -29,11 +29,9 @@
   margin: auto;
 }
 
-
 #death-legend svg {
   margin: auto;
   margin-top: 0px;
-  margin-bottom: 60px;
   width: 450px;
   height: 50px;
 }
@@ -52,6 +50,9 @@
   y: "4";
 }
 
-
+.active-country {
+  stroke: #000;
+  stroke-width: 1;
+}
 
 .x-axis line, .x-axis path { stroke: #fff; }

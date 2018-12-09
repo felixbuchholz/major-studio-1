@@ -10,6 +10,18 @@ var valueSliders = {};
 const myInfoIndicators = [
   ['cleanfuels', `<span class='em'>Access to clean fuels</span> and cooking technology in % of the population`],
   ['lifeexp', `<span class='em'>Average life expectancy</span> at birth in years`], ['poverty', `<span class='em'>Poverty headcount ratio</span> at national poverty line in % the of population`], ['schoolyears', `<span class='em'>Average schooling years</span> of the population with age 25&nbsp;+`], ['population', `<span class='em'>Population</span>`], ['gdp', `<span class='em'>GDP per capita,</span> PPP current int. $`]];
+  
+// https://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            block: 'start',
+            behavior: 'smooth'
+        });
+    });
+});
 
 function updateSlider() {
   
@@ -394,6 +406,9 @@ let getNextCountryRate = (direction) => {
 // FUNCTIONS
 let myData = [selectedCountry];
 let selectCountry = (countrySelection) => {
+    
+  d3.select('#country-name-headline').text(`${countrySelection}`)
+  
   selectedCountry = countrySelection;
   if (menuOpen == true) {
     openCloseMenu();
@@ -907,3 +922,37 @@ function initate() {
 
 window.onload = initate;
 //swapStyleSheet("css/sdg.css");
+
+function collapseSources() {
+  document.querySelector('#end').scrollIntoView({
+              block: 'end',
+              behavior: 'smooth'
+    });
+  d3.select('#sources-button').select('i').classed('down', true)
+  d3.select('#sources-button').select('i').classed('up', false)
+  d3.select('#sources').transition().delay(450).style('display', 'none');
+  sourcesCollapsed = true;
+}
+
+let sourcesCollapsed = true; 
+
+function showSources() {
+  if (sourcesCollapsed == true) {
+    
+    d3.select('#sources-button').select('i').classed('down', false)
+    d3.select('#sources-button').select('i').classed('up', true)
+    d3.select('#sources').style('display', 'block');
+    document.querySelector('#sources').scrollIntoView({
+              block: 'start',
+              behavior: 'smooth'
+    });
+    sourcesCollapsed = false; 
+    
+  } else {
+    collapseSources()
+  }
+
+        
+
+  
+}

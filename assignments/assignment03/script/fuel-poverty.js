@@ -266,12 +266,12 @@ function mouseover(d){
 }
 
 function mousemove(d){
-    console.log(this);
+    // console.log(this);
     d3.select(this).classed('deact', false)
     // Data – DOM does get out of sync. Observe that. https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
     // .raise();
-    tooltip.html(`Country: ${d[3]} <br /> Year: ${d[0]} <br /> Poverty Headcount Ratio: ${d[1]} %<br /> Access to Clean Fuels: ${d[2]} %`)
-      .style("left", (d3.event.pageX) + "px")
+    tooltip.html(`Country: <span class='em'>${d[3]}</span> <br /> Year: <span class='em'>${d[0]}</span> <br /> Poverty Headcount Ratio: <span class='em'>${parseFloat(d[1]).toFixed(1)}</span> %<br /> Access to Clean Fuels: <span class='spot em'>${parseFloat(d[2]).toFixed(1)} %`)
+      .style("left", (d3.event.pageX + 50) + "px")
       .style("top", (d3.event.pageY - 50) + "px");
 }
 
@@ -283,6 +283,21 @@ function mouseout(d){
 }
 
 // -------------------- tooltips
+
+// -------------------- CLICK
+
+function clickToDash (d) {
+  selectCountry(d[3]);
+  document.querySelector('#holistic').scrollIntoView({
+          block: 'start',
+          behavior: 'smooth'
+      });
+  // window.location.href = '#holistic';
+  
+}
+
+// -------------------- click
+
 
 
 function getAndDrawNextDataPoint() {
@@ -431,7 +446,8 @@ function getAndDrawNextDataPoint() {
           .data(p)
           .on("mouseenter", mouseover)
           .on("mousemove", mousemove)
-          .on("mouseleave", mouseout);
+          .on("mouseleave", mouseout)
+          .on("click", clickToDash);
         
     d3.select(this)
       .selectAll('text')

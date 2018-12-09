@@ -11,8 +11,8 @@
     <link rel="stylesheet" type="text/css" href="css/map.css">
   </head>
   <body>
-    
-    <div id='start' class="editorial">
+  
+    <div id='start' class="start-end editorial">
       
       <div class="row no-border narrower">
         <div id="head-and-icon">
@@ -23,7 +23,7 @@
   
     </div>
     
-    <div class="row no-border broader editorial">
+    <div class="row no-border broader editorial subsection">
       <div class="col-xl-2">
         <div id="toc" class="">
           <h3>Table of Contents:</h3>
@@ -52,7 +52,7 @@
         <p>
         I want to use this model but change the perspective: Can higher access to clean fuels help reducing poverty?
         </p>
-        <div class="no-col-break">
+        <div class=""> <!-- no-col-break -->
         <p>
           <h3>How can we look at this from a data perspective?</h3>
         </p>
@@ -75,9 +75,9 @@
     </div>
     
     
-    <div id="dashboard-container">
+    <div id="dashboard-container" class='subsection'>
       <div class="row no-border editorial">
-        <h2><div class="tophead" id='holistic'>A (more) Holistic Approach</div>Access to Clean Fuels and Poverty in Context in <span class="insert-selected-country-here"></span>Ghana</span></h2>
+        <h2><div class="tophead" id='holistic'>A (more) Holistic Approach</div>Access to Clean Fuels and Poverty, Context in <span class="insert-selected-country-here"><span id='country-name-headline'>Ghana</span></h2>
       </div>
       <div id="select-menu">
         <div class="row-select" id='selection-menu'>
@@ -287,7 +287,7 @@
   
   
 
-  <div id='end' class="editorial">
+  <div id='country-spotlight' class="editorial subsection">
     <div class="row no-border">
       <h2 id='spotlight'><div class="tophead">Country Spotlight</div>Ghana</h2>
     </div>
@@ -295,23 +295,54 @@
         <div class="juxtapose-data">
           <div class="text">
             <p class='first-p'>
-              Ghana is not only a good example to show the connection between poverty and access to clean fuels, it’s efforts and those of NGOs and the private sector are also well documented. In it’s 2012 Sustainable Energy for All Action Plan Ghana sets ambitious goals, soon to be re-evaluated. 
+              Ghana is not only a good example to show the relationship between poverty and access to clean fuels, it’s efforts and those of NGOs and the private sector are also well documented. In it’s 2012 Sustainable Energy for All Action Plan<span class='sup'>1</span> Ghana sets ambitious goals, soon to be re-evaluated. 
             </p>
             <p>
             The plan’s approach to lessen the burden of dirty fuels is twofold: Promoting the use of LPG as a cleaner burning fuel and reducing the consumption of dirty fuels with more efficient cookstoves.
             </p>
             <p>
-              The promotion of efficient cookstoves faces challenges in Ghana: incentives to switch are low for a large group of rural households because they can obtain firewood at minimal or no cost. And metal stoves that don’t allow to prepare the tradtional staple foods are not adopted or quickly abandoned. Fortunately there are also success stories: Enterprise Works Ghana for example has sold over 480,000 stoves between 2002 and 2011 helping househods to reduce their fuel consumption by up to 40 %.<span class='sup'>1</span>
+              The promotion of efficient cookstoves faces challenges in Ghana: incentives to switch are low for a large group of rural households because they can obtain firewood at minimal or no cost. And metal stoves that don’t allow to prepare the tradtional staple foods are not adopted or quickly abandoned. Fortunately there are also success stories: Enterprise Works Ghana for example has sold over 480,000 stoves between 2002 and 2011 helping househods to reduce their fuel consumption by up to 40 %.
             </p>
             <p>
               In 1989, the Ministry of Energy started to promote the use of LPG to targeted households, small-scale businesses and public institutions. LPG cylinders were distributed freely and consumers only had to pay for the gas. These efforts proved to be largely successful. LPG consumption grew from 5,000 tonnes in 1990 to 220,000 in 2009. Further growth was then challenged by  Ghana’s dependency on Tema Oil Refinery, it's only national provider for LPG not being able to satisfy the new demand and the fact that commercial transportation started to make use of subsidized LPG to fuel their vehicels. 
             </p>
             <p>
             While we saw access to clean fuels doubling between 2005 and 2015 and a poverty reduction of almost 50 % from 1998 to 2012, universal access to clean fuels is still an urgent issue: 
-            In 2012, exposure to indoor air pollution was “responsible for the annual loss of 502,000 disability adjusted life-years”<span class='sup' footnote='DALY is a standard metric used by the World Health Organization (WHO) to indicate the burden of death and illness due to a specific risk factor.'>2</span>, resulting in an  estimated 16,600 deaths per year in Ghana.
+            In 2012, exposure to indoor air pollution was “responsible for the annual loss of 502,000 disability adjusted life-years”<span class='sup'>2</span>, resulting in an  estimated 16,600 deaths per year in Ghana.
             <p>
+            <div class="footnotes-inside">
+            <div class='footnote'><span class='sup'>1 </span>All information and data in this section is cited from <a href='#sources-ghana'>Ghana Sustainable Energy For All Action Plan</a></div>
+            <div class='footnote'><span class='sup'>2 </span>DALY is a standard metric used by the World Health Organization (WHO) to indicate the burden of death and illness due to a specific risk factor.</div>
+            </div>
           </div>
           <div class="data">
+            <div class="typo-mix">Key facts for Ghana:</div>
+            <div class="typo-mix">
+              <div><span class='big number positive'>480.000&nbsp;<span class='data-label positive'>cookstoves </span></span><span class='benefit'>were sold</span> between&nbsp;2002&nbsp;and&nbsp;2012 </div>
+              <div> <span class='benefit'>helping households to <span class='big data-label positive'>reduce fuel consumption</span> by up to </span><span class='huge number positive'>40&nbsp;%</span></div>
+            </div>
+            
+            <div class="typo-mix">
+              <div class="both-outer-around">
+                <div id="lpg-graph"></div>
+                <div id='lpg-text'>
+                  <span class='big data-label positive'>LPG consumption </span> <span class='benefit'>increased from <span class='big number positive'>5.000 </span> to <span class='big number positive'>220.000 </span> <span class='big data-label positive'>tonnes</span></span>
+                </div>
+              </div>
+            </div>
+           
+            <div class="typo-mix">
+              <div>Between&nbsp;2005&nbsp;and&nbsp;2015 </div>
+              <div> <span class='big data-label positive'>Access to clean fuels </span><span class='big number positive'>more than doubled</span> </div>
+              <div><span class='big benefit'>and </span><span class='big data-label positive'>poverty </span><span class='benefit'>was reduced by&nbsp;</span> <span class='huge number positive'>50&nbsp;%</span> </div>
+              <div>(headcount ratio at the national poverty line, from 1998 to 2012)</div>
+            </div>
+            <div class="typo-mix">
+              <div><span class="">To leave no one behind it is still </span> <span class=''>urgent&nbsp;to&nbsp;take&nbsp;action</span></div>
+              <div><span class='big data-label negative'>Indoor air pollution</span> accounted for <span class='big data-label negative'>a loss of</span></div>
+              <div><span class='huge number negative'>502.000&nbsp;</span><span class='big data-label negative'>life-years</span> in&nbsp;2012</div>
+            </div>
+            <!--
             <div class="both-outer-around">
              <i class="huge icons">
               <i class="circular inverted search icon"></i>
@@ -322,12 +353,13 @@
               <i class="bottom right corner pencil alternate icon"></i>
             </i>
             </div>
+            -->
           </div>
         </div>
       </div>
   </div>
   
-  <div class="row no-border editorial" id="active-map">
+  <div class="row no-border editorial subsection" id="active-map">
       <div id="active-map-intro">
         <h2 id='direct-comparison'><div class="tophead">A Direct Comparison</div>Access to Clean Fuels and Poverty Headcount Ratio at the 1.90 $ line</h2>
       </div>
@@ -366,25 +398,71 @@
 
         </div>
       </div>
-      
+      <!-- <div class="row no-border"> -->
+      <div class="active-map-conclusion">
+        <p class='first-p'>
+            This direct comparison between access to clean fuels and cooking technologies and poverty suggests a quite strong relationship between the two in negative direction. 
+        </p>
+        <p>
+        With occassional outliers most countries show a reduction in poverty as access to clean fuels increases. But these findings also have their limits. 
+        </p>
+        <p> 
+         While the relationship is quite obvious for countries where access to clean fuels is above 4 % of the population other factors might be more influential below this threshold and should be researched further.
+        </p>
+        <p>
+        Nigeria, Chad and Gambia show no relation between the indicators and might be a good comparison to countries that, given the examined timeframe, started just above this threshold – Burkina Faso, Kenya and <a href="#spotlight">Ghana</a>. 
+        </p>
+        <p>
+        Contditions vary a lot throughout the African continent and concrete policies must take in consideration how challenges are best met given the specific national and local prerequisites. 
+        </p>
+        <p>
+        Although causation can’t be proven in this context. The found relationship is good news for both SDGs, indicating that improving one of them helps improving both.
+        </p>
+        <p><h3>And the following map is a reminder how urgent and important it is to take action.</h3></p>
+        </div>
+        <!-- </div> -->
   </div>
   
-  <div class="row no-border editorial">
-      <h2 id='stake'><div class="tophead">What’s at stake? – Dirty Fuels’ Immense Threat to Health</div>Death Rates from Household Air Pollution</h2>
-  </div>
-  <div class='row no-border' id='death-map-row'>
-    <div id="death-map-outer">
-      <div id='death-map-container'>
-        <div id="death-map"></div>
+  <div class="subsection">
+    <div class="row no-border editorial">
+        <h2 id='stake'><div class="tophead">What’s at stake? – Dirty Fuels’ Immense Threat to Health</div>Death Rates from Household Air Pollution</h2>
+    </div>
+    <div class='row no-border' id='death-map-row'>
+      <div id="death-map-outer">
+        <div id='death-map-container'>
+          <div id="death-map"></div>
+        </div>
+      </div>
+    </div>
+    <div class='row no-border '>
+      <div id="death-legend-cont">
+        <div><p id='death-legend-label'>Air pollution death rates (indoor, solid fuels) per 100,00 people in 2015</p></div>
+        <div id='death-legend'></div>
+      </div>
+    </div>
+    <div class='row no-border'>
+      <div class="conclusion">
+        <p class='first-p'>
+          This is the place for my conclusion
+        </p>
+        <p>
+        </p>
       </div>
     </div>
   </div>
-  <div class='row no-border '>
-    <div id="death-legend-cont">
-      <div><p id='death-legend-label'>Air pollution death rates (indoor, solid fuels) per 100,00 people in 2015</p></div>
-      <div id='death-legend'></div>
+  
+   <div id='end' class="start-end editorial">
+      <div class="row no-border narrower">
+        <div id="head-and-icon">
+          <h1>Leave no one behind when climbing the energy ladder! </h1>
+          <div class="spacer"></div>
+          <div class="scale-svg"><img id='ladder-svg' src="assets/ladder_clouds_sun_maxim_basinski_fff.svg" alt="Energy Ladder"></div>
+        </div>
+      </div>
+      <div class="row no-border broader" id='footer' onclick='showSources()'>
+        <div id='sources-button' class='button'>Sources <i class="caret down icon"></i></div>
+      </div>
     </div>
-  </div>
 
   
   <div class="row" id='sources'>
@@ -404,10 +482,11 @@
           <li><span class='name'>“Poverty headcount ratio at national poverty lines (% of population).” </span><span class="institution">World Bank, </span><span class='series'>World Bank, Global Poverty Working Group. Data are compiled from official government sources or are computed by World Bank staff using national ( i.e. country–specific ) poverty lines. </span><span class="retrieved">Accessed November 15, 2018. <a href='https://data.worldbank.org/indicator/SI.POV.NAHC'>Link to the source</a></span></li>
         </ul>
         
-        <h3>Articles, Placeholder Text</h3>
+        <h3>Articles, Reports</h3>
         <ul>
           <li> “Indoor Air Pollution.” Max Roser and Hannah Ritchie. Published online at OurWorldInData.org. Accessed November 20. <a href='https://ourworldindata.org/indoor-air-pollution'>Link to the source</a></li>
-          <li>“Obama Ipsum.” William Donahoe. Accessed November 20, 2018. <a href=http://obamaipsum.com/>Link to source</a></li>
+          <li id='sources-ghana'> “Ghana Sustainable Energy for All (SE4ALL) Action Plan.” Ghana Energy Commission. Accessed December 8. <a href='http://www.energycom.gov.gh/renewables/se4all'>Link to the source</a></li>
+          <!-- <li>“Obama Ipsum.” William Donahoe. Accessed November 20, 2018. <a href=http://obamaipsum.com/>Link to source</a></li> -->
         </ul>
         
         <h3>Graphics</h3>
@@ -433,5 +512,6 @@
 <script src="lib/colorbrewer.js"></script>
 <script src="script/map.js"></script>
 <script src="script/fuel-poverty.js"></script>
+<script src="script/lpg.js"></script>
   </body>
 </html>
