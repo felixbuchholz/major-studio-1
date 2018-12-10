@@ -255,7 +255,7 @@ data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
   buildMap();
   activeMapSetup();
   activeMapUpdate();
-
+  lpg();
   
 });
  

@@ -2,15 +2,21 @@
 /* global data */
 let xScaleActiveMap, yScaleActiveMap, xAxis, yAxis;
 let yearSlider, activeMapYearsArr, lastYear;
-let yAxisMax = 100;
+let yAxisMax = 4;
+let pointTimer = 350; // good choice: 350
+let countryTimer = 420; // good choice: 420
+let yAxisTimer = 1000;
+let distanceFromCircle = 6;
+
+
 
 function scaleYAxis(value) {
   yAxisMax = value;
   yScaleActiveMap.domain([0, yAxisMax]);
-      d3.select('#active-map-graph').select("#yAxisCont").select('.axis')
-        .transition()
-          .call(yAxis);
-  activeMapUpdate()
+  d3.select('#active-map-graph').select("#yAxisCont").select('.axis')
+    .transition().duration(yAxisTimer)
+      .call(yAxis);
+  yAxisReScale();
 }
 
 function activeMapSetup() {
@@ -204,24 +210,32 @@ let countryCounter = 0;
 let dataPointCounter = 0;
 let allCountryNames, currentCountryName, currentCountryData;
 let dataCont, countryCont; 
-let pointTimer = 400;
-let countryTimer = 600; 
+let xText, yText;
 
 function getNextCountryAndData() {
   // console.log(countryCounter);
-  allCountryNames = Object.keys(data.activeMapByCountry);
-  allCountryNames = allCountryNames.filter(x => x != 'Ghana')
   
-  allCountryNames.sort(function(a, b) {
-  if (a < b) {
+  let allCountryValues = Object.values(data.activeMapByCountry);
+  allCountryValues = allCountryValues.map((x) => {
+    let maxAccess = d3.max(x.map(y => parseFloat(y[2])));
+    let resArr = [maxAccess, x[0][3]];
+    return resArr;
+  })
+  allCountryValues.sort(function(a, b) {
+  if (a[0] < b[0]) {
     return -1;
   }
-  if (a > b) {
+  if (a[0] > b[0]) {
     return 1;
   }
   
   return 0;
   })
+  
+  //console.log(allCountryValues)
+  
+  allCountryNames = allCountryValues.map(x => x[1]);
+  allCountryNames = allCountryNames.filter(x => x != 'Ghana')
   
   // console.log(allCountryNames)
   currentCountryName = allCountryNames[countryCounter];
@@ -236,13 +250,66 @@ function getNextCountryAndData() {
   //countryCounter++;
   dataPointCounter = 0;
   //console.log(countryCounter, data.activeMapSequencePoints);
+} 
+
+// -------------------- TOOLTIPS
+
+var tooltip = d3.select("#active-map")
+    .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+function mouseover(d){
+  tooltip.transition()
+    .duration(200)
+    .style("opacity", .9);
 }
 
+function mousemove(d){
+    // console.log(this);
+    d3.select(this).classed('deact', false)
+    // Data – DOM does get out of sync. Observe that. https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+    // .raise();
+    tooltip.html(`Country: <span class='em'>${d[3]}</span> <br /> Year: <span class='em'>${d[0]}</span> <br /> Poverty Headcount Ratio: <span class='em'>${parseFloat(d[1]).toFixed(1)}</span> %<br /> Access to Clean Fuels: <span class='spot em'>${parseFloat(d[2]).toFixed(1)} %`)
+      .style("left", (d3.event.pageX + 50) + "px")
+      .style("top", (d3.event.pageY - 50) + "px");
+}
+
+function mouseout(d){
+    d3.select(this).classed('deact', true);
+    tooltip.transition()
+      .duration(500)
+      .style("opacity", 0);
+}
+
+// -------------------- tooltips
+
+// -------------------- CLICK
+
+function clickToDash (d) {
+  selectCountry(d[3]);
+  document.querySelector('#holistic').scrollIntoView({
+          block: 'start',
+          behavior: 'smooth'
+      });
+  // window.location.href = '#holistic';
+  
+}
+
+// -------------------- click
+
+
+
 function getAndDrawNextDataPoint() {
+  
   if (countryCounter == 0 && dataPointCounter == 0) {
     getNextCountryAndData();
   }
-    
+  if (dataPointCounter == 0) {
+    yearSlider.noUiSlider.set([data.activeMapSequencePoints[countryCounter][0][0], data.activeMapSequencePoints[countryCounter][0][0]]);
+  }
+  yearSlider.noUiSlider.set([null, data.activeMapSequencePoints[countryCounter][0][0]]);
+  
   // enter, update, exit
   let countries = d3.select('#active-map')
     .select('#dataCont')
@@ -250,10 +317,12 @@ function getAndDrawNextDataPoint() {
     .data(data.activeMapSequencePoints);
   //console.log(countries)
   
+  
   // ----------------------------------------- ENTER --------------------------
   countries.enter()
     .append('g')
-    .attr('class', 'country')
+    .classed('deact', false)
+    .classed('country', true)
     .attr('id', `${currentCountryName.split(' ').join('')}`)
     .each(function(p, j) {
       // console.log(p)
@@ -263,7 +332,7 @@ function getAndDrawNextDataPoint() {
         .enter()
         .append('circle')
         .style('opacity', '0')
-        .attr("r", 5)
+        .attr("r", 6)
         .attr("cx", function(d) {
           //console.log(d)
           return xScaleActiveMap(parseFloat(d[1]));
@@ -271,15 +340,87 @@ function getAndDrawNextDataPoint() {
         .attr("cy", function(d) { 
           return yScaleActiveMap(parseFloat(d[2])); 
         })
-        .attr('fill', '#f00')
+        .attr('fill', 'rgb(252, 195, 11)')
         .attr("year", function(d) {
           return `${d[0]}`
         })
         .transition().duration(pointTimer)
         .style('opacity', '1');
+        
+        // console.log(d3.select(this))
+
+        d3.select(this)
+          .selectAll("text")
+          .data(p)
+          .enter()
+          .append('text')
+          // .style('font-size', '15px')
+          // .style('fill', 'rgb(252, 195, 11)')
+          .style('opacity', '0')
+          .attr('x', function(d) {
+            // console.log(d);
+            xText = xScaleActiveMap(parseFloat(d[1]))+distanceFromCircle;
+            // console.log(xText);
+            return xText;
+          })
+          .attr('y', function(d) {
+            yText = yScaleActiveMap(parseFloat(d[2]))+distanceFromCircle;
+            return yText;
+          })
+          .attr('transform', (d,i) => {
+            let a = -20;
+            let x = xText;
+            let y = yText;
+            return `rotate(${a}, ${x}, ${y})`; //translate(${-width/2+barWidth/2},0)
+          })
+          .text(function(d) { return d[3]; })
+            .transition().duration(pointTimer)
+            .style('opacity', '1')
+        
     }); // if circle already available: select & move, else: transition form origin. When data is not matching current year: add * 
   
-  countries.each(function(p, j) {
+   
+  // console.log(data.activeMapSequenceLines[countryCounter].length)
+  if (data.activeMapSequenceLines[countryCounter].length >= 2) {
+    // console.log('line should appear')
+    let countryLine = d3.line() //.curve(d3.curveCatmullRom.alpha(0.5))
+      // .curveNatural(d3.curveNatural)
+      .x(function(d) { 
+        // console.log(parseFloat(d[1]))
+        return xScaleActiveMap(parseFloat(d[1])); })
+      .y(function(d) { 
+        // console.log(parseFloat(d[2]))
+        return yScaleActiveMap(parseFloat(d[2])); });
+      
+    let pathselection = d3.select(`#${currentCountryName.split(' ').join('')}`)
+      .selectAll('path')
+      .data(data.activeMapSequenceLines[countryCounter])
+      .enter() // ------ ENTER
+      
+      // console.log(pathselection);
+    let path = pathselection  
+      .insert('path',"circle")
+        .attr("d", countryLine(data.activeMapSequenceLines[countryCounter]))
+        .attr('stroke', '#000')
+        .attr('stroke-width', 0.5)
+        .attr('fill', 'none')
+    // console.log(path)
+    // console.log(currentCountryName, path.node())
+    
+    var totalLength = path.node().getTotalLength();
+    
+    path.attr("stroke-dasharray", totalLength + " " + totalLength)
+       .attr("stroke-dashoffset", totalLength)
+       .transition()
+       .duration(pointTimer)
+       .attr("stroke-dashoffset", 0);
+  }
+  // ----------------------------- enter
+  countries.classed('deact', true)
+  d3.select(`#${currentCountryName.split(' ').join('')}`).classed('deact', false)
+
+ // ----------------------------- UPDATE
+    countries.each(function(p, j) {
      d3.select(this)
      //d3.select(`#${currentCountryName.split(' ').join('')}`)
         .selectAll("circle")
@@ -296,49 +437,43 @@ function getAndDrawNextDataPoint() {
           // console.log(parseFloat(d[2]))
           return yScaleActiveMap(parseFloat(d[2])); 
         })
-        .attr('fill', '#000')
+        .attr('fill', 'rgb(0, 0, 0)')
         .attr("year", function(d) {
           return `${d[0]}`
         })
+    
+    d3.select(this)
+          .data(p)
+          .on("mouseenter", mouseover)
+          .on("mousemove", mousemove)
+          .on("mouseleave", mouseout)
+          .on("click", clickToDash);
         
+    d3.select(this)
+      .selectAll('text')
+      .data(p)
+      .transition()
+      .duration(pointTimer)
+      .attr('x', function(d) {
+            // console.log(d);
+            xText = xScaleActiveMap(parseFloat(d[1]))+distanceFromCircle;
+            // console.log(xText);
+            return xText;
+          })
+      .attr('y', function(d) {
+        yText = yScaleActiveMap(parseFloat(d[2]))+distanceFromCircle;
+        return yText;
+      })
+      .attr('transform', (d,i) => {
+        let a = -20;
+        let x = xText;
+        let y = yText;
+        return `rotate(${a}, ${x}, ${y})`; //translate(${-width/2+barWidth/2},0)
+      })
+      
   })
-    // ----------------------------- LINE
-  // console.log(data.activeMapSequenceLines[countryCounter].length)
-  if (data.activeMapSequenceLines[countryCounter].length >= 2) {
-    // console.log('line should appear')
-    let countryLine = d3.line()
-      // .curveNatural(d3.curveNatural)
-      .x(function(d) { 
-        // console.log(parseFloat(d[1]))
-        return xScaleActiveMap(parseFloat(d[1])); })
-      .y(function(d) { 
-        // console.log(parseFloat(d[2]))
-        return yScaleActiveMap(parseFloat(d[2])); });
-      
-    let pathselection = d3.select(`#${currentCountryName.split(' ').join('')}`)
-      .selectAll('path')
-      .data(data.activeMapSequenceLines[countryCounter])
-      .enter() // ------ ENTER
-      
-      console.log(pathselection);
-    let path = pathselection  
-      .append('path')
-        .attr("d", countryLine(data.activeMapSequenceLines[countryCounter]))
-        .attr('stroke', '#000')
-        .attr('stroke-width', 0.5)
-        .attr('fill', 'none')
-    // console.log(path)
-    // console.log(currentCountryName, path.node())
-    
-    var totalLength = path.node().getTotalLength();
-    
-    path.attr("stroke-dasharray", totalLength + " " + totalLength)
-       .attr("stroke-dashoffset", totalLength)
-       .transition()
-       .duration(pointTimer)
-       .attr("stroke-dashoffset", 0);
-  }
-  // ----------------------------- line
+
+  
   if (dataPointCounter < data.activeMapSequence[countryCounter].length-1) {
       dataPointCounter++;
       // console.log(data.activeMapSequence[countryCounter].length, dataPointCounter);
@@ -363,6 +498,73 @@ function getAndDrawNextDataPoint() {
 
 // only available after the whole animation went through!
 
+function yAxisReScale() {
+  let countryPoints = d3.select('#active-map')
+    .select('#dataCont')
+    .selectAll('g')
+    .data(data.activeMapSequencePoints);
+    
+    console.log(countryPoints)
+    
+  countryPoints.each(function(p, j) {
+     d3.select(this)
+     //d3.select(`#${currentCountryName.split(' ').join('')}`)
+        .selectAll("circle")
+        .data(p)
+        //.data(data.activeMapSequencePoints[countryCounter])
+        .transition().duration(yAxisTimer)
+        .attr("cy", function(d) { 
+          // console.log(parseFloat(d[2]))
+          return yScaleActiveMap(parseFloat(d[2])); 
+        });
+      
+    d3.select(this)
+      .selectAll('text')
+      .data(p)
+      .transition()
+      .duration(yAxisTimer)
+      .attr('x', function(d) {
+            // console.log(d);
+            xText = xScaleActiveMap(parseFloat(d[1]))+distanceFromCircle;
+            // console.log(xText);
+            return xText;
+          })
+      .attr('y', function(d) {
+        yText = yScaleActiveMap(parseFloat(d[2]))+distanceFromCircle;
+        return yText;
+      })
+      .attr('transform', (d,i) => {
+        let a = -20;
+        let x = xText;
+        let y = yText;
+        return `rotate(${a}, ${x}, ${y})`; //translate(${-width/2+barWidth/2},0)
+      })
+    })
+    
+    let countryLines = d3.select('#active-map')
+    .select('#dataCont')
+    .selectAll('g')
+    .data(data.activeMapSequenceLines);
+    
+    let countryLine = d3.line() //.curve(d3.curveCatmullRom.alpha(0.5))
+      // .curveNatural(d3.curveNatural)
+      .x(function(d) { 
+        // console.log(parseFloat(d[1]))
+        return xScaleActiveMap(parseFloat(d[1])); })
+      .y(function(d) { 
+        // console.log(parseFloat(d[2]))
+        return yScaleActiveMap(parseFloat(d[2])); });
+    
+    countryLines.each(function(p, j) {
+      d3.select(this)
+        .selectAll('path')
+        .data(p)
+        .transition().duration(yAxisTimer)
+        .attr("d", countryLine(p))
+    })
+    
+}
+
 function activeMapUpdate() {
   /*
   d3.select('#active-map-graph').selectAll('.lineCont').remove();
@@ -381,24 +583,26 @@ function activeMapUpdate() {
 }
 
 
-
 let myVar;
 let currentYear = 2000;
 let running = false;
+let changedScale = false; 
 function myStartFunction() {
-  if (currentYearMax == lastYear) {
+  console.log('called start')
+  if (countryCounter == 49) {
     clearInterval(myVar);
     running = false;
     d3.select('#play-pause-button').classed('play', false);
     d3.select('#play-pause-button').classed('pause', false);
     d3.select('#play-pause-button').classed('stop', true);
+    d3.select('#active-map-slider').classed('grayed-out', false);
   } else {
     if (!running) {
       running = true;
       d3.select('#play-pause-button').classed('play', false);
       d3.select('#play-pause-button').classed('pause', true);
       d3.select('#play-pause-button').classed('stop', false);
-      
+      d3.select('#active-map-slider').classed('grayed-out', true);
       myVar = setInterval(myTimer, countryTimer);
     } else {
       running = false;
@@ -406,18 +610,39 @@ function myStartFunction() {
       d3.select('#play-pause-button').classed('play', true);
       d3.select('#play-pause-button').classed('pause', false);
       d3.select('#play-pause-button').classed('stop', false);
-      
+      d3.select('#active-map-slider').classed('grayed-out', false);
     }
   }
 }
 
 function myTimer() {
-  if (currentYearMax == lastYear) {
+  if (countryCounter == 49) {
     myStartFunction();
   } else {
     // console.log('yes');  
-    yearSlider.noUiSlider.set([null, currentYearMax + 1]);;
-    getAndDrawNextDataPoint();
+    // yearSlider.noUiSlider.set([null, currentYearMax + 1]);
+    if (!changedScale) {
+      if (countryCounter >= 20) {
+        changedScale = true; 
+        if (yAxisMax < 100) {
+          myStartFunction();
+          scaleYAxis(100);
+          d3.select('#p100').attr('checked', function() {
+            return 'checked'
+          })
+          d3.select('#p4').attr('checked', function() {
+            return ''
+          })
+        }
+      setTimeout(myStartFunction(), 2000);
+      } else {
+        getAndDrawNextDataPoint();
+      }
+    } else {
+      getAndDrawNextDataPoint();
+    }
+    
+    
   }
 }
 
@@ -431,13 +656,11 @@ function myBackFunction() {
     d3.select('#play-pause-button').classed('play', false);
     d3.select('#play-pause-button').classed('pause', true);
     d3.select('#play-pause-button').classed('stop', false);
-    
   }
   activeMapUpdate();
 }
 
 // -- Utility functions
-
 
 let appendGroupTo = (name, appendTo) => {
       return appendTo

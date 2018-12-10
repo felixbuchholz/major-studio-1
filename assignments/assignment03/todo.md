@@ -1,21 +1,16 @@
 # Until tomorrow
 
+- ToC down!
+
 ### CONCLUSION // SDG 2030
-- icon – ends in yellow. 
-- Sources are a menu!
 
-## keep track of scroll – Make an arrow down – lower opacity of the following dashboard – 
-
-
-
-## H1
-- Fix resizing the h1.icon
+## keep track of scroll? – Make an arrow down – lower opacity of the following dashboard and animate it into view? –Maybe to much
 
 
 ## COMPARISON
 
 - reduce the interaction for the direct comparison =
-  - Mobile view   - changeAxis?
+  - Mobile view - changeAxis?
   - remove slider
   - remove radio buttons
   - allow replay
@@ -82,12 +77,14 @@ Second hierarchy level
 - ## MAP 
 1. hover and 
 2. onclick to dashboard 
-
-### SUB-Conclusion after Fuels / Poverty
+- SUB-Conclusion after Fuels / Poverty
 -   While the relationship between access to clean fuels and poverty is quite obvious for countries where access to clean fuels is above 4 % of the population other factors might be more influential below this threshold. To understand if this value is a tipping point in development let’s look at countries that in the given timeframe started just above the the threshold: Burkina Faso, Kenya and Ghana.
-
-## SCROLL & MOVEMENT
+- SCROLL & MOVEMENT
 - Animation?
+- - icon – ends in yellow. 
+- Sources are a menu!
+- ## H1
+- Fix resizing the h1.icon
 
 ## Decided against
 - Show also the high and low, when hovering over a country

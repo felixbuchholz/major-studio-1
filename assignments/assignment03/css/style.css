@@ -40,6 +40,13 @@ a:hover {
   height: auto;
 }
 
+.scale-svg-scribble {
+  position: relative;
+  width: 100px;
+  height: auto;
+  top: 15px;
+}
+
 .start-end {
   background: rgb(252, 195, 11);
   font-weight: 600;
@@ -55,8 +62,17 @@ a:hover {
   justify-content: flex-start;
 }
 
+#head-and-icon-end {
+  margin-top: 30px;
+  padding-bottom: 65px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
 .spacer {
-  width: 60px;
+  width: 40px;
 }
 
 #start .scale-svg {

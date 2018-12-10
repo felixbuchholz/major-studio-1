@@ -1,5 +1,14 @@
 /* global d3 */
 /* global data */
+
+let scale =  (scaleFactor) => {
+    return d3.geoTransform({
+        point: function(x, y) {
+            this.stream.point(x * scaleFactor, -1 * y * scaleFactor);
+        }
+    });
+};
+
 let buildMap = () => {
 
   let myCombinedDataset = data.worldGeo;
@@ -12,16 +21,15 @@ let buildMap = () => {
     })
   })
   //console.log(myCombinedDataset)
-  
-    let map = d3.select("#death-map").append("svg");
+    let contWidth = d3.select('#death-map-container').node().getBoundingClientRect().width;
+    // console.log(contWidth)
+    let map = d3.select("#death-map")
+      .append("svg")
+        .attr('width', `${contWidth}`)
+        .attr('height', `${contWidth*0.42}`)
+      .append('g');
     // let scaleFactor = 0.5;
-    let scale =  (scaleFactor) => {
-        return d3.geoTransform({
-            point: function(x, y) {
-                this.stream.point(x * scaleFactor + window.innerWidth/2, -1 * y * scaleFactor + window.innerHeight/2);
-            }
-        });
-    };
+
     
     let deathratesArr = [];
     myCombinedDataset.features.forEach((e, i) => {
@@ -31,13 +39,13 @@ let buildMap = () => {
     let colorScale = d3.scaleSequential(d3.interpolateYlOrBr).domain([0, d3.max(deathratesArr)]);
     
      let featureElement = map.selectAll("path")
-    	.data(myCombinedDataset.features)
+    	.data(myCombinedDataset.features, function(d) {return d.properties.name})
     	.enter()
         .append("path")
         .attr("d", d3.geoPath().projection(scale(4)))
-        .attr('transform', 'translate(-250, -80)')
+        .attr('transform', 'translate(600, 350)')
         .attr("stroke", "white")
-        .attr('stroke-width', 2)
+        .attr('stroke-width', 1)
         .attr("fill", (d, i) => {
           // console.log(isNaN(d.deathrate))
           if (isNaN(d.deathrate)) {
@@ -46,12 +54,19 @@ let buildMap = () => {
             return colorScale(d.deathrate);
           }
         })
-        .attr("fill-opacity", 1);
-  let margin = ({top: 0, right: 40, bottom: 20, left: 40})
+        .attr("fill-opacity", 1)
+        .on("mouseenter", mouseoverMap)
+          .on("mousemove", mousemoveMap)
+          .on("mouseleave", mouseoutMap)
+          .on("click", clickToDashMap);
+        
+  // ––––––––––––––––––––––– LEGEND
+  
+  
+  let margin = ({top: 0, right: 0, bottom: 20, left: 3})
   let height = 50;
   let barHeight = 10;
-  let width = 700;
-  
+  let width = 450;
   
   
   let legend = d3.select("#death-legend").append("svg");
@@ -93,42 +108,67 @@ let buildMap = () => {
     
   legend.selectAll('text').attr('y', '6')
   // .style('font-size', '12px')
+  
+  // ------------------- legend
+  
 }
-  /*
-  else if (d.deathrate==0) {
-            return `rgb(250, 250, 250)`;
-          } 
-  */
-  /*  .on('mouseover', function(d) {
-        console.log(d.properties.subregion);
-        d3.select(this).attr("fill", (d, i) => {
-          if (d.properties.subregion == 'Middle Africa') {
-            return '#e41a1c';
-          } else if (d.properties.subregion == 'Western Africa') {
-            return '#377eb8';
-          } else if (d.properties.subregion == 'Northern Africa') {
-            return '#4daf4a';
-          } else if (d.properties.subregion == 'Eastern Africa') {
-            return '#984ea3';
-          } else if (d.properties.subregion == 'Southern Africa') {
-            return '#ff7f00';
-          }
+
+var tooltipMap = d3.select("#death-map-outer")
+    .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+function mouseoverMap(d){
+  tooltipMap.transition()
+    .duration(200)
+    .style("opacity", 1);
+}
+
+function mousemoveMap(d){
+    // console.log(d);
+    d3.select(this).classed('active-country', true).raise();
+    // Data – DOM does get out of sync. Observe that. https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+    // .raise();
+    tooltipMap.html(`Country: <span class='em'>${d.properties.name}</span> <br /> Death Rate from Household Air Pollution: <span class='em'>${parseFloat(d.deathrate).toFixed(0)}</span>`)
+      .style("left", (d3.event.pageX - 170) + "px")
+      .style("top", (d3.event.pageY - 150) + "px");
+}
+
+function mouseoutMap(d){
+    d3.select(this).classed('active-country', false);
+    tooltipMap.transition()
+      .duration(500)
+      .style("opacity", 0);
+}
+
+function clickToDashMap (d) {
+  let country = d.properties.name;
+  console.log(country)
+  if (country == 'United Republic of Tanzania') {
+    country = 'Tanzania';
+  }
+  selectCountry(country);
+  document.querySelector('#holistic').scrollIntoView({
+            block: 'start',
+            behavior: 'smooth'
         });
-        d3.select("#hover")
-            .text(d.properties.name.toUpperCase() + ' (Population: ' + (d.properties.pop_est/1000000).toFixed(1) + 'Mio.) ' + 'Region: ' + d.properties.subregion);
-        d3.select('#hover').attr("fill-opacity", 1);
-    })
-    .on('mouseout', function() {
-        d3.select(this).attr("fill", "lightgray");
-        d3.select('#hover').attr("fill-opacity", 0);
-    })
-    .on('mousemove', function(d) {
-        d3.select("#hover")
-            .attr('x', function() { return d3.mouse(this)[0] + 20; })
-            .attr('y', function() { return d3.mouse(this)[1] + 10; });
-    });
+ // window.location.href = '#holistic';
+}
 
-    */
+function resizeMap() {
+  let contWidth = d3.select('#death-map-container').node().getBoundingClientRect().width;
+    // console.log(contWidth)
+  d3.select("#death-map").select('g').attr('transform', `scale(${1*contWidth/1458})`);
+  d3.select("#death-map")
+    .select("svg")
+      .attr('width', `${contWidth}`)
+      .attr('height', `${contWidth*0.42}`)
+}
 
-// svg.append("text")
-//    .attr('id', 'hover');
+
+d3.select(window)
+  .on("resize", sizeChange);
+  
+function sizeChange() {
+  resizeMap();
+}
