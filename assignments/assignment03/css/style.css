@@ -956,3 +956,7 @@ i.big.icon, i.big.icons {
   background: #111;
   color: white;
 }
+
+.label-interface {
+  font-size: 13px;
+}

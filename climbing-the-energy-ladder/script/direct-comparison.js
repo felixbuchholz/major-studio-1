@@ -481,11 +481,17 @@ function mouseover(d){
 }
 
 function mousemove(d){
+  let years;
+    if (d[0].year == d[d.length-1].year) {
+      years = d[d.length-1].year
+    } else {
+      years = `${d[0].year} – ${d[d.length-1].year}`;
+    }
     // console.log(d);
     d3.select(this).classed('deact', false).raise()
     // Data – DOM does get out of sync. Observe that. https://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
     // .raise();
-    tooltip.html(`Country: <span class='em'>${d[d.length-1].country}</span> <br /> Year: <span class='em'>${d[d.length-1].year}</span> <br /> Poverty Headcount Ratio: <span class='em'>${d[d.length-1].poverty}</span> %<br /> Access to Clean Fuels: <span class='spot em'>${d[d.length-1].cleanfuels} %`)
+    tooltip.html(`Country: <span class='em'>${d[d.length-1].country}</span> <br /> Year(s): <span class='em'>${years}</span> <br /> Poverty Headcount Ratio: <span class='em'>${d[d.length-1].poverty}</span> %<br /> Access to Clean Fuels: <span class='spot em'>${d[d.length-1].cleanfuels} %`)
       .style("left", (d3.event.pageX + 50) + "px")
       .style("top", (d3.event.pageY - 50) + "px");
 }
