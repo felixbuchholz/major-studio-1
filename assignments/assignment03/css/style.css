@@ -945,6 +945,14 @@ i.big.icon, i.big.icons {
   cursor: pointer;
 }
 
-.context-hovers:hover {
+.context-hovers {
   font-weight: bold;
+  border-radius: 3px;
+  padding: 5px;
+  margin-top: -5px;
+}
+
+.context-hovers:hover {
+  background: #111;
+  color: white;
 }

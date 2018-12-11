@@ -5,8 +5,9 @@ let yearSlider, activeMapYearsArr, lastYear;
 let xAxisMax = 4;
 let pointTimer = 380; // good choice: 380
 let countryTimer = 400; // good choice: 400
-let xAxisTimer = 1100;
+let xAxisTimer = 500;
 let initialCircleRadius = 10;
+let regularCircleSize = 3;
 let distanceFromCircle = 8;
 let myDegrees = 0;
 
@@ -201,7 +202,7 @@ function getAndDrawNextDataPoint() {
             return d.iso
         })
         .style('opacity', '0')
-        .attr("r", initialCircleRadius)
+        .attr('r', initialCircleRadius)
         .attr("cx", function(d) {
           // console.log(d)
           return xScaleActiveMap(d.cleanfuels);
@@ -320,9 +321,27 @@ function getAndDrawNextDataPoint() {
           // console.log(d)
           return d.iso
         })
+        .attr("year", function(d) {
+          return `${d.year}`
+        })
+        .attr("poverty", function(d) {
+          return `${d.poverty}`
+        })
+        .attr("cleanfuels", function(d) {
+          return `${d.cleanfuels}`
+        })
+        .attr("population", function(d) {
+          return `${d.population}`
+        })
+        .attr("gdp", function(d) {
+          return `${d.gdp}`
+        })
+        .attr("lifeexp", function(d) {
+          return `${d.lifeexp}`
+        })
         .transition()
         .duration(pointTimer)
-        .attr('r', '3')
+        .attr('r', getRadius)
         .attr("cx", function(d) {
           return xScaleActiveMap(d.cleanfuels);
         })
@@ -330,9 +349,7 @@ function getAndDrawNextDataPoint() {
           return yScaleActiveMap(d.poverty); 
         })
         .attr('fill', 'rgb(0, 0, 0)')
-        .attr("year", function(d) {
-          return `${d.year}`
-        })
+        
     
     
       d3.select(this)
@@ -521,19 +538,23 @@ return appendTo
 function myStartFunction() {
   // console.log('called start')
   if (countryCounter == 49) {
+    console.log('This is the end')
     clearInterval(myVar);
     running = false;
+    // 
+    d3.select('#direct-comparison-graph').select('#dataCont').select('.TUN').select('circle').attr('fill', 'rgb(0, 0, 0)').attr('r', getRadius);
+    //
     d3.select('#play-pause-button').classed('play', false);
     d3.select('#play-pause-button').classed('pause', false);
     d3.select('#play-pause-button').classed('stop', true);
-    d3.select('#active-map-slider').classed('grayed-out', false);
+    // d3.select('#active-map-slider').classed('grayed-out', false);
   } else {
     if (!running) {
       running = true;
       d3.select('#play-pause-button').classed('play', false);
       d3.select('#play-pause-button').classed('pause', true);
       d3.select('#play-pause-button').classed('stop', false);
-      d3.select('#active-map-slider').classed('grayed-out', true);
+      // d3.select('#active-map-slider').classed('grayed-out', true);
       myVar = setInterval(myTimer, countryTimer);
     } else {
       running = false;
@@ -597,15 +618,90 @@ function myBackFunction() {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+// Add the hovers
+d3.select('#showPopulation').on('mouseenter', showPop)
+d3.select('#showPopulation').on('mouseleave', backToNormal)
+d3.select('#showGDP').on('mouseenter', showGDP)
+d3.select('#showGDP').on('mouseleave', backToNormal)
+d3.select('#showLifeExp').on('mouseenter', showLifeExp)
+d3.select('#showLifeExp').on('mouseleave', backToNormal)
 
-d3.select('#showPopulation').on('mousemove', showPop)
+function resetHoverStates() {
+   for (var state in hoverStates) {
+    hoverStates[state] = false;
+  }
+  // console.log(hoverStates)
+}
+
+let hoverStates = {
+  'normal': true,
+  'population': false,
+  'gdp': false,
+  'lifeexp': false
+}
+
+function backToNormal(d) {
+  resetHoverStates();
+  hoverStates.normal = true; 
+  d3.select('#direct-comparison-graph').select('#dataCont').selectAll('g').classed('deact', true)
+  d3.select('#direct-comparison-graph').select('#dataCont').selectAll('path').style('stroke', null)
+  d3.select('#direct-comparison-graph').selectAll('circle').attr('r', getRadius).style('opacity', null)
+}
+
+function getRadius(d, i) {
+  //console.log(hoverStates)
+  if (hoverStates.normal == true) {
+    return regularCircleSize;
+  } else if (hoverStates.population == true) {
+    if (!isNaN(d3.select(this).attr('population'))) {
+      return Math.sqrt(d3.select(this).attr('population')*0.00001);
+    } else {
+      return 1;
+    }
+  } else if (hoverStates.gdp == true) {
+    if (!isNaN(d3.select(this).attr('gdp'))) {
+      return Math.sqrt(d3.select(this).attr('gdp')*0.1);
+    } else {
+      return  1;
+    }
+  }
+  else if (hoverStates.lifeexp == true) {
+    if (!isNaN(d3.select(this).attr('lifeexp'))) {
+      return Math.sqrt(d3.select(this).attr('lifeexp')*2);
+    } else {
+      return 1;
+    }
+  }
+}
 
 function showPop() {
-  d3.select('#direct-comparison-graph').selectAll('g').classed('deact', false)
-  d3.select('#direct-comparison-graph').select('#dataCont').selectAll('path').style('stroke', '#eee')
-  d3.select('#direct-comparison-graph').selectAll('circle').attr('r', function(d, i) {
-    // console.log(d3.select(this).attr('population'));
-    return Math.sqrt(d3.select(this).attr('population')*0.00001);
-  })
-  .style('opacity', 0.4)
+  resetHoverStates();
+  hoverStates.population = true;
+  adjustView();
 }
+
+function showGDP() {
+  resetHoverStates();
+  hoverStates.gdp = true;
+  adjustView();
+}
+
+function showLifeExp() {
+  resetHoverStates();
+  hoverStates.lifeexp = true;
+  adjustView();
+}
+
+
+
+function adjustView() {
+  d3.select('#direct-comparison-graph').select('#dataCont').selectAll('g').classed('deact', false)
+  
+  d3.select('#direct-comparison-graph').selectAll('circle').attr('r', getRadius)
+  
+  if (!running) {
+    d3.select('#direct-comparison-graph').selectAll('circle').style('opacity', 0.4)
+    d3.select('#direct-comparison-graph').select('#dataCont').selectAll('path').style('stroke', '#eee').style('opacity', 0.4)
+  }
+}
+
