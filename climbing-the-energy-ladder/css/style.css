@@ -74,6 +74,9 @@ a:hover {
 .spacer {
   width: 40px;
 }
+.spacer-small {
+  width: 10px;
+}
 
 #start .scale-svg {
   width: 80px;
@@ -565,7 +568,7 @@ h3.graph-headline {
 
 .button:hover {
   /*outline: 1px solid #444;*/
-  background: grey;
+  background: #ccc;
   color: white;
 }
 
@@ -651,6 +654,10 @@ h3.graph-headline {
   margin: auto;
 }
 
+#active-map-container {
+  margin-bottom: 30px;
+}
+
 .interface-icon {
     margin-top: -13.8px;
     font-size: 1.31em;
@@ -726,12 +733,13 @@ h3.graph-headline {
   padding-bottom: 15px;
   padding-top: 30px;
   border: 1px solid black;
+  border-radius: 3px;
 }
 
 .box .label {
   margin-left: -25px;
   margin-top: -29px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .box form {
@@ -822,7 +830,7 @@ form input {
 .country text {
     paint-order: stroke;
     stroke: #fff;
-    stroke-width: 3px;
+    stroke-width: 4px;
     stroke-linecap: butt;
     stroke-linejoin: miter;
 }
@@ -832,7 +840,7 @@ form input {
 }
 
 
-div.tooltip {
+div.my-tooltip {
   position: absolute;
   margin-left: 0px;
   padding: 25px;
@@ -915,4 +923,28 @@ div.tooltip {
 .start-end .button:hover {
   color: rgb(252, 195, 11);
   background: #fff;
+}
+
+.tooltip {
+  opacity: 0.3;
+}
+
+i.big.icon, i.big.icons {
+  font-size: 2.25em;
+}
+
+#direct-comparison-graph {
+  min-width: 1000px
+}
+
+#comparison svg {
+  min-width: 660px;
+}
+
+.play-interface i:hover {
+  cursor: pointer;
+}
+
+.context-hovers:hover {
+  font-weight: bold;
 }

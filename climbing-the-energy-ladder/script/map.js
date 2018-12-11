@@ -115,7 +115,7 @@ let buildMap = () => {
 
 var tooltipMap = d3.select("#death-map-outer")
     .append("div")
-      .attr("class", "tooltip")
+      .attr("class", "my-tooltip")
       .style("opacity", 0);
 
 function mouseoverMap(d){

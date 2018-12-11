@@ -1,30 +1,17 @@
-# Until tomorrow
-
-- ToC down!
-
-### CONCLUSION // SDG 2030
+# for the future tomorrow
 
 ## keep track of scroll? – Make an arrow down – lower opacity of the following dashboard and animate it into view? –Maybe to much
 
-
 ## COMPARISON
 
-- reduce the interaction for the direct comparison =
-  - Mobile view - changeAxis?
-  - remove slider
-  - remove radio buttons
-  - allow replay
-  - allow raise
   - Current Year BOLD BIG next to the Interface
 
 
 # Requires big restructuring: 
 - Hover for the graphs (comparison within graph!)
-- changeAxis?
+
 - Hover Population, GDP, Region, etc. – only available after animation -> roll them in
-- style the radio buttons. 
-- Connect slider and map again.
-  - setting during animation works! – Make it less present during that, and after the animation is finished, use the slider to filter by year. 
+
 
 # bonus: 
 - Deactivate button up / down when end of range
@@ -53,7 +40,7 @@ You basically have to restructure the whole thing:
 
 Structure: 
 First hierarchy level: – matches 'g'
-Information: currentPosition, Country, Year
+Information: Country, currentPosition,  Year
 Second hierarchy level
 
 
@@ -85,6 +72,15 @@ Second hierarchy level
 - Sources are a menu!
 - ## H1
 - Fix resizing the h1.icon
+- $3.20 vs national poverty line
+- ### CONCLUSION // SDG 2030
+- reduce the interaction for the direct comparison =
+- Mobile view - changeAxis?
+- remove slider
+- remove radio buttons
+- allow replay
+- allow raise
+- changeAxis?
 
 ## Decided against
 - Show also the high and low, when hovering over a country
@@ -96,3 +92,6 @@ Second hierarchy level
   // .style('fill', 'rgb(0, 0, 0)')
 - <!-- <div>2000</div><div>2016</div> -->
 - ~Make the navigation vanish and the dashboard pop up in sequence~ !! //
+- style the radio buttons. 
+- Connect slider and map again.
+- setting during animation works! – Make it less present during that, and after the animation is finished, use the slider to filter by year. 

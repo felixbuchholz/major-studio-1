@@ -292,7 +292,7 @@ function clickToDash (d) {
           block: 'start',
           behavior: 'smooth'
       });
-  // window.location.href = '#holistic';
+  //window.location.href = '#holistic';
   
 }
 
@@ -583,10 +583,7 @@ function activeMapUpdate() {
 }
 
 
-let myVar;
-let currentYear = 2000;
-let running = false;
-let changedScale = false; 
+
 function myStartFunction() {
   console.log('called start')
   if (countryCounter == 49) {

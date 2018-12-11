@@ -17,7 +17,7 @@ Promise.all([
   d3.csv('data/gdp.csv'),
   d3.csv('data/clean-fuels.csv'),
   d3.csv('data/deathrate.csv'),
-  d3.csv('data/poverty-320.csv'),
+  d3.csv('data/poverty-nat.csv'),
   d3.csv('data/poverty-190.csv')
 ])
 .then(([africaGeo, worldGeo, africaCountries, hdi, gini, lifeexp, schoolyears, population, gdp, cleanfuels, deathrate, poverty, poverty190]) => {
@@ -239,11 +239,96 @@ data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
     })
   }
   
+// Restructure as objects:
+  let cData = Object.entries(data.activeMapByCountry) 
+  cData = cData.map((x, i) => {
+     let years = x[1].map((y, j) => {
+         let resObj = {'year': y[0], 'poverty': parseFloat(y[1]).toFixed(2), 'cleanfuels': parseFloat(y[2]).toFixed(2), 'country': y[3]};
+         // console.log(y)
+         return resObj;
+     })
+     let resObj = {'country': x[0], 'years': years};
+     return resObj;
+  })
+  
+// Adding iso and region
+  cData.map((countries, i) => {
+      data.africaCountries.map((abbr, j) => {
+          if (countries.country == abbr[0]) {
+              countries['iso'] = abbr[1];
+              countries['region'] = abbr[2];
+          }
+      })
+      return countries
+  })
+
+// Adding indicator properties
+  const myIndicatorsForActiveMap = ['population', 'gdp', 'lifeexp'];
+  myIndicatorsForActiveMap.forEach((ind, i) => {
+    data.indicators[ind].map((country, i) => {
+      let countryEntries = Object.entries(country);
+      let countryKeys = Object.keys(country);
+      let iiso = countryEntries[59][1]
+      cData.map((c, i) => {
+        if (c.iso == iiso) {
+          // console.log(countryEntries, c.years)
+          c.years.forEach((year, i) => {
+            let index = countryKeys.indexOf(year.year);
+            year[ind] = parseFloat(countryEntries[index][1]).toFixed(2);
+            year['iso'] = iiso;
+          })
+        }
+      })
+    })
+  })
+
+// Adding max access to clean fuels value
+  cData.map((x, i) => {
+    x['maxCleanfuels'] = d3.max(x.years.map(y => parseFloat(y.cleanfuels)))
+  })
+  
+  cData.sort((a, b) => {
+    if (a.maxCleanfuels > b.maxCleanfuels) {
+      return 1
+    }
+    
+    if (a.maxCleanfuels < b.maxCleanfuels) {
+      return -1
+    }
+    
+    return 0
+  })
+  
+// Turn the values to proper numbers.
+  cData.forEach((e, i) => {
+    e.years.forEach((f, j) => {
+      for (var prop in f) {
+        // console.log(f[prop], f, prop);
+        if (prop != 'country' && prop != 'iso') {
+          f[prop] = parseFloat(f[prop])
+        }
+      }
+    })
+  })
+  
+// Create Object and Array for current year and current year range
+  cData.forEach((e, i) => {
+    // e.currentYear = [];
+    e.currentRange = [];
+  })
+  
+  data['aacc'] = cData;
+  data['aaccSeq'] = [[]];
+  
   data.activeMapByCountryFiltered = {};
   
   updateYearFilter();
   
+  test();
+  
+  
   console.log(data);
+  
   
   
   
@@ -254,7 +339,8 @@ data['sorting']['rate'] = data['sorting']['rate'].sort((function(index){
   //console.log(data.worldGeo)
   buildMap();
   activeMapSetup();
-  activeMapUpdate();
+  
+  // activeMapUpdate();
   lpg();
   
 });
